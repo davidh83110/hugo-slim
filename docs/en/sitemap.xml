@@ -3,784 +3,784 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>localhost:1313/categories/aws/</loc>
+    <loc>docs/categories/aws/</loc>
     <lastmod>2020-05-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/categories/</loc>
-    <lastmod>2020-05-14T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="#ZgotmplZ"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pl"
-                href="#ZgotmplZ"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt"
-                href="#ZgotmplZ"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="de"
-                href="#ZgotmplZ"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="#ZgotmplZ"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="#ZgotmplZ"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="#ZgotmplZ"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="#ZgotmplZ"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="#ZgotmplZ"
-                />
-  </url>
-  
-  <url>
-    <loc>localhost:1313/blog/2020-05-14-eks-external-dns/</loc>
-    <lastmod>2020-05-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>localhost:1313/</loc>
+    <loc>docs/categories/</loc>
     <lastmod>2020-05-14T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="#ZgotmplZ"
+                href="docs/fr/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pl"
-                href="#ZgotmplZ"
+                href="docs/pl/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="#ZgotmplZ"
+                href="docs/pt/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
-                href="#ZgotmplZ"
+                href="docs/de/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="#ZgotmplZ"
+                href="docs/es/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="#ZgotmplZ"
+                href="docs/zh-cn/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="#ZgotmplZ"
+                href="docs/zh-tw/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="#ZgotmplZ"
+                href="docs/ja/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="#ZgotmplZ"
+                href="docs/categories/"
                 />
   </url>
   
   <url>
-    <loc>localhost:1313/categories/kubernetes/</loc>
+    <loc>docs/blog/2020-05-14-eks-external-dns/</loc>
     <lastmod>2020-05-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/blog/</loc>
+    <loc>docs/</loc>
+    <lastmod>2020-05-14T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="docs/fr/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pl"
+                href="docs/pl/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt"
+                href="docs/pt/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="de"
+                href="docs/de/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="docs/es/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="docs/zh-cn/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="docs/zh-tw/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="docs/ja/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="docs/"
+                />
+  </url>
+  
+  <url>
+    <loc>docs/categories/kubernetes/</loc>
     <lastmod>2020-05-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/categories/terraform/</loc>
+    <loc>docs/blog/</loc>
     <lastmod>2020-05-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/categories/%E7%B3%BB%E7%B5%B1%E5%BB%BA%E7%BD%AE/</loc>
+    <loc>docs/categories/terraform/</loc>
     <lastmod>2020-05-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/blog/2020-03-30-eks-install/</loc>
+    <loc>docs/categories/%E7%B3%BB%E7%B5%B1%E5%BB%BA%E7%BD%AE/</loc>
+    <lastmod>2020-05-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>docs/blog/2020-03-30-eks-install/</loc>
     <lastmod>2020-03-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/blog/2020-03-05-saas-self-hosted/</loc>
+    <loc>docs/blog/2020-03-05-saas-self-hosted/</loc>
     <lastmod>2020-03-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/categories/%E6%8A%80%E8%A1%93%E7%B0%A1%E4%BB%8B/</loc>
+    <loc>docs/categories/%E6%8A%80%E8%A1%93%E7%B0%A1%E4%BB%8B/</loc>
     <lastmod>2020-03-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/blog/2020-02-15-cloud-native-log-solution/</loc>
+    <loc>docs/blog/2020-02-15-cloud-native-log-solution/</loc>
     <lastmod>2020-02-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/blog/2019-12-05-aws-saa-pass/</loc>
+    <loc>docs/blog/2019-12-05-aws-saa-pass/</loc>
     <lastmod>2019-12-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/about/</loc>
+    <loc>docs/about/</loc>
     <lastmod>2019-02-28T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="pl"
-                href="#ZgotmplZ"
+                href="docs/pl/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="#ZgotmplZ"
+                href="docs/fr/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="#ZgotmplZ"
+                href="docs/pt/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="#ZgotmplZ"
+                href="docs/about/"
                 />
   </url>
   
   <url>
-    <loc>localhost:1313/blog/2019-02-03-terraform-module-bitbucket/</loc>
+    <loc>docs/blog/2019-02-03-terraform-module-bitbucket/</loc>
     <lastmod>2019-02-19T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/blog/2018-12-01-mongodb-introduction-upgrade/</loc>
+    <loc>docs/blog/2018-12-01-mongodb-introduction-upgrade/</loc>
     <lastmod>2018-12-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/blog/2018-09-25-macos-mojave-bugs/</loc>
+    <loc>docs/blog/2018-09-25-macos-mojave-bugs/</loc>
     <lastmod>2018-09-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/blog/2018-07-21-import-els/</loc>
+    <loc>docs/blog/2018-07-21-import-els/</loc>
     <lastmod>2018-07-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/categories/python/</loc>
+    <loc>docs/categories/python/</loc>
     <lastmod>2018-07-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/blog/2018-04-21-srverless/</loc>
+    <loc>docs/blog/2018-04-21-srverless/</loc>
     <lastmod>2018-04-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/categories/serverless/</loc>
+    <loc>docs/categories/serverless/</loc>
     <lastmod>2018-04-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/blog/2017-10-27-aws-ecs/</loc>
+    <loc>docs/blog/2017-10-27-aws-ecs/</loc>
     <lastmod>2017-10-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/container/</loc>
+    <loc>docs/tags/container/</loc>
     <lastmod>2017-08-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/docker/</loc>
+    <loc>docs/tags/docker/</loc>
     <lastmod>2017-08-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/blog/2017-08-31-docker-note/</loc>
+    <loc>docs/blog/2017-08-31-docker-note/</loc>
     <lastmod>2017-08-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/flash/</loc>
+    <loc>docs/tags/flash/</loc>
     <lastmod>2017-08-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/letsencrypt/</loc>
+    <loc>docs/tags/letsencrypt/</loc>
     <lastmod>2017-08-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/nginx/</loc>
+    <loc>docs/tags/nginx/</loc>
     <lastmod>2017-08-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/python/</loc>
+    <loc>docs/tags/python/</loc>
     <lastmod>2017-08-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/</loc>
+    <loc>docs/tags/</loc>
     <lastmod>2017-08-31T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="#ZgotmplZ"
+                href="docs/fr/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pl"
-                href="#ZgotmplZ"
+                href="docs/pl/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="#ZgotmplZ"
+                href="docs/pt/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
-                href="#ZgotmplZ"
+                href="docs/de/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="#ZgotmplZ"
+                href="docs/es/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="#ZgotmplZ"
+                href="docs/zh-cn/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="#ZgotmplZ"
+                href="docs/zh-tw/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="#ZgotmplZ"
+                href="docs/ja/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="#ZgotmplZ"
+                href="docs/tags/"
                 />
   </url>
   
   <url>
-    <loc>localhost:1313/tags/uwsgi/</loc>
+    <loc>docs/tags/uwsgi/</loc>
     <lastmod>2017-08-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/categories/%E9%9B%9C%E4%B8%83%E9%9B%9C%E5%85%AB/</loc>
+    <loc>docs/categories/%E9%9B%9C%E4%B8%83%E9%9B%9C%E5%85%AB/</loc>
     <lastmod>2017-08-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/ai/</loc>
+    <loc>docs/tags/ai/</loc>
     <lastmod>2017-07-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/blog/2017-07-23-ai-venue/</loc>
+    <loc>docs/blog/2017-07-23-ai-venue/</loc>
     <lastmod>2017-07-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/cortana/</loc>
+    <loc>docs/tags/cortana/</loc>
     <lastmod>2017-07-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/golang/</loc>
+    <loc>docs/tags/golang/</loc>
     <lastmod>2017-07-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/iot/</loc>
+    <loc>docs/tags/iot/</loc>
     <lastmod>2017-07-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/pepper/</loc>
+    <loc>docs/tags/pepper/</loc>
     <lastmod>2017-07-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/ptt/</loc>
+    <loc>docs/tags/ptt/</loc>
     <lastmod>2017-07-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/spark/</loc>
+    <loc>docs/tags/spark/</loc>
     <lastmod>2017-07-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7/</loc>
+    <loc>docs/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7/</loc>
     <lastmod>2017-07-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/dingtalk/</loc>
+    <loc>docs/tags/dingtalk/</loc>
     <lastmod>2017-07-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/nagios/</loc>
+    <loc>docs/tags/nagios/</loc>
     <lastmod>2017-07-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/oapi/</loc>
+    <loc>docs/tags/oapi/</loc>
     <lastmod>2017-07-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/python-json/</loc>
+    <loc>docs/tags/python-json/</loc>
     <lastmod>2017-07-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/python-re/</loc>
+    <loc>docs/tags/python-re/</loc>
     <lastmod>2017-07-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/python-requests/</loc>
+    <loc>docs/tags/python-requests/</loc>
     <lastmod>2017-07-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/python3/</loc>
+    <loc>docs/tags/python3/</loc>
     <lastmod>2017-07-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/blog/2017-07-08-python-nagios-dingtalk/</loc>
+    <loc>docs/blog/2017-07-08-python-nagios-dingtalk/</loc>
     <lastmod>2017-07-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/curl/</loc>
+    <loc>docs/tags/curl/</loc>
     <lastmod>2017-02-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/python2/</loc>
+    <loc>docs/tags/python2/</loc>
     <lastmod>2017-02-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/blog/2017-02-05-urllib2-intro/</loc>
+    <loc>docs/blog/2017-02-05-urllib2-intro/</loc>
     <lastmod>2017-02-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/urllib/</loc>
+    <loc>docs/tags/urllib/</loc>
     <lastmod>2017-02-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/urllib2/</loc>
+    <loc>docs/tags/urllib2/</loc>
     <lastmod>2017-02-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/wget/</loc>
+    <loc>docs/tags/wget/</loc>
     <lastmod>2017-02-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/back-end/</loc>
+    <loc>docs/tags/back-end/</loc>
     <lastmod>2017-01-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/c#/</loc>
+    <loc>docs/tags/c#/</loc>
     <lastmod>2017-01-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/java/</loc>
+    <loc>docs/tags/java/</loc>
     <lastmod>2017-01-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/jboss/</loc>
+    <loc>docs/tags/jboss/</loc>
     <lastmod>2017-01-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/php/</loc>
+    <loc>docs/tags/php/</loc>
     <lastmod>2017-01-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/ruby/</loc>
+    <loc>docs/tags/ruby/</loc>
     <lastmod>2017-01-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/tomcat/</loc>
+    <loc>docs/tags/tomcat/</loc>
     <lastmod>2017-01-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/weblogic/</loc>
+    <loc>docs/tags/weblogic/</loc>
     <lastmod>2017-01-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/wildfly/</loc>
+    <loc>docs/tags/wildfly/</loc>
     <lastmod>2017-01-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/categories/%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B/</loc>
+    <loc>docs/categories/%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B/</loc>
     <lastmod>2017-01-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/blog/2017-01-28-back-end-intro-2/</loc>
+    <loc>docs/blog/2017-01-28-back-end-intro-2/</loc>
     <lastmod>2017-01-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/centos/</loc>
+    <loc>docs/tags/centos/</loc>
     <lastmod>2017-01-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/linuxsst/</loc>
+    <loc>docs/tags/linuxsst/</loc>
     <lastmod>2017-01-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/blog/2017-01-25-linux-ln-exp/</loc>
+    <loc>docs/blog/2017-01-25-linux-ln-exp/</loc>
     <lastmod>2017-01-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/ln/</loc>
+    <loc>docs/tags/ln/</loc>
     <lastmod>2017-01-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/redhat/</loc>
+    <loc>docs/tags/redhat/</loc>
     <lastmod>2017-01-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/rm/</loc>
+    <loc>docs/tags/rm/</loc>
     <lastmod>2017-01-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/unlink/</loc>
+    <loc>docs/tags/unlink/</loc>
     <lastmod>2017-01-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/filezilla/</loc>
+    <loc>docs/tags/filezilla/</loc>
     <lastmod>2016-12-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/ftp/</loc>
+    <loc>docs/tags/ftp/</loc>
     <lastmod>2016-12-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/ftps/</loc>
+    <loc>docs/tags/ftps/</loc>
     <lastmod>2016-12-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/openssl/</loc>
+    <loc>docs/tags/openssl/</loc>
     <lastmod>2016-12-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/pure-ftpd/</loc>
+    <loc>docs/tags/pure-ftpd/</loc>
     <lastmod>2016-12-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/blog/2016-12-11-pureftpd-tls/</loc>
+    <loc>docs/blog/2016-12-11-pureftpd-tls/</loc>
     <lastmod>2016-12-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/ssl/</loc>
+    <loc>docs/tags/ssl/</loc>
     <lastmod>2016-12-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/tls/</loc>
+    <loc>docs/tags/tls/</loc>
     <lastmod>2016-12-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/bootstrap/</loc>
+    <loc>docs/tags/bootstrap/</loc>
     <lastmod>2016-12-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/front-end/</loc>
+    <loc>docs/tags/front-end/</loc>
     <lastmod>2016-12-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/html/</loc>
+    <loc>docs/tags/html/</loc>
     <lastmod>2016-12-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/java-script/</loc>
+    <loc>docs/tags/java-script/</loc>
     <lastmod>2016-12-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/w3c/</loc>
+    <loc>docs/tags/w3c/</loc>
     <lastmod>2016-12-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/web/</loc>
+    <loc>docs/tags/web/</loc>
     <lastmod>2016-12-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/xss/</loc>
+    <loc>docs/tags/xss/</loc>
     <lastmod>2016-12-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B/</loc>
+    <loc>docs/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B/</loc>
     <lastmod>2016-12-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/blog/2016-12-05-web-intro-1/</loc>
+    <loc>docs/blog/2016-12-05-web-intro-1/</loc>
     <lastmod>2016-12-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/burp-suite/</loc>
+    <loc>docs/tags/burp-suite/</loc>
     <lastmod>2016-10-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/cross-site-scripting/</loc>
+    <loc>docs/tags/cross-site-scripting/</loc>
     <lastmod>2016-10-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/netsecurity/</loc>
+    <loc>docs/tags/netsecurity/</loc>
     <lastmod>2016-10-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/owasp/</loc>
+    <loc>docs/tags/owasp/</loc>
     <lastmod>2016-10-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/categories/owasp-top10/</loc>
+    <loc>docs/categories/owasp-top10/</loc>
     <lastmod>2016-10-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/blog/2016-10-10-xss/</loc>
+    <loc>docs/blog/2016-10-10-xss/</loc>
     <lastmod>2016-10-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/xss-quiz.int21h.jp/</loc>
+    <loc>docs/tags/xss-quiz.int21h.jp/</loc>
     <lastmod>2016-10-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/categories/%E8%B3%87%E8%A8%8A%E5%AE%89%E5%85%A8/</loc>
+    <loc>docs/categories/%E8%B3%87%E8%A8%8A%E5%AE%89%E5%85%A8/</loc>
     <lastmod>2016-10-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/categories/%E9%A7%AD%E5%AE%A2%E6%8A%80%E8%A1%93/</loc>
+    <loc>docs/categories/%E9%A7%AD%E5%AE%A2%E6%8A%80%E8%A1%93/</loc>
     <lastmod>2016-10-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/directory-traversal/</loc>
+    <loc>docs/tags/directory-traversal/</loc>
     <lastmod>2016-10-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/blog/2016-10-07-directory-traversal/</loc>
+    <loc>docs/blog/2016-10-07-directory-traversal/</loc>
     <lastmod>2016-10-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/files-traversal/</loc>
+    <loc>docs/tags/files-traversal/</loc>
     <lastmod>2016-10-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/owasp-top10/</loc>
+    <loc>docs/tags/owasp-top10/</loc>
     <lastmod>2016-10-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/cookies/</loc>
+    <loc>docs/tags/cookies/</loc>
     <lastmod>2016-09-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/cross-site-request-forgery/</loc>
+    <loc>docs/tags/cross-site-request-forgery/</loc>
     <lastmod>2016-09-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/csrf/</loc>
+    <loc>docs/tags/csrf/</loc>
     <lastmod>2016-09-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/blog/2016-09-09-csrf/</loc>
+    <loc>docs/blog/2016-09-09-csrf/</loc>
     <lastmod>2016-09-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/dd-wrt/</loc>
+    <loc>docs/tags/dd-wrt/</loc>
     <lastmod>2015-07-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/ddns/</loc>
+    <loc>docs/tags/ddns/</loc>
     <lastmod>2015-07-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/no-ip/</loc>
+    <loc>docs/tags/no-ip/</loc>
     <lastmod>2015-07-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/tags/sql/</loc>
+    <loc>docs/tags/sql/</loc>
     <lastmod>2015-07-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/blog/2015-07-31-ddns/</loc>
+    <loc>docs/blog/2015-07-31-ddns/</loc>
     <lastmod>2015-07-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost:1313/contact/</loc>
+    <loc>docs/contact/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="#ZgotmplZ"
+                href="docs/fr/contact/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="#ZgotmplZ"
+                href="docs/contact/"
                 />
   </url>
   
   <url>
-    <loc>localhost:1313/tags/index/</loc>
+    <loc>docs/tags/index/</loc>
   </url>
   
   <url>
-    <loc>localhost:1313/series/</loc>
+    <loc>docs/series/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="#ZgotmplZ"
+                href="docs/fr/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pl"
-                href="#ZgotmplZ"
+                href="docs/pl/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="#ZgotmplZ"
+                href="docs/pt/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
-                href="#ZgotmplZ"
+                href="docs/de/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="#ZgotmplZ"
+                href="docs/es/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="#ZgotmplZ"
+                href="docs/zh-cn/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="#ZgotmplZ"
+                href="docs/zh-tw/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="#ZgotmplZ"
+                href="docs/ja/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="#ZgotmplZ"
+                href="docs/series/"
                 />
   </url>
   

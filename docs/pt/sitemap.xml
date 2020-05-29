@@ -3,224 +3,224 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>localhost:1313/pt/</loc>
+    <loc>docs/pt/</loc>
     <lastmod>2019-02-28T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="#ZgotmplZ"
+                href="docs/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="#ZgotmplZ"
+                href="docs/fr/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pl"
-                href="#ZgotmplZ"
+                href="docs/pl/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
-                href="#ZgotmplZ"
+                href="docs/de/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="#ZgotmplZ"
+                href="docs/es/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="#ZgotmplZ"
+                href="docs/zh-cn/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="#ZgotmplZ"
+                href="docs/zh-tw/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="#ZgotmplZ"
+                href="docs/ja/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="#ZgotmplZ"
+                href="docs/pt/"
                 />
   </url>
   
   <url>
-    <loc>localhost:1313/pt/about/</loc>
+    <loc>docs/pt/about/</loc>
     <lastmod>2019-02-28T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="#ZgotmplZ"
+                href="docs/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pl"
-                href="#ZgotmplZ"
+                href="docs/pl/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="#ZgotmplZ"
+                href="docs/fr/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="#ZgotmplZ"
+                href="docs/pt/about/"
                 />
   </url>
   
   <url>
-    <loc>localhost:1313/pt/categories/</loc>
+    <loc>docs/pt/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="#ZgotmplZ"
+                href="docs/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="#ZgotmplZ"
+                href="docs/fr/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pl"
-                href="#ZgotmplZ"
+                href="docs/pl/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
-                href="#ZgotmplZ"
+                href="docs/de/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="#ZgotmplZ"
+                href="docs/es/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="#ZgotmplZ"
+                href="docs/zh-cn/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="#ZgotmplZ"
+                href="docs/zh-tw/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="#ZgotmplZ"
+                href="docs/ja/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="#ZgotmplZ"
+                href="docs/pt/categories/"
                 />
   </url>
   
   <url>
-    <loc>localhost:1313/pt/series/</loc>
+    <loc>docs/pt/series/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="#ZgotmplZ"
+                href="docs/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="#ZgotmplZ"
+                href="docs/fr/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pl"
-                href="#ZgotmplZ"
+                href="docs/pl/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
-                href="#ZgotmplZ"
+                href="docs/de/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="#ZgotmplZ"
+                href="docs/es/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="#ZgotmplZ"
+                href="docs/zh-cn/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="#ZgotmplZ"
+                href="docs/zh-tw/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="#ZgotmplZ"
+                href="docs/ja/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="#ZgotmplZ"
+                href="docs/pt/series/"
                 />
   </url>
   
   <url>
-    <loc>localhost:1313/pt/tags/</loc>
+    <loc>docs/pt/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="#ZgotmplZ"
+                href="docs/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="#ZgotmplZ"
+                href="docs/fr/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pl"
-                href="#ZgotmplZ"
+                href="docs/pl/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
-                href="#ZgotmplZ"
+                href="docs/de/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="#ZgotmplZ"
+                href="docs/es/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="#ZgotmplZ"
+                href="docs/zh-cn/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="#ZgotmplZ"
+                href="docs/zh-tw/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="#ZgotmplZ"
+                href="docs/ja/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="#ZgotmplZ"
+                href="docs/pt/tags/"
                 />
   </url>
   
