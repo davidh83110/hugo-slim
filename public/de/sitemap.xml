@@ -3,149 +3,198 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://example.com/de/categories/</loc>
+    <loc>localhost:1313/de/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://example.com/categories/"
+                href="#ZgotmplZ"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://example.com/fr/categories/"
+                href="#ZgotmplZ"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pl"
-                href="https://example.com/pl/categories/"
+                href="#ZgotmplZ"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="https://example.com/pt/categories/"
+                href="#ZgotmplZ"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://example.com/es/categories/"
+                href="#ZgotmplZ"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://example.com/zh-cn/categories/"
+                href="#ZgotmplZ"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="https://example.com/zh-tw/categories/"
+                href="#ZgotmplZ"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="https://example.com/ja/categories/"
+                href="#ZgotmplZ"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
-                href="https://example.com/de/categories/"
+                href="#ZgotmplZ"
                 />
   </url>
   
   <url>
-    <loc>https://example.com/de/</loc>
+    <loc>localhost:1313/de/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://example.com/"
+                href="#ZgotmplZ"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://example.com/fr/"
+                href="#ZgotmplZ"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pl"
-                href="https://example.com/pl/"
+                href="#ZgotmplZ"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="https://example.com/pt/"
+                href="#ZgotmplZ"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://example.com/es/"
+                href="#ZgotmplZ"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://example.com/zh-cn/"
+                href="#ZgotmplZ"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="https://example.com/zh-tw/"
+                href="#ZgotmplZ"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="https://example.com/ja/"
+                href="#ZgotmplZ"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
-                href="https://example.com/de/"
+                href="#ZgotmplZ"
                 />
   </url>
   
   <url>
-    <loc>https://example.com/de/tags/</loc>
+    <loc>localhost:1313/de/series/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://example.com/tags/"
+                href="#ZgotmplZ"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://example.com/fr/tags/"
+                href="#ZgotmplZ"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pl"
-                href="https://example.com/pl/tags/"
+                href="#ZgotmplZ"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="https://example.com/pt/tags/"
+                href="#ZgotmplZ"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://example.com/es/tags/"
+                href="#ZgotmplZ"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://example.com/zh-cn/tags/"
+                href="#ZgotmplZ"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
-                href="https://example.com/zh-tw/tags/"
+                href="#ZgotmplZ"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="https://example.com/ja/tags/"
+                href="#ZgotmplZ"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
-                href="https://example.com/de/tags/"
+                href="#ZgotmplZ"
+                />
+  </url>
+  
+  <url>
+    <loc>localhost:1313/de/tags/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="#ZgotmplZ"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="#ZgotmplZ"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pl"
+                href="#ZgotmplZ"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt"
+                href="#ZgotmplZ"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="#ZgotmplZ"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="#ZgotmplZ"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="#ZgotmplZ"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="#ZgotmplZ"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="de"
+                href="#ZgotmplZ"
                 />
   </url>
   
