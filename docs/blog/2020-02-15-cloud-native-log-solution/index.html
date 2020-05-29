@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Cloud-Native LOG 儲存以及分析方案 - Hugo Future Imperfect Slim</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.71.1" /><meta itemprop="name" content="Cloud-Native LOG 儲存以及分析方案">
+<meta itemprop="description" content="Cloud-Native LOG 儲存以及分析方案  隨著 Microservices 的蓬勃發展，從以前的一體式架構慢慢演變成了現今的動輒數十數百個服務同時在線， Log 的量也以很可怕的速度成長中，面對巨量的 Log ，要存在哪裡、要怎麼去利用這些資料反而是現今架構上的難題。
+利用這些 Log 我們可以輕易的去提早發現服務的異常，也可以拿來做分析，產出更珍貴的資源，像是 BI。 最重要的是可以協助 Debug, 除錯, 還有做 Audit.
+我認為 Logging 就是一件很容易被大家認為不重要的事，但他其實很重要，也是很珍貴的資產，絕對值得我們花時間好好處理以及規劃。
+格式問題  一般來說都會是 JSON, 不管你要存存什麼格式 統一就好 然後避免直接存 Raw Data.
+然後 Log Level 也是要注意，盡量把 CRITICAL / ERROR / WARNING / INFO &hellip;這些分出來。
+要存在哪裡  這是一個很難的問題，市面是常見的方案有以下幾種
+A. Elasticsearch &#43; Fluentd(Logstash) &#43; Kibana (ELK) B. CloudwatchLogs C. S3 D. Database E. Splunk F. Graylog A. ELK 這套適合成長中的組織，有足夠人力也有足夠彈性可以去維護。
+但是他是 Near-Real-Time 的服務（畢竟中間還要經過 Fluentd），所以會有一定的延遲。">
+<meta itemprop="datePublished" content="2020-02-15T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-02-15T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="225">
+
+
+
+<meta itemprop="keywords" content="" /><meta property="og:title" content="Cloud-Native LOG 儲存以及分析方案" />
+<meta property="og:description" content="Cloud-Native LOG 儲存以及分析方案  隨著 Microservices 的蓬勃發展，從以前的一體式架構慢慢演變成了現今的動輒數十數百個服務同時在線， Log 的量也以很可怕的速度成長中，面對巨量的 Log ，要存在哪裡、要怎麼去利用這些資料反而是現今架構上的難題。
+利用這些 Log 我們可以輕易的去提早發現服務的異常，也可以拿來做分析，產出更珍貴的資源，像是 BI。 最重要的是可以協助 Debug, 除錯, 還有做 Audit.
+我認為 Logging 就是一件很容易被大家認為不重要的事，但他其實很重要，也是很珍貴的資產，絕對值得我們花時間好好處理以及規劃。
+格式問題  一般來說都會是 JSON, 不管你要存存什麼格式 統一就好 然後避免直接存 Raw Data.
+然後 Log Level 也是要注意，盡量把 CRITICAL / ERROR / WARNING / INFO &hellip;這些分出來。
+要存在哪裡  這是一個很難的問題，市面是常見的方案有以下幾種
+A. Elasticsearch &#43; Fluentd(Logstash) &#43; Kibana (ELK) B. CloudwatchLogs C. S3 D. Database E. Splunk F. Graylog A. ELK 這套適合成長中的組織，有足夠人力也有足夠彈性可以去維護。
+但是他是 Near-Real-Time 的服務（畢竟中間還要經過 Fluentd），所以會有一定的延遲。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="localhost:1313/blog/2020-02-15-cloud-native-log-solution/" />
+<meta property="article:published_time" content="2020-02-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-02-15T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Cloud-Native LOG 儲存以及分析方案"/>
+<meta name="twitter:description" content="Cloud-Native LOG 儲存以及分析方案  隨著 Microservices 的蓬勃發展，從以前的一體式架構慢慢演變成了現今的動輒數十數百個服務同時在線， Log 的量也以很可怕的速度成長中，面對巨量的 Log ，要存在哪裡、要怎麼去利用這些資料反而是現今架構上的難題。
+利用這些 Log 我們可以輕易的去提早發現服務的異常，也可以拿來做分析，產出更珍貴的資源，像是 BI。 最重要的是可以協助 Debug, 除錯, 還有做 Audit.
+我認為 Logging 就是一件很容易被大家認為不重要的事，但他其實很重要，也是很珍貴的資產，絕對值得我們花時間好好處理以及規劃。
+格式問題  一般來說都會是 JSON, 不管你要存存什麼格式 統一就好 然後避免直接存 Raw Data.
+然後 Log Level 也是要注意，盡量把 CRITICAL / ERROR / WARNING / INFO &hellip;這些分出來。
+要存在哪裡  這是一個很難的問題，市面是常見的方案有以下幾種
+A. Elasticsearch &#43; Fluentd(Logstash) &#43; Kibana (ELK) B. CloudwatchLogs C. S3 D. Database E. Splunk F. Graylog A. ELK 這套適合成長中的組織，有足夠人力也有足夠彈性可以去維護。
+但是他是 Near-Real-Time 的服務（畢竟中間還要經過 Fluentd），所以會有一定的延遲。"/>
+<link rel="stylesheet" href="/css/bundle.min.47889aa5caffd0bd3139296ba7dac2fb263fd20c276662cfe1bc51af8b38b3c6.css" integrity="sha256-R4iapcr/0L0xOSlrp9rC&#43;yY/0gwnZmLP4bxRr4s4s8Y="><link rel="stylesheet" href="/css/add-on.css">
+</head>
+
+  <body>
+    <header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+        
+          
+            Blog
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        
+          
+          
+            <a href="/" class="link"><i class='fa fa-bars'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about/" class="link"><i class='far fa-bookmark'></i> About</a>
+          
+        
+      
+        
+          
+          
+            <a href="/blog/" class="link"><i class='far fa-newspaper'></i> Blog</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/contact/" class="link"><i class='far fa-envelope'></i> Contact</a>
+          
+        
+      
+        
+          
+          
+            <a href="/archived/" class="link"><i class='fa fa-home'></i> Archived</a>
+          
+        
+      
+      <a href="#share-menu" class="share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      
+
+    </menu>
+    
+
+    <a href="#share-menu" class="share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
+    <a href="#lang-menu" class="lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="lang-menu" class="flyout-menu">
+  <a href="#" lang="en" class="link active">English (en)</a>
+  
+    
+      
+    
+      
+        <a href="/fr" lang="fr" class="no-lang link">Français (fr)</a>
+      
+    
+      
+        <a href="/pl" lang="pl" class="no-lang link">Polski (pl)</a>
+      
+    
+      
+        <a href="/pt" lang="pt" class="no-lang link">Português (pt)</a>
+      
+    
+      
+        <a href="/de" lang="de" class="no-lang link">Deutsche (de)</a>
+      
+    
+      
+        <a href="/es" lang="es" class="no-lang link">Española (es)</a>
+      
+    
+      
+        <a href="/zh-cn" lang="zh-cn" class="no-lang link">中文 (zh-cn)</a>
+      
+    
+      
+        <a href="/zh-tw" lang="zh-tw" class="no-lang link">中文 (zh-tw)</a>
+      
+    
+      
+        <a href="/ja" lang="ja" class="no-lang link">日本語 (ja)</a>
+      
+    
+  
+</menu>
+
+  
+    <menu id="share-menu" class="flyout-menu">
+      <h1>Share Post</h1>
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Cloud-Native%20LOG%20%e5%84%b2%e5%ad%98%e4%bb%a5%e5%8f%8a%e5%88%86%e6%9e%90%e6%96%b9%e6%a1%88&amp;url=localhost%3a1313%2fblog%2f2020-02-15-cloud-native-log-solution%2f" target="_blank" rel="noopener" class="share-btn twitter">
+        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+      </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=localhost%3a1313%2fblog%2f2020-02-15-cloud-native-log-solution%2f" target="_blank" rel="noopener" class="share-btn facebook">
+        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=localhost%3a1313%2fblog%2f2020-02-15-cloud-native-log-solution%2f&amp;title=Cloud-Native%20LOG%20%e5%84%b2%e5%ad%98%e4%bb%a5%e5%8f%8a%e5%88%86%e6%9e%90%e6%96%b9%e6%a1%88" target="_blank" rel="noopener" class="share-btn linkedin">
+            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by David&amp;body=localhost%3a1313%2fblog%2f2020-02-15-cloud-native-log-solution%2f" target="_blank" class="share-btn email" data-proofer-ignore>
+          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+        </a>
+  
+
+
+    </menu>
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" >
+  <a href="/"><img src="#ZgotmplZ" class="circle" width="" alt="Hugo Future Imperfect Slim" /></a>
+  <header>
+    <h1>Hugo Future Imperfect Slim</h1>
+  </header>
+  <main>
+    <p>Another fine, responsive site template by <a href='http://html5up.net'>HTML5 UP</a>.</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/pacollins/hugo-future-imperfect-slim" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/example" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/example" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+
+
+
+
+
+
+
+<li><a href="//instagram.com/example" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+
+
+
+
+
+<li><a href="//telegram.me/example" target="_blank" rel="noopener" title="telegram" class="fab fa-telegram"></a></li>
+
+
+
+
+
+
+<li><a href="mailto:example" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+      <h2><a href="/blog/2020-02-15-cloud-native-log-solution/">Cloud-Native LOG 儲存以及分析方案</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2020-02-15 00:00:00 &#43;0000 UTC">
+      February 15, 2020
+    </time>
+    <span class="author">David</span>
+    
+  </div>
+</header>
+
+  <section id="socnet-share">
+    
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Cloud-Native%20LOG%20%e5%84%b2%e5%ad%98%e4%bb%a5%e5%8f%8a%e5%88%86%e6%9e%90%e6%96%b9%e6%a1%88&amp;url=localhost%3a1313%2fblog%2f2020-02-15-cloud-native-log-solution%2f" target="_blank" rel="noopener" class="share-btn twitter">
+        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+      </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=localhost%3a1313%2fblog%2f2020-02-15-cloud-native-log-solution%2f" target="_blank" rel="noopener" class="share-btn facebook">
+        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=localhost%3a1313%2fblog%2f2020-02-15-cloud-native-log-solution%2f&amp;title=Cloud-Native%20LOG%20%e5%84%b2%e5%ad%98%e4%bb%a5%e5%8f%8a%e5%88%86%e6%9e%90%e6%96%b9%e6%a1%88" target="_blank" rel="noopener" class="share-btn linkedin">
+            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by David&amp;body=localhost%3a1313%2fblog%2f2020-02-15-cloud-native-log-solution%2f" target="_blank" class="share-btn email" data-proofer-ignore>
+          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+        </a>
+  
+
+
+  </section>
+  
+
+  <div class="content">
+    <h2 id="cloud-native-log-儲存以及分析方案">Cloud-Native LOG 儲存以及分析方案</h2>
+<hr>
+<p>隨著 Microservices 的蓬勃發展，從以前的一體式架構慢慢演變成了現今的動輒數十數百個服務同時在線，
+Log 的量也以很可怕的速度成長中，面對巨量的 Log ，要存在哪裡、要怎麼去利用這些資料反而是現今架構上的難題。</p>
+<p>利用這些 Log 我們可以輕易的去提早發現服務的異常，也可以拿來做分析，產出更珍貴的資源，像是 BI。
+最重要的是可以協助 Debug, 除錯, 還有做 Audit.</p>
+<p>我認為 Logging 就是一件很容易被大家認為不重要的事，但他其實很重要，也是很珍貴的資產，絕對值得我們花時間好好處理以及規劃。</p>
+<p><!-- raw HTML omitted -->
+<!-- raw HTML omitted --></p>
+<h2 id="格式問題"><strong>格式問題</strong></h2>
+<hr>
+<p>一般來說都會是 JSON, 不管你要存存什麼格式 <code>統一就好</code> 然後避免直接存 Raw Data.</p>
+<p>然後 Log Level 也是要注意，盡量把 <code>CRITICAL</code> / <code>ERROR</code> / <code>WARNING</code> / <code>INFO</code> &hellip;這些分出來。</p>
+<p><!-- raw HTML omitted -->
+<!-- raw HTML omitted --></p>
+<h2 id="要存在哪裡"><strong>要存在哪裡</strong></h2>
+<hr>
+<p>這是一個很難的問題，市面是常見的方案有以下幾種</p>
+<p>A. Elasticsearch + Fluentd(Logstash) + Kibana (ELK) <!-- raw HTML omitted -->
+B. CloudwatchLogs <!-- raw HTML omitted -->
+C. S3 <!-- raw HTML omitted -->
+D. Database <!-- raw HTML omitted -->
+E. Splunk <!-- raw HTML omitted -->
+F. Graylog <!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --></p>
+<h4 id="a-elk">A. <strong>ELK</strong></h4>
+<p>這套適合成長中的組織，有足夠人力也有足夠彈性可以去維護。<br>
+但是他是 Near-Real-Time 的服務（畢竟中間還要經過 Fluentd），所以會有一定的延遲。</p>
+<p>Pros: <!-- raw HTML omitted -->
+a. 搜尋速度很快 <!-- raw HTML omitted -->
+b. 語法簡單又可以支援比較複雜的查詢語法 <!-- raw HTML omitted -->
+c. UI 平易近人，產出 Charts 也很容易 <!-- raw HTML omitted -->
+d. Logstash / Fluentd 可以預先過濾資訊 <!-- raw HTML omitted -->
+e. 這套太經典，會用的人很多 <!-- raw HTML omitted --></p>
+<p>Cons: <!-- raw HTML omitted -->
+a. AWS Elasticsearch 太貴，自己架？ okay 那你就會需要去維護它，會有點麻煩。 <!-- raw HTML omitted -->
+b. 權限管理不好做 <!-- raw HTML omitted -->
+c. 關聯分析弱 <!-- raw HTML omitted -->
+d. 你需要同時部署三套服務 <!-- raw HTML omitted -->
+e. Near-Real-Time</p>
+<p><!-- raw HTML omitted --></p>
+<h4 id="b-cloudwatchlogs">B. <strong>CloudwatchLogs</strong></h4>
+<p>這套適合剛起步的團隊，什麼都不用管就丟進去就對了。</p>
+<p>Pros: <!-- raw HTML omitted -->
+a. 簡單暴力 <!-- raw HTML omitted -->
+b. 搭配 Insights 可以有類似 ELK 的效果 <!-- raw HTML omitted --></p>
+<p>Cons: <!-- raw HTML omitted -->
+a. 語法不太平易近人 <!-- raw HTML omitted -->
+b. 搜尋 raw data 的話，真的很慢 <!-- raw HTML omitted -->
+c. 彈性太低，也不支援 Plugin，只能接 Lambda 做一些事</p>
+<p><!-- raw HTML omitted --></p>
+<h4 id="s3"><strong>S3</strong></h4>
+<p>S3 + Athena 適合做 Access Logs / Networking Traffic Logs 這些比較不常用的 Logs 的查詢以及分析，比較不適合需要一直去看的 Application Logs。</p>
+<p>Pros: <!-- raw HTML omitted -->
+a. 簡單便宜 <!-- raw HTML omitted -->
+b. 可以搭配 Athena 做 Access Logs 的分析 <!-- raw HTML omitted --></p>
+<p>cons: <!-- raw HTML omitted -->
+a. 基本上沒有查詢的功能 <!-- raw HTML omitted -->
+b. Log 很難找</p>
+<p><!-- raw HTML omitted --></p>
+<h4 id="database"><strong>Database</strong></h4>
+<p>這比較適合已經過濾過的資料，再塞回 Database 會比較好，如果 raw data 直接進 DB <!-- raw HTML omitted -->
+hm&hellip;.. 可能會很亂也很浪費，如果你又用 NoSQL DB, 那就又更亂了。</p>
+<p><!-- raw HTML omitted --></p>
+<h4 id="spplunk"><strong>Spplunk</strong></h4>
+<p>這是一套稱霸業界的方案，語法多元，圖表清晰，要什麼都做的到。 <!-- raw HTML omitted --></p>
+<p>Pros: <!-- raw HTML omitted -->
+a. 強大暴力<!-- raw HTML omitted -->
+b. Plugin 也支援<!-- raw HTML omitted -->
+c. 圖表已經太強大到變態的程度了， BI 也可以利用這個來做圖表<!-- raw HTML omitted -->
+d. Real Time<!-- raw HTML omitted -->
+e. 權限控管<!-- raw HTML omitted --></p>
+<p>Cons: <!-- raw HTML omitted -->
+a. 貴到不行的授權<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --></p>
+<h4 id="graylog"><strong>Graylog</strong></h4>
+<p>其實這是一套需要自己架的方案，但強度堪比 Splunk<!-- raw HTML omitted -->
+想省錢找CP值高的，就這個了！ <!-- raw HTML omitted --></p>
+<p>一直很心動，但還沒有時間去試試看</p>
+<p>Pros: <!-- raw HTML omitted -->
+a. 大概跟 Splunk 差不多<!-- raw HTML omitted -->
+b. 免費<!-- raw HTML omitted --></p>
+<p>Cons: <!-- raw HTML omitted -->
+a. 要自己管理</p>
+<p><!-- raw HTML omitted -->
+<!-- raw HTML omitted --></p>
+<h2 id="評比"><strong>評比</strong></h2>
+<hr>
+<p>其實不同工具都有他各自適合的應用場景，<code>從來都沒有誰最好，只有誰最適合</code>。</p>
+<p>小團隊: CloudwatchLogs</p>
+<p>中型團隊: Graylog, ELK</p>
+<p>公司很想花錢的： Splunk</p>
+<p>Access Logs: S3</p>
+<p>想做資料分析 / Big Data: S3 + Athena, Splunk, Graylog</p>
+<p><!-- raw HTML omitted -->
+<!-- raw HTML omitted --></p>
+<h2 id="結語"><strong>結語</strong></h2>
+<hr>
+<p>如果要我選，我會想試試看 Graylog
+聽起來很 Fantasy.</p>
+<p>詳情怎麼運作的, 怎麼維護就不說了，因為不在本章範圍。</p>
+<p>除了工具要好用，要省錢，別忘了導入時的<code>溝通成本</code>以及事後的<code>學習成本</code>，也會是一個很大的考量。（老闆以及同事接不接受）</p>
+<p><!-- raw HTML omitted -->
+<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted --></p>
+
+  </div>
+  <footer>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="#ZgotmplZ">AWS</a></li>
+          
+            
+            <li><a class="article-category-link" href="#ZgotmplZ">系統建置</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    <li class="tags">
+      <ul>
+        <li>None</li>
+      </ul>
+    </li>
+  
+</ul>
+
+  </footer>
+</article>
+
+
+<div class="pagination">
+  
+    <a href="/blog/2019-12-05-aws-saa-pass/" class="button"><div class="previous"><div>AWS Solutions Architect Associate (SAA) - [PASSED] 心得以及攻略</div></div></a>
+  
+  
+    <a href="/blog/2020-03-05-saas-self-hosted/" class="button"><div class="next"><div>SaaS/Managed Services &amp; Self-Hosted 衍伸思考</div></div></a>
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h4><a href="/blog/2020-05-14-eks-external-dns/">EKS External-DNS Cross Account Route53 Setup</a></h4>
+          <time class="published" datetime="">May 14, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h4><a href="/blog/2020-03-30-eks-install/">EKS Building &amp; Troubleshooting</a></h4>
+          <time class="published" datetime="">March 30, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h4><a href="/blog/2020-03-05-saas-self-hosted/">SaaS/Managed Services &amp; Self-Hosted 衍伸思考</a></h4>
+          <time class="published" datetime="">March 5, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h4><a href="/blog/2020-02-15-cloud-native-log-solution/">Cloud-Native LOG 儲存以及分析方案</a></h4>
+          <time class="published" datetime="">February 15, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h4><a href="/blog/2019-12-05-aws-saa-pass/">AWS Solutions Architect Associate (SAA) - [PASSED] 心得以及攻略</a></h4>
+          <time class="published" datetime="">December 5, 2019</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/blog/" class="button">See more</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/%E6%8A%80%E8%A1%93%E7%B0%A1%E4%BB%8B/">技術簡介<span class="count">13</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/%E7%B3%BB%E7%B5%B1%E5%BB%BA%E7%BD%AE/">系統建置<span class="count">9</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/aws/">aws<span class="count">7</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/%E9%9B%9C%E4%B8%83%E9%9B%9C%E5%85%AB/">雜七雜八<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/python/">python<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/terraform/">terraform<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/kubernetes/">kubernetes<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/owasp-top10/">owasp-top10<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/serverless/">serverless<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7/">人工智慧<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B/">前端工程<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B/">後端工程<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/%E8%B3%87%E8%A8%8A%E5%AE%89%E5%85%A8/">資訊安全<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/%E9%A7%AD%E5%AE%A2%E6%8A%80%E8%A1%93/">駭客技術<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+    <section id="mini-bio">
+      <header>
+        <h1>About</h1>
+      </header>
+      <p>This theme was developed for Hugo static site generator.</p>
+      <footer>
+        <a href="/about" class="button">Learn More</a>
+      </footer>
+    </section>
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/pacollins/hugo-future-imperfect-slim" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/example" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/example" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+
+
+
+
+
+
+
+<li><a href="//instagram.com/example" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+
+
+
+
+
+<li><a href="//telegram.me/example" target="_blank" rel="noopener" title="telegram" class="fab fa-telegram"></a></li>
+
+
+
+
+
+
+<li><a href="mailto:example" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2020
+      
+        Hugo Future Imperfect Slim
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.71.1' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      <script src="/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.ba01f4c6fd09c8681f5bb9960755a2d29a543735c990ef92c5c97365cbb37a4e.js" integrity="sha256-ugH0xv0JyGgfW7mWB1Wi0ppUNzXJkO&#43;SxclzZcuzek4="></script>
+    <script src="/js/add-on.js"></script>
+    </div>
+  </body>
+</html>

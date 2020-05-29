@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Hugo Future Imperfect Slim</title>
+    <link>localhost:1313/categories/python/</link>
+    <description>Recent content in Python on Hugo Future Imperfect Slim</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 21 Jul 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="localhost:1313/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to Import data to Elasticsearch (Nginx Access logs)</title>
+      <link>localhost:1313/blog/2018-07-21-import-els/</link>
+      <pubDate>Sat, 21 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>localhost:1313/blog/2018-07-21-import-els/</guid>
+      <description>因為統計流量的需求，需要將nginx access log放進elasticsearch方便做統計。 對ELS不是很熟的我，也花了一點時間釐清觀念，就寫進來當作notes吧。 也希望對剛接觸ELS的朋友有一些幫助。Preparation  Elasticsearch Server == 6.3.0 (host by AWS) Python == 3.6 elasticsearch python module == 6.3.0  Step 1. Install Elasticsearch Because we use ELS which is host by AWS, so basically we just need to take care of instance type and count.And why I use AWS ELS ?Because I just wanna get the rid of instance management lolIntruction Elasticsearch Architecture ELS is totally using JAVA to develop and of course it&amp;rsquo;s open sourceIn other word, you can install it on your own machine if you wantbtw, install by docker is also a good way on development environmentdocker pull elasticsearch very simple and easy way to isntall for testing, but not refer to do this on production environment.</description>
+    </item>
+    
+    <item>
+      <title>Docker Note (Nginx&#43;uwsgi&#43;Letsencrypt)</title>
+      <link>localhost:1313/blog/2017-08-31-docker-note/</link>
+      <pubDate>Thu, 31 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>localhost:1313/blog/2017-08-31-docker-note/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python發送警告訊息(Nagios &amp; Dingtalk)</title>
+      <link>localhost:1313/blog/2017-07-08-python-nagios-dingtalk/</link>
+      <pubDate>Sat, 08 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>localhost:1313/blog/2017-07-08-python-nagios-dingtalk/</guid>
+      <description>退伍已經過了一個多月，生活漸漸步入軌道狂寫python練技術，卻有點不知道目標是什麼為了技術，有的人願意放棄80k月薪不禁讓我思考，出社會後如此庸庸碌碌真的是我要的生活嗎每天沈浸在程式海中，最後想得到什麼呢？我想得到的到底是技術還是高薪，如果兩者取其重，我會選哪個？人生真難阿因應最近公司SAP簡訊系統故障，業務又不回信只好利用原本Nagios發警告簡訊的機制去寫一個新程式發送警告訊息雖然還是不懂為何公司要用釘釘，既不安全也不可靠，或許這就是cost down的副作用吧程式放在github上原理是透過原本簡訊的log去抓關鍵字來發送訊息然後透過釘釘oapi用POST去發送消息或許將來哪天Nagios不用了，這程式也就失效了，未來可能需要再修正。</description>
+    </item>
+    
+    <item>
+      <title>Python套件urllib2簡介</title>
+      <link>localhost:1313/blog/2017-02-05-urllib2-intro/</link>
+      <pubDate>Sun, 05 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>localhost:1313/blog/2017-02-05-urllib2-intro/</guid>
+      <description>這裡就像哈利波特裡的儲思盆趁著我在當兵前還沒完全放空的時候把這些東西倒出來還以為我會很緊張要當兵了沒想到居然心如止水 來講講一個小套件今天講Python的一個小小小小套件 , urllib2基本上不需要額外安裝任何新的module就可以使用，所以用來救急很方便當有時候需要使用程式對某一網頁做POST或GET並獲得response時使用urllib2就非常方便簡單的幾行程式碼就可以搞定範例程式如下：我們對google首頁做GET/usr/bin/env python encoding: utf-8 import urllib2request = urllib2.Request(&amp;ldquo;http://www.google.com.tw/&amp;quot;)response = urllib2.urlopen(request)html = response.read()print html去執行python 程式名稱就可以看到GET網頁的內容了非常簡單且快速用來撈取資料或做POST、GET都很方便當然，你也可以使用linux環境下的wget、curl等套件來達成。因為腦袋放太空不適合一次寫太多東西就先這樣好了</description>
+    </item>
+    
+  </channel>
+</rss>
