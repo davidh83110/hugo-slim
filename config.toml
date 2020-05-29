@@ -1,6 +1,6 @@
 # For a description of these parameters, please visit the theme wiki.
 # https://github.com/pacollins/hugo-future-imperfect-slim/wiki/config.toml
-baseurl                 = "https://example.com/"
+baseurl                 = "localhost:1313/"
 DefaultContentLanguage  = "en"
 title                   = "Hugo Future Imperfect Slim"
 theme                   = "future"
@@ -10,6 +10,13 @@ googleAnalytics         = ""
 pluralizeListTitles     = false
 disableLanguages        = [""]
 
+
+[taxonomies]
+  category = "categories"
+  series = "series"
+  tag = "tags"
+
+
 [params]
   enableCDN             = false
   cssFiles              = ["default"]
@@ -18,7 +25,7 @@ disableLanguages        = [""]
   highlightjsTheme      = "github"
   highlightjsLang       = ["html", "css", "js", "toml"]
   viewMorePostsLink     = "/blog/"
-  readingTime           = true
+  readingTime           = false
   socialShare           = ["twitter", "facebook", "linkedin", "email"]
 
   [params.meta]
@@ -114,8 +121,9 @@ disableLanguages        = [""]
     name              = "Archived"
     identifier        = "archived"
     url               = "/archived/"
-    pre               = "<i class='far fa-envelope'></i>"
+    pre               = "<i class='fa fa-home'></i>"
     weight            = 7
+
 
 [Languages]
 

@@ -6,10 +6,46 @@
     <description>Recent content in Categories on Hugo Future Imperfect Slim</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 14 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://example.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>AWS</title>
+      <link>https://example.com/categories/aws/</link>
+      <pubDate>Thu, 14 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/categories/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kubernetes</title>
+      <link>https://example.com/categories/kubernetes/</link>
+      <pubDate>Thu, 14 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/categories/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Terraform</title>
+      <link>https://example.com/categories/terraform/</link>
+      <pubDate>Thu, 14 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/categories/terraform/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>系統建置</title>
+      <link>https://example.com/categories/%E7%B3%BB%E7%B5%B1%E5%BB%BA%E7%BD%AE/</link>
+      <pubDate>Thu, 14 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/categories/%E7%B3%BB%E7%B5%B1%E5%BB%BA%E7%BD%AE/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>syntax</title>

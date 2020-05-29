@@ -10,7 +10,7 @@
           {{ .Render "featured" }}
         </section>
         <header>
-          <h1><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
+          <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
           <time class="published" datetime="">{{ default (i18n "date_format") | .Date.Format }}</time>
         </header>
       </article>

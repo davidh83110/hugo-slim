@@ -17,20 +17,20 @@
           </header>
           {{ $data := .Data }}
           {{ range $key, $value:= $.Scratch.Get "categories" }}
-            <li>
-              <article>
-                <header>
-                  {{ if ne $value.Name "" }}
-                    <a href="{{ printf "/%s/%s" $data.Plural $value.Name | urlize | relLangURL }}">{{ $value.Name }}<span style="float:right;">{{ $value.Count }}</span></a>
-                  {{ else }}
-                    {{ i18n "uncategorized" }}<span style="float:right;">{{ $value.Count }}</span>
-                  {{ end }}
-                </header>
-              </article>
-            </li>
-          {{ end }}
+          <li>
+            <article>
+              <header>
+                {{ if ne $value.Name "" }}
+                  <a href="{{ printf "/%s/%s" $data.Plural $value.Name | urlize | relLangURL }}">{{ $value.Name }}<span style="float:right;">{{ $value.Count }}</span></a>
+                {{ else }}
+                  {{ i18n "uncategorized" }}<span style="float:right;">{{ $value.Count }}</span>
+                {{ end }}
+              </header>
+            </article>
+          </li>
+        {{ end }}
         </ul>
-      </main>
+      </main>      
       {{ $.Scratch.Set "showCategories" false }}
       {{ partial "site-sidebar" . }}
       {{ partial "site-footer" . }}
