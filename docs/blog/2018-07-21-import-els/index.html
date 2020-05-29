@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>How to Import data to Elasticsearch (Nginx Access logs) - Hugo Future Imperfect Slim</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.71.1" /><meta itemprop="name" content="How to Import data to Elasticsearch (Nginx Access logs)">
+<meta itemprop="description" content="因為統計流量的需求，需要將nginx access log放進elasticsearch方便做統計。 對ELS不是很熟的我，也花了一點時間釐清觀念，就寫進來當作notes吧。 也希望對剛接觸ELS的朋友有一些幫助。Preparation  Elasticsearch Server == 6.3.0 (host by AWS) Python == 3.6 elasticsearch python module == 6.3.0  Step 1. Install Elasticsearch Because we use ELS which is host by AWS, so basically we just need to take care of instance type and count.And why I use AWS ELS ?Because I just wanna get the rid of instance management lolIntruction Elasticsearch Architecture ELS is totally using JAVA to develop and of course it&rsquo;s open sourceIn other word, you can install it on your own machine if you wantbtw, install by docker is also a good way on development environmentdocker pull elasticsearch very simple and easy way to isntall for testing, but not refer to do this on production environment.">
+<meta itemprop="datePublished" content="2018-07-21T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-07-21T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="631">
+
+
+
+<meta itemprop="keywords" content="" /><meta property="og:title" content="How to Import data to Elasticsearch (Nginx Access logs)" />
+<meta property="og:description" content="因為統計流量的需求，需要將nginx access log放進elasticsearch方便做統計。 對ELS不是很熟的我，也花了一點時間釐清觀念，就寫進來當作notes吧。 也希望對剛接觸ELS的朋友有一些幫助。Preparation  Elasticsearch Server == 6.3.0 (host by AWS) Python == 3.6 elasticsearch python module == 6.3.0  Step 1. Install Elasticsearch Because we use ELS which is host by AWS, so basically we just need to take care of instance type and count.And why I use AWS ELS ?Because I just wanna get the rid of instance management lolIntruction Elasticsearch Architecture ELS is totally using JAVA to develop and of course it&rsquo;s open sourceIn other word, you can install it on your own machine if you wantbtw, install by docker is also a good way on development environmentdocker pull elasticsearch very simple and easy way to isntall for testing, but not refer to do this on production environment." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="localhost:1313/blog/2018-07-21-import-els/" />
+<meta property="article:published_time" content="2018-07-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-07-21T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="How to Import data to Elasticsearch (Nginx Access logs)"/>
+<meta name="twitter:description" content="因為統計流量的需求，需要將nginx access log放進elasticsearch方便做統計。 對ELS不是很熟的我，也花了一點時間釐清觀念，就寫進來當作notes吧。 也希望對剛接觸ELS的朋友有一些幫助。Preparation  Elasticsearch Server == 6.3.0 (host by AWS) Python == 3.6 elasticsearch python module == 6.3.0  Step 1. Install Elasticsearch Because we use ELS which is host by AWS, so basically we just need to take care of instance type and count.And why I use AWS ELS ?Because I just wanna get the rid of instance management lolIntruction Elasticsearch Architecture ELS is totally using JAVA to develop and of course it&rsquo;s open sourceIn other word, you can install it on your own machine if you wantbtw, install by docker is also a good way on development environmentdocker pull elasticsearch very simple and easy way to isntall for testing, but not refer to do this on production environment."/>
+<link rel="stylesheet" href="/css/bundle.min.47889aa5caffd0bd3139296ba7dac2fb263fd20c276662cfe1bc51af8b38b3c6.css" integrity="sha256-R4iapcr/0L0xOSlrp9rC&#43;yY/0gwnZmLP4bxRr4s4s8Y="><link rel="stylesheet" href="/css/add-on.css">
+</head>
+
+  <body>
+    <header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+        
+          
+            Blog
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        
+          
+          
+            <a href="/" class="link"><i class='fa fa-bars'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about/" class="link"><i class='far fa-bookmark'></i> About</a>
+          
+        
+      
+        
+          
+          
+            <a href="/blog/" class="link"><i class='far fa-newspaper'></i> Blog</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/contact/" class="link"><i class='far fa-envelope'></i> Contact</a>
+          
+        
+      
+        
+          
+          
+            <a href="/archived/" class="link"><i class='fa fa-home'></i> Archived</a>
+          
+        
+      
+      <a href="#share-menu" class="share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      
+
+    </menu>
+    
+
+    <a href="#share-menu" class="share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
+    <a href="#lang-menu" class="lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="lang-menu" class="flyout-menu">
+  <a href="#" lang="en" class="link active">English (en)</a>
+  
+    
+      
+    
+      
+        <a href="/fr" lang="fr" class="no-lang link">Français (fr)</a>
+      
+    
+      
+        <a href="/pl" lang="pl" class="no-lang link">Polski (pl)</a>
+      
+    
+      
+        <a href="/pt" lang="pt" class="no-lang link">Português (pt)</a>
+      
+    
+      
+        <a href="/de" lang="de" class="no-lang link">Deutsche (de)</a>
+      
+    
+      
+        <a href="/es" lang="es" class="no-lang link">Española (es)</a>
+      
+    
+      
+        <a href="/zh-cn" lang="zh-cn" class="no-lang link">中文 (zh-cn)</a>
+      
+    
+      
+        <a href="/zh-tw" lang="zh-tw" class="no-lang link">中文 (zh-tw)</a>
+      
+    
+      
+        <a href="/ja" lang="ja" class="no-lang link">日本語 (ja)</a>
+      
+    
+  
+</menu>
+
+  
+    <menu id="share-menu" class="flyout-menu">
+      <h1>Share Post</h1>
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=How%20to%20Import%20data%20to%20Elasticsearch%20%28Nginx%20Access%20logs%29&amp;url=localhost%3a1313%2fblog%2f2018-07-21-import-els%2f" target="_blank" rel="noopener" class="share-btn twitter">
+        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+      </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=localhost%3a1313%2fblog%2f2018-07-21-import-els%2f" target="_blank" rel="noopener" class="share-btn facebook">
+        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=localhost%3a1313%2fblog%2f2018-07-21-import-els%2f&amp;title=How%20to%20Import%20data%20to%20Elasticsearch%20%28Nginx%20Access%20logs%29" target="_blank" rel="noopener" class="share-btn linkedin">
+            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by David&amp;body=localhost%3a1313%2fblog%2f2018-07-21-import-els%2f" target="_blank" class="share-btn email" data-proofer-ignore>
+          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+        </a>
+  
+
+
+    </menu>
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" >
+  <a href="/"><img src="#ZgotmplZ" class="circle" width="" alt="Hugo Future Imperfect Slim" /></a>
+  <header>
+    <h1>Hugo Future Imperfect Slim</h1>
+  </header>
+  <main>
+    <p>Another fine, responsive site template by <a href='http://html5up.net'>HTML5 UP</a>.</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/pacollins/hugo-future-imperfect-slim" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/example" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/example" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+
+
+
+
+
+
+
+<li><a href="//instagram.com/example" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+
+
+
+
+
+<li><a href="//telegram.me/example" target="_blank" rel="noopener" title="telegram" class="fab fa-telegram"></a></li>
+
+
+
+
+
+
+<li><a href="mailto:example" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+      <h2><a href="/blog/2018-07-21-import-els/">How to Import data to Elasticsearch (Nginx Access logs)</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2018-07-21 00:00:00 &#43;0000 UTC">
+      July 21, 2018
+    </time>
+    <span class="author">David</span>
+    
+  </div>
+</header>
+
+  <section id="socnet-share">
+    
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=How%20to%20Import%20data%20to%20Elasticsearch%20%28Nginx%20Access%20logs%29&amp;url=localhost%3a1313%2fblog%2f2018-07-21-import-els%2f" target="_blank" rel="noopener" class="share-btn twitter">
+        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+      </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=localhost%3a1313%2fblog%2f2018-07-21-import-els%2f" target="_blank" rel="noopener" class="share-btn facebook">
+        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=localhost%3a1313%2fblog%2f2018-07-21-import-els%2f&amp;title=How%20to%20Import%20data%20to%20Elasticsearch%20%28Nginx%20Access%20logs%29" target="_blank" rel="noopener" class="share-btn linkedin">
+            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by David&amp;body=localhost%3a1313%2fblog%2f2018-07-21-import-els%2f" target="_blank" class="share-btn email" data-proofer-ignore>
+          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+        </a>
+  
+
+
+  </section>
+  
+
+  <div class="content">
+    <p><img src="https://static001.infoq.cn/resource/image/48/06/48fb5f5d37a9efd331763e97c5368306.png" alt="Alt text"></p>
+<p>因為統計流量的需求，需要將nginx access log放進elasticsearch方便做統計。 <!-- raw HTML omitted -->
+對ELS不是很熟的我，也花了一點時間釐清觀念，就寫進來當作notes吧。 <!-- raw HTML omitted -->
+也希望對剛接觸ELS的朋友有一些幫助。<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --></p>
+<h2 id="preparation">Preparation</h2>
+<ul>
+<li>Elasticsearch Server == 6.3.0 (host by AWS)</li>
+<li>Python == 3.6</li>
+<li>elasticsearch python module == 6.3.0</li>
+</ul>
+<p><!-- raw HTML omitted -->
+<!-- raw HTML omitted --></p>
+<h2 id="step-1-install-elasticsearch">Step 1. Install Elasticsearch</h2>
+<p>Because we use ELS which is host by AWS, <!-- raw HTML omitted -->
+so basically we just need to take care of instance type and count.<!-- raw HTML omitted --></p>
+<p>And why I use AWS ELS ?<!-- raw HTML omitted -->
+Because I just wanna get the rid of instance management lol<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->
+<!-- raw HTML omitted --></p>
+<h3 id="intruction-elasticsearch-architecture">Intruction Elasticsearch Architecture</h3>
+<p>ELS is totally using JAVA to develop and of course it&rsquo;s open source<!-- raw HTML omitted -->
+In other word, you can install it on your own machine if you want<!-- raw HTML omitted -->
+btw, install by docker is also a good way on development environment<!-- raw HTML omitted --></p>
+<p><code>docker pull elasticsearch</code> <!-- raw HTML omitted -->
+very simple and easy way to isntall for testing, but not refer to do this on production environment. (Don&rsquo;t pull it on Macbook it will bw slow, I&rsquo;ve tried it lol) <!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<img src="http://www.uml.org.cn/bigdata/images/2018012633.jpg" alt="Alt text"></p>
+<p>This is simple ELS structure and those Shard/Replica is ELS <code>node</code>. <!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->
+<!-- raw HTML omitted --></p>
+<h3 id="architecture">Architecture</h3>
+<ul>
+<li>
+<p>Index <!-- raw HTML omitted -->
+index is some kind of <code>Table</code> on RDBMS <!-- raw HTML omitted --></p>
+</li>
+<li>
+<p>Shard <!-- raw HTML omitted -->
+All indeics on ELS will be split to a lot of shards <!-- raw HTML omitted -->
+A shard can be a piece of all data, or a <code>REPLICA</code> (backup) of data <!-- raw HTML omitted --></p>
+</li>
+</ul>
+<p><!-- raw HTML omitted -->
+okay, lets talk about what we should notice about AWS ELS</p>
+<p><!-- raw HTML omitted -->
+<!-- raw HTML omitted --></p>
+<h3 id="--aws-instance-type">- AWS instance type</h3>
+<p>default type is <code>m4.large</code>, the smallest type is <code>t2.small</code> <!-- raw HTML omitted -->
+but I think using <code>m4.large</code> for store about 1G data is too waste cuz <code>m4</code> really very expensive<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+In my case, I forgot to change the default type so I spent NTD$ 7000 for it, I changed the type to <code>t2.small</code> after I checked billing T_T <!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+so please change instance type if you don&rsquo;t need to much resouces.<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->
+<!-- raw HTML omitted --></p>
+<h3 id="---node-count">-  Node count</h3>
+<p>ELS is composed of a lot of nodes<!-- raw HTML omitted -->
+And the <code>volume size</code> is decide of your node is <code>REPLICA</code> or <code>SHARD</code> <!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+What is <code>REPLICA</code> and <code>SHARD</code> ? <!-- raw HTML omitted -->
+REPLICA is some kind of backup, it&rsquo;s totally a copy of your master. <!-- raw HTML omitted -->
+so the volume size cannot be superimpose. <!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+In the other hand, every single shard is one of your master. <!-- raw HTML omitted -->
+So the volume size is superimposed. <!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->
+<!-- raw HTML omitted --></p>
+<h3 id="--notes">- Notes</h3>
+<p><!-- raw HTML omitted -->
+AWS will install not only ELS but also <code>Kibana</code> into. <!-- raw HTML omitted -->
+So we can query data from kibana without any additional setting. <!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->
+<!-- raw HTML omitted --></p>
+<h2 id="step-2-import-access-log-in-python">Step 2. Import Access log in Python</h2>
+<p><!-- raw HTML omitted --></p>
+<pre><code>data_es = { 
+    &quot;message&quot;: line,
+    &quot;@timestamp&quot;: log_formated_time,
+    &quot;tag&quot;: log_tag
+} 
+
+es.index( index=&quot;imported&quot;, doc_type=&quot;imported-python&quot;, body=data_es )
+</code></pre><p><!-- raw HTML omitted -->
+<!-- raw HTML omitted --></p>
+<p>The only one thing we need to take care is this request body and <code>es.index</code> to create a new index. <!-- raw HTML omitted -->
+And the format of time stamp is <code>%Y-%m-%dT%H:%M:%S.000+0800</code>, this rule must to be allow or it will cannot be imported. <!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+In my case, I create a new index to store all data I wanna import to. <!-- raw HTML omitted -->
+This index like a <code>table</code> on MySQL/MSSQL. <!-- raw HTML omitted -->
+So if you delete a index, the data insode will be delete in the same time.<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->
+<!-- raw HTML omitted --></p>
+<p>okay, lets take a look of complete code below. <!-- raw HTML omitted -->
+If you think it&rsquo;s too hard to read, can read it on my Github. <!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<a href="https://github.com/davidh83110/import-accesslog-to-elasticsearch">https://github.com/davidh83110/import-accesslog-to-elasticsearch</a> <!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->
+<!-- raw HTML omitted --></p>
+<pre><code>ELS_ENDPOINT = 'localhost:9200'
+</code></pre><p><!-- raw HTML omitted -->
+<!-- raw HTML omitted --></p>
+<pre><code>import endpoint
+from elasticsearch import Elasticsearch
+from datetime import datetime
+import time
+import re
+
+es = Elasticsearch([endpoint.ELS_ENDPOINT])
+log_tag = 'imported-python'
+
+def time_to_format(log_timestamp):
+    log_formated_time = time.strftime('%Y-%m-%dT%H:%M:%S.000+0800', time.localtime(log_timestamp))
+
+    return log_formated_time
+
+def clean_time(log_time):
+    log_timestamp_change = datetime.strptime(log_time, '%d/%b/%Y:%H:%M:%S%z').timetuple()
+    log_timezone = &quot;&quot;.join(re.findall('\+\d\d\d\d', log_time))
+
+    if log_timezone == '+0000':
+        to_be_add_timestamp = 28800*2
+
+    elif log_timezone == '+0800':
+        to_be_add_timestamp = 28800
+
+    log_timestamp = int(time.mktime(log_timestamp_change))+to_be_add_timestamp
+    log_formated_time = time_to_format(log_timestamp)
+
+    return log_formated_time
+    
+def handler(log_path):
+    with open(log_path, 'r') as fp:
+        for line in fp.readlines():
+            try:
+                log_time = str(re.findall('- \[.+\+\d\d\d\d', line)).replace('[', '').replace(']', '').replace('-', '').replace(' ', '').replace('\'', '')
+                log_formated_time = clean_time(log_time)
+
+                data_es = { 
+                    &quot;message&quot;: line,
+                    &quot;@timestamp&quot;: log_formated_time,
+                    &quot;tag&quot;: log_tag
+                } 
+
+                es.index( index=&quot;imported&quot;, doc_type=&quot;imported-python&quot;, body=data_es )
+                
+            except:
+                print(&quot;import successed &quot;+line)
+        else:
+            print(&quot;import failed &quot;)
+    fp.close()
+
+if __name__ == '__main__':
+    handler('/var/log/nginx/access.log')
+    
+</code></pre><p><!-- raw HTML omitted -->
+<!-- raw HTML omitted --></p>
+<p>Not Sure if this a good way to import data, but if you need still can use it. <!-- raw HTML omitted -->
+Welcome to e-mail me or leave some comments if anything wrong or need more details. <!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+Thanks for watching. <!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted --></p>
+
+  </div>
+  <footer>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="#ZgotmplZ">技術簡介</a></li>
+          
+            
+            <li><a class="article-category-link" href="#ZgotmplZ">系統建置</a></li>
+          
+            
+            <li><a class="article-category-link" href="#ZgotmplZ">AWS</a></li>
+          
+            
+            <li><a class="article-category-link" href="#ZgotmplZ">Python</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    <li class="tags">
+      <ul>
+        <li>None</li>
+      </ul>
+    </li>
+  
+</ul>
+
+  </footer>
+</article>
+
+
+<div class="pagination">
+  
+    <a href="/blog/2018-04-21-srverless/" class="button"><div class="previous"><div>20180329 Serverless event NOTE</div></div></a>
+  
+  
+    <a href="/blog/2018-09-25-macos-mojave-bugs/" class="button"><div class="next"><div>MacOS Mojave Upgrade Issues and Solutions / MacOS Mojave 更新災情及解決方法</div></div></a>
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h4><a href="/blog/2020-05-14-eks-external-dns/">EKS External-DNS Cross Account Route53 Setup</a></h4>
+          <time class="published" datetime="">May 14, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h4><a href="/blog/2020-03-30-eks-install/">EKS Building &amp; Troubleshooting</a></h4>
+          <time class="published" datetime="">March 30, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h4><a href="/blog/2020-03-05-saas-self-hosted/">SaaS/Managed Services &amp; Self-Hosted 衍伸思考</a></h4>
+          <time class="published" datetime="">March 5, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h4><a href="/blog/2020-02-15-cloud-native-log-solution/">Cloud-Native LOG 儲存以及分析方案</a></h4>
+          <time class="published" datetime="">February 15, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h4><a href="/blog/2019-12-05-aws-saa-pass/">AWS Solutions Architect Associate (SAA) - [PASSED] 心得以及攻略</a></h4>
+          <time class="published" datetime="">December 5, 2019</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/blog/" class="button">See more</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/%E6%8A%80%E8%A1%93%E7%B0%A1%E4%BB%8B/">技術簡介<span class="count">13</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/%E7%B3%BB%E7%B5%B1%E5%BB%BA%E7%BD%AE/">系統建置<span class="count">9</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/aws/">aws<span class="count">7</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/%E9%9B%9C%E4%B8%83%E9%9B%9C%E5%85%AB/">雜七雜八<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/python/">python<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/terraform/">terraform<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/kubernetes/">kubernetes<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/owasp-top10/">owasp-top10<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/serverless/">serverless<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7/">人工智慧<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B/">前端工程<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B/">後端工程<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/%E8%B3%87%E8%A8%8A%E5%AE%89%E5%85%A8/">資訊安全<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/%E9%A7%AD%E5%AE%A2%E6%8A%80%E8%A1%93/">駭客技術<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+    <section id="mini-bio">
+      <header>
+        <h1>About</h1>
+      </header>
+      <p>This theme was developed for Hugo static site generator.</p>
+      <footer>
+        <a href="/about" class="button">Learn More</a>
+      </footer>
+    </section>
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/pacollins/hugo-future-imperfect-slim" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/example" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/example" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+
+
+
+
+
+
+
+<li><a href="//instagram.com/example" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+
+
+
+
+
+<li><a href="//telegram.me/example" target="_blank" rel="noopener" title="telegram" class="fab fa-telegram"></a></li>
+
+
+
+
+
+
+<li><a href="mailto:example" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2020
+      
+        Hugo Future Imperfect Slim
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.71.1' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      <script src="/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.ba01f4c6fd09c8681f5bb9960755a2d29a543735c990ef92c5c97365cbb37a4e.js" integrity="sha256-ugH0xv0JyGgfW7mWB1Wi0ppUNzXJkO&#43;SxclzZcuzek4="></script>
+    <script src="/js/add-on.js"></script>
+    </div>
+  </body>
+</html>
