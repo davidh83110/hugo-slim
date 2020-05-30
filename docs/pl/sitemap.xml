@@ -3,76 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>docs/pl/</loc>
-    <lastmod>2019-02-28T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="docs/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="docs/fr/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt"
-                href="docs/pt/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="de"
-                href="docs/de/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="docs/es/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="docs/zh-cn/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="docs/zh-tw/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="docs/ja/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pl"
-                href="docs/pl/"
-                />
-  </url>
-  
-  <url>
-    <loc>docs/pl/about/</loc>
-    <lastmod>2019-02-28T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="docs/fr/about/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt"
-                href="docs/pt/about/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pl"
-                href="docs/pl/about/"
-                />
-  </url>
-  
-  <url>
     <loc>docs/pl/categories/</loc>
     <xhtml:link
                 rel="alternate"
@@ -118,6 +48,55 @@
                 rel="alternate"
                 hreflang="pl"
                 href="docs/pl/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>docs/pl/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="docs/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="docs/fr/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt"
+                href="docs/pt/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="de"
+                href="docs/de/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="docs/es/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="docs/zh-cn/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="docs/zh-tw/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="docs/ja/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pl"
+                href="docs/pl/"
                 />
   </url>
   
