@@ -58,11 +58,6 @@
   </url>
   
   <url>
-    <loc>docs/blog/2020-05-14-eks-external-dns/</loc>
-    <lastmod>2020-05-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>docs/</loc>
     <lastmod>2020-05-14T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -113,6 +108,11 @@
   </url>
   
   <url>
+    <loc>docs/blog/2020-05-14-eks-external-dns/</loc>
+    <lastmod>2020-05-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>docs/categories/kubernetes/</loc>
     <lastmod>2020-05-14T00:00:00+00:00</lastmod>
   </url>
@@ -158,31 +158,6 @@
   </url>
   
   <url>
-    <loc>docs/about/</loc>
-    <lastmod>2019-02-28T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="pl"
-                href="docs/pl/about/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="docs/fr/about/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt"
-                href="docs/pt/about/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="docs/about/"
-                />
-  </url>
-  
-  <url>
     <loc>docs/blog/2019-02-03-terraform-module-bitbucket/</loc>
     <lastmod>2019-02-19T00:00:00+00:00</lastmod>
   </url>
@@ -223,92 +198,7 @@
   </url>
   
   <url>
-    <loc>docs/tags/container/</loc>
-    <lastmod>2017-08-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/docker/</loc>
-    <lastmod>2017-08-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>docs/blog/2017-08-31-docker-note/</loc>
-    <lastmod>2017-08-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/flash/</loc>
-    <lastmod>2017-08-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/letsencrypt/</loc>
-    <lastmod>2017-08-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/nginx/</loc>
-    <lastmod>2017-08-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/python/</loc>
-    <lastmod>2017-08-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/</loc>
-    <lastmod>2017-08-31T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="docs/fr/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pl"
-                href="docs/pl/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt"
-                href="docs/pt/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="de"
-                href="docs/de/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="docs/es/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="docs/zh-cn/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="docs/zh-tw/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="docs/ja/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="docs/tags/"
-                />
-  </url>
-  
-  <url>
-    <loc>docs/tags/uwsgi/</loc>
     <lastmod>2017-08-31T00:00:00+00:00</lastmod>
   </url>
   
@@ -318,42 +208,7 @@
   </url>
   
   <url>
-    <loc>docs/tags/ai/</loc>
-    <lastmod>2017-07-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>docs/blog/2017-07-23-ai-venue/</loc>
-    <lastmod>2017-07-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/cortana/</loc>
-    <lastmod>2017-07-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/golang/</loc>
-    <lastmod>2017-07-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/iot/</loc>
-    <lastmod>2017-07-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/pepper/</loc>
-    <lastmod>2017-07-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/ptt/</loc>
-    <lastmod>2017-07-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/spark/</loc>
     <lastmod>2017-07-23T00:00:00+00:00</lastmod>
   </url>
   
@@ -363,118 +218,13 @@
   </url>
   
   <url>
-    <loc>docs/tags/dingtalk/</loc>
-    <lastmod>2017-07-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/nagios/</loc>
-    <lastmod>2017-07-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/oapi/</loc>
-    <lastmod>2017-07-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/python-json/</loc>
-    <lastmod>2017-07-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/python-re/</loc>
-    <lastmod>2017-07-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/python-requests/</loc>
-    <lastmod>2017-07-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/python3/</loc>
-    <lastmod>2017-07-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>docs/blog/2017-07-08-python-nagios-dingtalk/</loc>
     <lastmod>2017-07-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>docs/tags/curl/</loc>
-    <lastmod>2017-02-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/python2/</loc>
-    <lastmod>2017-02-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>docs/blog/2017-02-05-urllib2-intro/</loc>
     <lastmod>2017-02-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/urllib/</loc>
-    <lastmod>2017-02-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/urllib2/</loc>
-    <lastmod>2017-02-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/wget/</loc>
-    <lastmod>2017-02-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/back-end/</loc>
-    <lastmod>2017-01-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/c#/</loc>
-    <lastmod>2017-01-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/java/</loc>
-    <lastmod>2017-01-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/jboss/</loc>
-    <lastmod>2017-01-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/php/</loc>
-    <lastmod>2017-01-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/ruby/</loc>
-    <lastmod>2017-01-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/tomcat/</loc>
-    <lastmod>2017-01-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/weblogic/</loc>
-    <lastmod>2017-01-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/wildfly/</loc>
-    <lastmod>2017-01-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -488,113 +238,13 @@
   </url>
   
   <url>
-    <loc>docs/tags/centos/</loc>
-    <lastmod>2017-01-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/linuxsst/</loc>
-    <lastmod>2017-01-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>docs/blog/2017-01-25-linux-ln-exp/</loc>
     <lastmod>2017-01-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>docs/tags/ln/</loc>
-    <lastmod>2017-01-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/redhat/</loc>
-    <lastmod>2017-01-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/rm/</loc>
-    <lastmod>2017-01-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/unlink/</loc>
-    <lastmod>2017-01-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/filezilla/</loc>
-    <lastmod>2016-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/ftp/</loc>
-    <lastmod>2016-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/ftps/</loc>
-    <lastmod>2016-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/openssl/</loc>
-    <lastmod>2016-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/pure-ftpd/</loc>
-    <lastmod>2016-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>docs/blog/2016-12-11-pureftpd-tls/</loc>
     <lastmod>2016-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/ssl/</loc>
-    <lastmod>2016-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/tls/</loc>
-    <lastmod>2016-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/bootstrap/</loc>
-    <lastmod>2016-12-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/front-end/</loc>
-    <lastmod>2016-12-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/html/</loc>
-    <lastmod>2016-12-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/java-script/</loc>
-    <lastmod>2016-12-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/w3c/</loc>
-    <lastmod>2016-12-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/web/</loc>
-    <lastmod>2016-12-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/xss/</loc>
-    <lastmod>2016-12-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -608,37 +258,12 @@
   </url>
   
   <url>
-    <loc>docs/tags/burp-suite/</loc>
-    <lastmod>2016-10-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/cross-site-scripting/</loc>
-    <lastmod>2016-10-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/netsecurity/</loc>
-    <lastmod>2016-10-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/owasp/</loc>
-    <lastmod>2016-10-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>docs/categories/owasp-top10/</loc>
     <lastmod>2016-10-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>docs/blog/2016-10-10-xss/</loc>
-    <lastmod>2016-10-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/xss-quiz.int21h.jp/</loc>
     <lastmod>2016-10-10T00:00:00+00:00</lastmod>
   </url>
   
@@ -653,63 +278,13 @@
   </url>
   
   <url>
-    <loc>docs/tags/directory-traversal/</loc>
-    <lastmod>2016-10-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>docs/blog/2016-10-07-directory-traversal/</loc>
     <lastmod>2016-10-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>docs/tags/files-traversal/</loc>
-    <lastmod>2016-10-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/owasp-top10/</loc>
-    <lastmod>2016-10-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/cookies/</loc>
-    <lastmod>2016-09-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/cross-site-request-forgery/</loc>
-    <lastmod>2016-09-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/csrf/</loc>
-    <lastmod>2016-09-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>docs/blog/2016-09-09-csrf/</loc>
     <lastmod>2016-09-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/dd-wrt/</loc>
-    <lastmod>2015-07-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/ddns/</loc>
-    <lastmod>2015-07-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/no-ip/</loc>
-    <lastmod>2015-07-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>docs/tags/sql/</loc>
-    <lastmod>2015-07-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -729,10 +304,6 @@
                 hreflang="en"
                 href="docs/contact/"
                 />
-  </url>
-  
-  <url>
-    <loc>docs/tags/index/</loc>
   </url>
   
   <url>

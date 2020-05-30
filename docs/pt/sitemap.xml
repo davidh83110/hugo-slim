@@ -57,11 +57,6 @@
     <lastmod>2019-02-28T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="docs/about/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="pl"
                 href="docs/pl/about/"
                 />
@@ -172,55 +167,6 @@
                 rel="alternate"
                 hreflang="pt"
                 href="docs/pt/series/"
-                />
-  </url>
-  
-  <url>
-    <loc>docs/pt/tags/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="docs/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="docs/fr/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pl"
-                href="docs/pl/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="de"
-                href="docs/de/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="docs/es/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="docs/zh-cn/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="docs/zh-tw/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="docs/ja/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt"
-                href="docs/pt/tags/"
                 />
   </url>
   

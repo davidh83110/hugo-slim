@@ -2,10 +2,10 @@
 # https://github.com/pacollins/hugo-future-imperfect-slim/wiki/config.toml
 baseurl                 = "docs/"
 DefaultContentLanguage  = "en"
-title                   = "Hugo Future Imperfect Slim"
+title                   = "David's Blog"
 theme                   = "future"
-paginate                = 3
-disqusShortname         = ""
+paginate                = 6
+disqusShortname         = "davidh83110"
 googleAnalytics         = ""
 pluralizeListTitles     = false
 disableLanguages        = [""]
@@ -15,7 +15,7 @@ publishDir              = "docs"
 [taxonomies]
   category = "categories"
   series = "series"
-  tag = "tags"
+
 
 
 [params]
@@ -27,37 +27,37 @@ publishDir              = "docs"
   highlightjsLang       = ["html", "css", "js", "toml"]
   viewMorePostsLink     = "/blog/"
   readingTime           = false
-  socialShare           = ["twitter", "facebook", "linkedin", "email"]
+  socialShare           = ["facebook", "linkedin", "email"]
 
   [params.meta]
-    description         = "A theme by HTML5 UP, ported by Julio Pescador. Slimmed and enhanced by Patrick Collins. Multilingual by StatnMap. Powered by Hugo."
-    author              = "HTML5UP and Hugo"
-    favicon             = false
+    description         = ""
+    author              = "David"
+    favicon             = true
     svg                 = true
     faviconVersion      = "1"
     msColor             = "#ffffff"
     iOSColor            = "#ffffff"
 
   [params.header]
-    navbarTitle         = "Future Imperfect"
+    navbarTitle         = "David's Blog"
     dynamicTitles       = true
     searchMenu          = true
     shareMenu           = true
     languageMenu        = true
 
   [params.intro]
-    header                = "Hugo Future Imperfect Slim"
-    paragraph             = "Another fine, responsive site template by <a href='http://html5up.net'>HTML5 UP</a>."
+    header                = "David Hsu"
+    paragraph             = "DevOps Engineering / AWS / Cloud Native"
     rssIntro              = true
     socialIntro           = true
     hideWhenSingleColumn  = false
     alwaysOnHomepage      = false
 
     [params.intro.pic]
-      src                 = "img/main/logo.jpg"
+      src                 = "img/main/avator.jpg"
       shape               = "circle"
-      width               = ""
-      alt                 = "Hugo Future Imperfect Slim"
+      width               = "165px"
+      alt                 = ""
 
   [params.sidebar]
     about               = "This theme was developed for Hugo static site generator."
@@ -111,12 +111,12 @@ publishDir              = "docs"
     pre               = "<i class='fas fa-sitemap'></i>"
     weight            = 5
 
-  [[menu.main]]
-    name              = "Contact"
-    identifier        = "contact"
-    url               = "/contact/"
-    pre               = "<i class='far fa-envelope'></i>"
-    weight            = 6
+  # [[menu.main]]
+  #   name              = "Contact"
+  #   identifier        = "contact"
+  #   url               = "/contact/"
+  #   pre               = "<i class='far fa-envelope'></i>"
+  #   weight            = 6
 
   [[menu.main]]
     name              = "Archived"
@@ -286,9 +286,9 @@ publishDir              = "docs"
 
 [social]
   # Coding Communities
-  github                = "pacollins/hugo-future-imperfect-slim"
+  github                = "davidh83110"
 #  gitlab                = ""
-  stackoverflow         = "" # User Number
+  stackoverflow         = "12397001" # User Number
 #  bitbucket             = ""
 #  jsfiddle              = ""
 #  codepen               = ""
@@ -299,15 +299,15 @@ publishDir              = "docs"
 #  dribbble              = ""
   # Publishing Communities
 #  wordpress             = ""
-  medium                = ""
+  # medium                = ""
   # Professional/Business Oriented Communities
-  linkedin              = "example"
+  linkedin              = "david-hsu-b1136112b"
 #  linkedin_company      = "examplebusiness"
 #  foursquare            = ""
 #  xing                  = ""
-  slideshare            = ""
+  slideshare            = "DavidHsu64"
   # Social Networks
-  facebook              = "example"
+  facebook              = "ben12567"
 #  googleplus            = ""
 #  reddit                = "example"
 #  quora                 = ""
@@ -317,14 +317,14 @@ publishDir              = "docs"
     # WeChat and QQ need testing.
 #    wechat              = ""
 #    qq                  = "" # User ID Number
-  instagram             = "example"
+  instagram             = "davidh.110"
 #  tumblr                = ""
 #  twitter               = "example"
 #  strava                = ""
 #  skype                 = ""
 #  snapchat              = ""
 #  pinterest             = "example"
-  telegram              = "example"
+  # telegram              = "davidh83110"
 #  vine                  = ""
 #  googlescholar         = ""
 #  orcid                 = ""
@@ -332,4 +332,4 @@ publishDir              = "docs"
 #  keybase               = "example"
 #  mastodon              = "example.com/@example"
   # Email
-  email                 = "example"
+  email                 = "davidh83110@gmail.com"

@@ -1,25 +1,27 @@
 +++
 title = "About"
-description = "Hugo, the world’s fastest framework for building websites"
-date = "2019-02-28"
+description = "DevOps / Site Reliability Engineer"
+date = "2020-05-31"
 aliases = ["about-us","about-hugo","contact"]
-author = "Hugo Authors"
+author = "David"
 +++
 
-Written in Go, Hugo is an open source static site generator available under the [Apache Licence 2.0.](https://github.com/gohugoio/hugo/blob/master/LICENSE) Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
+David is a senior DevOps engineer who dedicated to AWS cloud platform, also has an AWS Solution Architect certificate (SAA-C01).
 
-Hugo makes use of a variety of open source projects including:
+Skilled at AWS solutions, Container Orchestration, Infrastructure as Code, CI/CD, Serverless, Scrum, Automation, Python, Micro-Services and Site Reliability Engineering.
 
-* https://github.com/yuin/goldmark
-* https://github.com/alecthomas/chroma
-* https://github.com/muesli/smartcrop
-* https://github.com/spf13/cobra
-* https://github.com/spf13/viper
+- Docker, AWS ECS, EKS, Kubernetes
+- Terraform, AWS CDK, Ansible
+- Jenkins, GitLab CI, AWS CodeBuild
+- Canary, Blue-Green, Rolling Deployment
+- AWS Lambda, Fargate
+- MongoDB, MySQL, RDS
 
-Hugo is ideal for blogs, corporate websites, creative portfolios, online magazines, single page applications or even a website with thousands of pages.
 
-Hugo is for people who want to hand code their own website without worrying about setting up complicated runtimes, dependencies and databases.
+David offers cloud solutions with high availability based on Docker, AWS ECS, and EKS, also well-understanding of CI/CD and deployment strategies. Concerned about security aspects for applications such as using SSM Parameter Store as secret storage instead of plain-text configuration files.
 
-Websites built with Hugo are extremelly fast, secure and can be deployed anywhere including, AWS, GitHub Pages, Heroku, Netlify and any other hosting provider.
+Experienced in MongoDB migration and high concurrency application design(100K RPM). Re-constructed the Terraform architecture to reduce around 40% routine jobs with more than 20+ projects on a daily basis.
 
-Learn more and contribute on [GitHub](https://github.com/gohugoio).
+About programming skills, David has helped a media company building a re-marketing platform built from Django and Flask, as well as integrated Elasticsearch to analyze access logs to perform valuable marketing strategies. Apart from this, it's a dockerized micro-service application running on AWS.
+
+Not only technical skills but David also familiar with how DevOps culture affects the business, always being an outstanding team player to interact with other departments. David also joined SRE study groups in free time and interested in AWS, cloud-native solutions, DevOps culture, distribution system, Serverless, as well as traveling and reading.
