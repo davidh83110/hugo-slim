@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on David&#39;s Blog</title>
-    <link>docs/de/categories/</link>
+    <link>hugo-slim/docs/de/categories/</link>
     <description>Recent content in Categories on David&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>de</language>
     
-	<atom:link href="docs/de/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="hugo-slim/docs/de/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>

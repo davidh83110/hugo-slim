@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>駭客技術 on David&#39;s Blog</title>
-    <link>docs/categories/%E9%A7%AD%E5%AE%A2%E6%8A%80%E8%A1%93/</link>
+    <link>hugo-slim/docs/categories/%E9%A7%AD%E5%AE%A2%E6%8A%80%E8%A1%93/</link>
     <description>Recent content in 駭客技術 on David&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 10 Oct 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="docs/categories/%E9%A7%AD%E5%AE%A2%E6%8A%80%E8%A1%93/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="hugo-slim/docs/categories/%E9%A7%AD%E5%AE%A2%E6%8A%80%E8%A1%93/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>XSS (Cross-Site Scripting) 跨站腳本攻擊簡介和實作</title>
-      <link>docs/blog/2016-10-10-xss/</link>
+      <link>hugo-slim/docs/blog/2016-10-10-xss/</link>
       <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>docs/blog/2016-10-10-xss/</guid>
+      <guid>hugo-slim/docs/blog/2016-10-10-xss/</guid>
       <description></description>
     </item>
     

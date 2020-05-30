@@ -2,49 +2,49 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	
 	<sitemap>
-	   	<loc>docs/en/sitemap.xml</loc>
+	   	<loc>hugo-slim/docs/en/sitemap.xml</loc>
 		
 	   	<lastmod>2020-05-14T00:00:00+00:00</lastmod>
 		
 	</sitemap>
 	
 	<sitemap>
-	   	<loc>docs/fr/sitemap.xml</loc>
+	   	<loc>hugo-slim/docs/fr/sitemap.xml</loc>
 		
 	</sitemap>
 	
 	<sitemap>
-	   	<loc>docs/pl/sitemap.xml</loc>
+	   	<loc>hugo-slim/docs/pl/sitemap.xml</loc>
 		
 	</sitemap>
 	
 	<sitemap>
-	   	<loc>docs/pt/sitemap.xml</loc>
+	   	<loc>hugo-slim/docs/pt/sitemap.xml</loc>
 		
 	</sitemap>
 	
 	<sitemap>
-	   	<loc>docs/de/sitemap.xml</loc>
+	   	<loc>hugo-slim/docs/de/sitemap.xml</loc>
 		
 	</sitemap>
 	
 	<sitemap>
-	   	<loc>docs/es/sitemap.xml</loc>
+	   	<loc>hugo-slim/docs/es/sitemap.xml</loc>
 		
 	</sitemap>
 	
 	<sitemap>
-	   	<loc>docs/zh-cn/sitemap.xml</loc>
+	   	<loc>hugo-slim/docs/zh-cn/sitemap.xml</loc>
 		
 	</sitemap>
 	
 	<sitemap>
-	   	<loc>docs/zh-tw/sitemap.xml</loc>
+	   	<loc>hugo-slim/docs/zh-tw/sitemap.xml</loc>
 		
 	</sitemap>
 	
 	<sitemap>
-	   	<loc>docs/ja/sitemap.xml</loc>
+	   	<loc>hugo-slim/docs/ja/sitemap.xml</loc>
 		
 	</sitemap>
 	
