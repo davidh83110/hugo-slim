@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>資訊安全 on David&#39;s Blog</title>
-    <link>/categories/%E8%B3%87%E8%A8%8A%E5%AE%89%E5%85%A8/</link>
+    <link>hugo-slim/categories/%E8%B3%87%E8%A8%8A%E5%AE%89%E5%85%A8/</link>
     <description>Recent content in 資訊安全 on David&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 10 Oct 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/%E8%B3%87%E8%A8%8A%E5%AE%89%E5%85%A8/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="hugo-slim/categories/%E8%B3%87%E8%A8%8A%E5%AE%89%E5%85%A8/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>XSS (Cross-Site Scripting) 跨站腳本攻擊簡介和實作</title>
-      <link>/blog/2016-10-10-xss/</link>
+      <link>hugo-slim/blog/2016-10-10-xss/</link>
       <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2016-10-10-xss/</guid>
+      <guid>hugo-slim/blog/2016-10-10-xss/</guid>
       <description></description>
     </item>
     
