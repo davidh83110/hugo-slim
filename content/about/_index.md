@@ -2,7 +2,7 @@
 title = "About"
 description = "DevOps / Site Reliability Engineer"
 date = "2020-05-31"
-aliases = ["about-us","about-hugo","contact"]
+aliases = ["about-us","about-hugo"]
 author = "David"
 +++
 

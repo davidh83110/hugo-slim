@@ -119,9 +119,9 @@ publishDir              = "docs"
   #   weight            = 6
 
   [[menu.main]]
-    name              = "Archived"
-    identifier        = "archived"
-    url               = "/archived/"
+    name              = "Archive"
+    identifier        = "archive"
+    url               = "/archive/"
     pre               = "<i class='fa fa-home'></i>"
     weight            = 7
 
