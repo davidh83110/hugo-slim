@@ -8,13 +8,11 @@ date: "2019-12-05T00:00:00Z"
 modified: "2019-12-05"
 published: true
 title: AWS Solutions Architect Associate (SAA) - [PASSED] 心得以及攻略
+images: ["https://live.staticflickr.com/65535/49038426206_83d9c537d2_h.jpg"]
 ---
 
 ## AWS Solutions Architect Associate (SAA) - [PASSED]
 ---
-
-![Alt text](https://live.staticflickr.com/65535/49038426206_83d9c537d2_h.jpg)
-<br />
 
 
 經過了幾週的準備，終於通過了SAA的考試 (82% PASS)。以此紀錄以及分享一下準備的過程。

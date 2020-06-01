@@ -6,13 +6,12 @@ categories:
 - 系統建置
 - Terraform
 comments: true
-date: "2020-05-14T00:00:00Z"
+date: "2020-05-14"
 modified: "2020-05-14"
 published: true
 title: EKS External-DNS Cross Account Route53 Setup
+images: ["https://live.staticflickr.com/65535/49908288961_c380509717_b.jpg"]
 ---
-
-![title](https://live.staticflickr.com/65535/49908288961_c380509717_b.jpg)
 
 
 External-DNS 是一款可以讓我們建立 ALB Ingress 的時候，自動將 ALB DNS 在 Route53 建立一組 DNS 的實用套件。

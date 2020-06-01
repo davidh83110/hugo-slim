@@ -10,9 +10,8 @@ date: "2020-03-30T00:00:00Z"
 modified: "2020-03-31"
 published: true
 title: EKS Building & Troubleshooting
+images: ["https://live.staticflickr.com/65535/49715657891_23558e7f5d_k.jpg"]
 ---
-
-![eks](https://live.staticflickr.com/65535/49715657891_23558e7f5d_k.jpg)
 
 This is the full map of EKS and we'll go through how to install EKS and plugins in this post, as well as the troubles I got. Let's go!
 <br />

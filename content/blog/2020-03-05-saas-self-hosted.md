@@ -9,9 +9,8 @@ date: "2020-03-05T00:00:00Z"
 modified: "2020-03-05"
 published: true
 title: SaaS/Managed Services & Self-Hosted 衍伸思考
+images: ["https://live.staticflickr.com/65535/49618259028_e4784532cf_h.jpg"]
 ---
-
-![Maslow](https://live.staticflickr.com/65535/49618259028_e4784532cf_h.jpg)
 
 
 ## Let's talk about SaaS/Managed Services and Self-Hosted today!
