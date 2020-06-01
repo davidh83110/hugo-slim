@@ -2,7 +2,6 @@
 author: David
 categories:
 - AWS
-- 
 comments: true
 date: "2019-12-05T00:00:00Z"
 modified: "2019-12-05"

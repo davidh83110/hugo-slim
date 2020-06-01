@@ -916,7 +916,6 @@ table {
               line-height: 1;
               margin: 1em; }
             .post > footer .stats li ul li a {
-              overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap; }
 
