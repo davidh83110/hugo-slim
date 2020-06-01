@@ -3,10 +3,10 @@
     <browserconfig>
       <msapplication>
         <tile>
-          <square70x70logo src="{{ "favicon/favicon.ico" | relURL }}-70x70.png"/>
-          <square150x150logo src="{{ "favicon/favicon.ico" | relURL }}-150x150.png"/>
-          <wide310x150logo src="{{ "favicon/favicon.ico" | relURL }}-310x150.png"/>
-          <square310x310logo src="{{ "favicon/favicon.ico" | relURL }}-310x310.png"/>
+          <square70x70logo src="{{ "favicon/favicon" | relURL }}-70x70.png"/>
+          <square150x150logo src="{{ "favicon/favicon" | relURL }}-150x150.png"/>
+          <wide310x150logo src="{{ "favicon/favicon" | relURL }}-310x150.png"/>
+          <square310x310logo src="{{ "favicon/favicon" | relURL }}-310x310.png"/>
           <TileColor>{{ .Site.Params.meta.msColor }}</TileColor>
         </tile>
       </msapplication>

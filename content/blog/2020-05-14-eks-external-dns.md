@@ -10,7 +10,8 @@ date: "2020-05-14"
 modified: "2020-05-14"
 published: true
 title: EKS External-DNS Cross Account Route53 Setup
-images: ["https://live.staticflickr.com/65535/49908288961_c380509717_b.jpg"]
+images: ["https://live.staticflickr.com/65535/49908288961_c380509717_b.jpg width=10"]
+url: /aws/kubernetes/系統建置/terraform/2020/05/14/eks-external-dns.html
 ---
 
 

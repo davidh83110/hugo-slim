@@ -14,9 +14,6 @@ publishDir              = "docs"
 
 [taxonomies]
   category = "categories"
-  series = "series"
-
-
 
 [params]
   enableCDN             = false
@@ -87,43 +84,36 @@ publishDir              = "docs"
     name              = "Home"
     identifier        = "home"
     url               = "/"
-    pre               = "<i class='fa fa-bars'></i>"
+    pre               = "<i class='fa fa-home'></i>"
     weight            = 1
 
   [[menu.main]]
     name              = "About"
     identifier        = "about"
     url               = "/about/"
-    pre               = "<i class='far fa-bookmark'></i>"
+    pre               = "<i class='fa fa-code'></i>"
     weight            = 2
 
   [[menu.main]]
     name              = "Blog"
     identifier        = "blog"
     url               = "/blog/"
-    pre               = "<i class='far fa-newspaper'></i>"
+    pre               = "<i class='fa fa-hashtag'></i>"
     weight            = 3
 
   [[menu.main]]
     name              = "Categories"
     identifier        = "categories"
     url               = "/categories/"
-    pre               = "<i class='fas fa-sitemap'></i>"
+    pre               = "<i class='fa fa-bars'></i>"
     weight            = 5
-
-  # [[menu.main]]
-  #   name              = "Contact"
-  #   identifier        = "contact"
-  #   url               = "/contact/"
-  #   pre               = "<i class='far fa-envelope'></i>"
-  #   weight            = 6
 
   [[menu.main]]
     name              = "Archive"
     identifier        = "archive"
     url               = "/archive/"
-    pre               = "<i class='fa fa-home'></i>"
-    weight            = 7
+    pre               = "<i class='fa fa-archive'></i>"
+    weight            = 6
 
 
 [Languages]
@@ -160,7 +150,7 @@ publishDir              = "docs"
 #  linkedin_company      = "examplebusiness"
 #  foursquare            = ""
 #  xing                  = ""
-  slideshare            = "DavidHsu64"
+  # slideshare            = "DavidHsu64"
   # Social Networks
   facebook              = "ben12567"
 #  googleplus            = ""

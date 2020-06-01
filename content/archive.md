@@ -1,5 +1,5 @@
 ---
-title: "Archive page"
+title: "Archive"
 type: archive
 hidden: true
 ---

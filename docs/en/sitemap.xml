@@ -43,7 +43,7 @@
   </url>
   
   <url>
-    <loc>/blog/2020-05-14-eks-external-dns/</loc>
+    <loc>/aws/kubernetes/%E7%B3%BB%E7%B5%B1%E5%BB%BA%E7%BD%AE/terraform/2020/05/14/eks-external-dns.html</loc>
     <lastmod>2020-05-14T00:00:00+00:00</lastmod>
   </url>
   
@@ -229,20 +229,6 @@
   
   <url>
     <loc>/archive/</loc>
-  </url>
-  
-  <url>
-    <loc>/series/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="/zh-tw/series/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/series/"
-                />
   </url>
   
 </urlset>

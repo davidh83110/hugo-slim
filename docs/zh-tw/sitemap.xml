@@ -30,18 +30,4 @@
                 />
   </url>
   
-  <url>
-    <loc>/zh-tw/series/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/series/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="/zh-tw/series/"
-                />
-  </url>
-  
 </urlset>
