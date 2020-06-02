@@ -844,18 +844,18 @@ table {
     margin: 1em -1em;
     overflow: hidden; }
     .post a.image:hover img {
-      -webkit-transform: scale(1.05);
-      -moz-transform: scale(1.05);
-      -ms-transform: scale(1.05);
-      -o-transform: scale(1.05);
-      transform: scale(1.05); }
+      -webkit-transform: scale(1.15);
+      -moz-transform: scale(1.15);
+      -ms-transform: scale(1.15);
+      -o-transform: scale(1.15);
+      transform: scale(1.15); }
     .post a.image img {
       -webkit-transition: -webkit-transform 0.2s ease-out;
       -moz-transition: -moz-transform 0.2s ease-out;
       -ms-transition: -ms-transform 0.2s ease-out;
       -o-transition: -ms-transform 0.2s ease-out;
       transition: transform 0.2s ease-out;
-      width: 100%; }
+      width: 75%; }
   .post > footer {
     display: flex;
     flex-direction: column; }
@@ -896,7 +896,7 @@ table {
           .post > footer .stats li ul li {
             visibility: visible;
             font-family: "Raleway", Helvetica, sans-serif;
-            font-size: 0.6em;
+            font-size: 0.75em;
             font-weight: 400;
             letter-spacing: 0em;
             line-height: 0;

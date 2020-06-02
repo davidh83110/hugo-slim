@@ -1,7 +1,9 @@
 {{ if .Params.images }}
   <a href="{{ .RelPermalink }}" class="image featured">
     {{ range first 1 .Params.images }}
+    <p style="text-align: center;">
       <img src="{{ . | absURL }}" alt="">
+    </p>
     {{ end }}
   </a>
 {{ else if .Params.featured }}
