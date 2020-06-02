@@ -6,18 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png?v=1">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png?v=1">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png?v=1">
-  <link rel="manifest" href="/favicon/site.webmanifest?v=1">
-  
-    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg?v=1" color="#ffffff">
-    <link rel="shortcut icon" href="/favicon/favicon.ico?v=1">
-    <meta name="msapplication-config" content="/favicon/browserconfig.xml?v=1">
-  
-  <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="theme-color" content="#ffffff">
-
 <meta name="generator" content="Hugo 0.71.1" /><meta itemprop="name" content="How to Import data to Elasticsearch (Nginx Access logs)">
 <meta itemprop="description" content="因為統計流量的需求，需要將nginx access log放進elasticsearch方便做統計。 對ELS不是很熟的我，也花了一點時間釐清觀念，就寫進來當作notes吧。 也希望對剛接觸ELS的朋友有一些幫助。Preparation  Elasticsearch Server == 6.3.0 (host by AWS) Python == 3.6 elasticsearch python module == 6.3.0  Step 1. Install Elasticsearch Because we use ELS which is host by AWS, so basically we just need to take care of instance type and count.And why I use AWS ELS ?Because I just wanna get the rid of instance management lolIntruction Elasticsearch Architecture ELS is totally using JAVA to develop and of course it&rsquo;s open sourceIn other word, you can install it on your own machine if you wantbtw, install by docker is also a good way on development environmentdocker pull elasticsearch very simple and easy way to isntall for testing, but not refer to do this on production environment.">
 <meta itemprop="datePublished" content="2018-07-21T00:00:00&#43;00:00" />

@@ -6,8 +6,10 @@
     <div id="wrapper">
       {{ partial "site-intro" . }} 
 
-
         <main id="site-main">
+          <header>
+            <h1>Archive</h1>
+          </header>
             <div class="inner">
                 {{ range (.Site.RegularPages.GroupByDate "2006")}}
                   {{ if ne .Key "0001"}}
