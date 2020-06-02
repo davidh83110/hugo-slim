@@ -27,7 +27,7 @@ a {
 }
 
 a:before {
-  content: "🡠 ";
+  content: "\26F7\0020\0020";
   -webkit-transition: color ease;
   -moz-transition: color ease;
   -ms-transition: color ease;
