@@ -1,27 +1,26 @@
 <section id="site-sidebar">
-  {{ if gt .Site.Params.sidebar.postAmount 0 }}
-    <section id="recent-posts">
+
+
+  {{ if .Site.Params.sidebar.about }}
+    <section id="mini-bio">
       <header>
-        <h1>{{ i18n "recent_posts" }}</h1>
+        <h1>{{ i18n "about" }}</h1>
       </header>
-      {{ range first (.Site.Params.sidebar.postAmount | default 5) (where site.RegularPages "Type" "in" site.Params.mainSections) }}
-      <article class="mini-post">
-        <section>
-          {{ .Render "featured" }}
-        </section>
-        <header>
-          <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
-          <time class="published" datetime="">{{ default (i18n "date_format") | .Date.Format }}</time>
-        </header>
-      </article>
-      {{ end }}
-      {{ if ge (len (where site.RegularPages "Type" "in" site.Params.mainSections)) (.Site.Params.sidebar.postAmount | default 5) }}
-        <footer>
-          <a href="{{ with .Site.Params.viewMorePostsLink }}{{ . | relLangURL }}{{ else }}{{ "post" | relLangURL }}{{ end }}" class="button">{{ i18n "see_more" }}</a>
-        </footer>
-      {{ end }}
+      <p style="text-align: center;">
+        {{ .Site.Params.sidebar.about | safeHTML }}
+      </p>
+      <p style="text-align: center; opacity: 1">
+        <a href="https://www.certmetrics.com/amazon/public/badge.aspx?i=1&t=c&d=2019-11-09&ci=AWS00993116" target="_blank">
+          <img src="https://www.certmetrics.com/api/ob/image/amazon/c/1" width=100px>
+        </a>
+      </p>
+      <footer>
+        <a href="{{ "about" | relLangURL }}" class="button">{{ i18n "learn_more" }}</a>
+      </footer>
     </section>
   {{ end }}
+
+
 
   {{ if .Site.Params.sidebar.categories }}
     {{ if ne ($.Scratch.Get "showCategories") false }}
@@ -49,15 +48,30 @@
     {{ end }}
   {{ end }}
 
-  {{ if .Site.Params.sidebar.about }}
-    <section id="mini-bio">
+
+  {{ if gt .Site.Params.sidebar.postAmount 0 }}
+    <section id="recent-posts">
       <header>
-        <h1>{{ i18n "about" }}</h1>
+        <h1>{{ i18n "recent_posts" }}</h1>
       </header>
-      <p>{{ .Site.Params.sidebar.about | safeHTML }}</p>
-      <footer>
-        <a href="{{ "about" | relLangURL }}" class="button">{{ i18n "learn_more" }}</a>
-      </footer>
+      {{ range first (.Site.Params.sidebar.postAmount | default 5) (where site.RegularPages "Type" "in" site.Params.mainSections) }}
+      <article class="mini-post">
+        <section>
+          {{ .Render "featured" }}
+        </section>
+        <header>
+          <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
+          <time class="published" datetime="">{{ default (i18n "date_format") | .Date.Format }}</time>
+        </header>
+      </article>
+      {{ end }}
+      {{ if ge (len (where site.RegularPages "Type" "in" site.Params.mainSections)) (.Site.Params.sidebar.postAmount | default 5) }}
+        <footer>
+          <a href="{{ with .Site.Params.viewMorePostsLink }}{{ . | relLangURL }}{{ else }}{{ "post" | relLangURL }}{{ end }}" class="button">{{ i18n "see_more" }}</a>
+        </footer>
+      {{ end }}
     </section>
   {{ end }}
+
+
 </section>

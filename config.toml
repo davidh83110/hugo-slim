@@ -44,7 +44,7 @@ publishDir              = "docs"
 
   [params.intro]
     header                = "David Hsu"
-    paragraph             = "DevOps Engineering / AWS / Cloud Native"
+    paragraph             = ""
     rssIntro              = true
     socialIntro           = true
     hideWhenSingleColumn  = false
@@ -57,8 +57,8 @@ publishDir              = "docs"
       alt                 = ""
 
   [params.sidebar]
-    about               = "This theme was developed for Hugo static site generator."
-    postAmount          = 5
+    about               = "DevOps Engineering / AWS / Cloud Native"
+    postAmount          = 8
     categories          = true
     categoriesByCount   = true
 
