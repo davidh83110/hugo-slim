@@ -7,22 +7,37 @@
 
 
 <meta name="generator" content="Hugo 0.71.1" /><meta itemprop="name" content="How to Import data to Elasticsearch (Nginx Access logs)">
-<meta itemprop="description" content="因為統計流量的需求，需要將nginx access log放進elasticsearch方便做統計。 對ELS不是很熟的我，也花了一點時間釐清觀念，就寫進來當作notes吧。 也希望對剛接觸ELS的朋友有一些幫助。Preparation  Elasticsearch Server == 6.3.0 (host by AWS) Python == 3.6 elasticsearch python module == 6.3.0  Step 1. Install Elasticsearch Because we use ELS which is host by AWS, so basically we just need to take care of instance type and count.And why I use AWS ELS ?Because I just wanna get the rid of instance management lolIntruction Elasticsearch Architecture ELS is totally using JAVA to develop and of course it&rsquo;s open sourceIn other word, you can install it on your own machine if you wantbtw, install by docker is also a good way on development environmentdocker pull elasticsearch very simple and easy way to isntall for testing, but not refer to do this on production environment.">
+<meta itemprop="description" content="因為統計流量的需求，需要將nginx access log放進elasticsearch方便做統計。 對ELS不是很熟的我，也花了一點時間釐清觀念，就寫進來當作notes吧。 也希望對剛接觸ELS的朋友有一些幫助。
+
+Preparation  Elasticsearch Server == 6.3.0 (host by AWS) Python == 3.6 elasticsearch python module == 6.3.0  
+Step 1. Install Elasticsearch Because we use ELS which is host by AWS, so basically we just need to take care of instance type and count.
+And why I use AWS ELS ?
+Because I just wanna get the rid of instance management lol">
 <meta itemprop="datePublished" content="2018-07-21T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-07-21T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="631">
+<meta itemprop="wordCount" content="648">
 
 
 
 <meta itemprop="keywords" content="" /><meta property="og:title" content="How to Import data to Elasticsearch (Nginx Access logs)" />
-<meta property="og:description" content="因為統計流量的需求，需要將nginx access log放進elasticsearch方便做統計。 對ELS不是很熟的我，也花了一點時間釐清觀念，就寫進來當作notes吧。 也希望對剛接觸ELS的朋友有一些幫助。Preparation  Elasticsearch Server == 6.3.0 (host by AWS) Python == 3.6 elasticsearch python module == 6.3.0  Step 1. Install Elasticsearch Because we use ELS which is host by AWS, so basically we just need to take care of instance type and count.And why I use AWS ELS ?Because I just wanna get the rid of instance management lolIntruction Elasticsearch Architecture ELS is totally using JAVA to develop and of course it&rsquo;s open sourceIn other word, you can install it on your own machine if you wantbtw, install by docker is also a good way on development environmentdocker pull elasticsearch very simple and easy way to isntall for testing, but not refer to do this on production environment." />
+<meta property="og:description" content="因為統計流量的需求，需要將nginx access log放進elasticsearch方便做統計。 對ELS不是很熟的我，也花了一點時間釐清觀念，就寫進來當作notes吧。 也希望對剛接觸ELS的朋友有一些幫助。
+
+Preparation  Elasticsearch Server == 6.3.0 (host by AWS) Python == 3.6 elasticsearch python module == 6.3.0  
+Step 1. Install Elasticsearch Because we use ELS which is host by AWS, so basically we just need to take care of instance type and count.
+And why I use AWS ELS ?
+Because I just wanna get the rid of instance management lol" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/blog/2018-07-21-import-els/" />
 <meta property="article:published_time" content="2018-07-21T00:00:00+00:00" />
 <meta property="article:modified_time" content="2018-07-21T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Import data to Elasticsearch (Nginx Access logs)"/>
-<meta name="twitter:description" content="因為統計流量的需求，需要將nginx access log放進elasticsearch方便做統計。 對ELS不是很熟的我，也花了一點時間釐清觀念，就寫進來當作notes吧。 也希望對剛接觸ELS的朋友有一些幫助。Preparation  Elasticsearch Server == 6.3.0 (host by AWS) Python == 3.6 elasticsearch python module == 6.3.0  Step 1. Install Elasticsearch Because we use ELS which is host by AWS, so basically we just need to take care of instance type and count.And why I use AWS ELS ?Because I just wanna get the rid of instance management lolIntruction Elasticsearch Architecture ELS is totally using JAVA to develop and of course it&rsquo;s open sourceIn other word, you can install it on your own machine if you wantbtw, install by docker is also a good way on development environmentdocker pull elasticsearch very simple and easy way to isntall for testing, but not refer to do this on production environment."/>
+<meta name="twitter:description" content="因為統計流量的需求，需要將nginx access log放進elasticsearch方便做統計。 對ELS不是很熟的我，也花了一點時間釐清觀念，就寫進來當作notes吧。 也希望對剛接觸ELS的朋友有一些幫助。
+
+Preparation  Elasticsearch Server == 6.3.0 (host by AWS) Python == 3.6 elasticsearch python module == 6.3.0  
+Step 1. Install Elasticsearch Because we use ELS which is host by AWS, so basically we just need to take care of instance type and count.
+And why I use AWS ELS ?
+Because I just wanna get the rid of instance management lol"/>
 <link rel="stylesheet" href="/css/bundle.min.6ab239962d2e4937efcc3cde86a5695ca40f284288bacfaa8cef98e3c2a87cf7.css" integrity="sha256-arI5li0uSTfvzDzehqVpXKQPKEKIus&#43;qjO&#43;Y48KofPc="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
@@ -237,81 +252,81 @@
 
   <div class="content">
     <p><img src="https://static001.infoq.cn/resource/image/48/06/48fb5f5d37a9efd331763e97c5368306.png" alt="Alt text"></p>
-<p>因為統計流量的需求，需要將nginx access log放進elasticsearch方便做統計。 <!-- raw HTML omitted -->
-對ELS不是很熟的我，也花了一點時間釐清觀念，就寫進來當作notes吧。 <!-- raw HTML omitted -->
-也希望對剛接觸ELS的朋友有一些幫助。<!-- raw HTML omitted --></p>
-<p><!-- raw HTML omitted --></p>
+<p>因為統計流量的需求，需要將nginx access log放進elasticsearch方便做統計。 <br />
+對ELS不是很熟的我，也花了一點時間釐清觀念，就寫進來當作notes吧。 <br />
+也希望對剛接觸ELS的朋友有一些幫助。<br /></p>
+<p><br /></p>
 <h2 id="preparation">Preparation</h2>
 <ul>
 <li>Elasticsearch Server == 6.3.0 (host by AWS)</li>
 <li>Python == 3.6</li>
 <li>elasticsearch python module == 6.3.0</li>
 </ul>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<p><br />
+<br /></p>
 <h2 id="step-1-install-elasticsearch">Step 1. Install Elasticsearch</h2>
-<p>Because we use ELS which is host by AWS, <!-- raw HTML omitted -->
-so basically we just need to take care of instance type and count.<!-- raw HTML omitted --></p>
-<p>And why I use AWS ELS ?<!-- raw HTML omitted -->
-Because I just wanna get the rid of instance management lol<!-- raw HTML omitted --></p>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<p>Because we use ELS which is host by AWS, <br />
+so basically we just need to take care of instance type and count.<br /></p>
+<p>And why I use AWS ELS ?<br />
+Because I just wanna get the rid of instance management lol<br /></p>
+<p><br />
+<br /></p>
 <h3 id="intruction-elasticsearch-architecture">Intruction Elasticsearch Architecture</h3>
-<p>ELS is totally using JAVA to develop and of course it&rsquo;s open source<!-- raw HTML omitted -->
-In other word, you can install it on your own machine if you want<!-- raw HTML omitted -->
-btw, install by docker is also a good way on development environment<!-- raw HTML omitted --></p>
-<p><code>docker pull elasticsearch</code> <!-- raw HTML omitted -->
-very simple and easy way to isntall for testing, but not refer to do this on production environment. (Don&rsquo;t pull it on Macbook it will bw slow, I&rsquo;ve tried it lol) <!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<p>ELS is totally using JAVA to develop and of course it&rsquo;s open source<br />
+In other word, you can install it on your own machine if you want<br />
+btw, install by docker is also a good way on development environment<br /></p>
+<p><code>docker pull elasticsearch</code> <br />
+very simple and easy way to isntall for testing, but not refer to do this on production environment. (Don&rsquo;t pull it on Macbook it will bw slow, I&rsquo;ve tried it lol) <br />
+<br />
 <img src="http://www.uml.org.cn/bigdata/images/2018012633.jpg" alt="Alt text"></p>
-<p>This is simple ELS structure and those Shard/Replica is ELS <code>node</code>. <!-- raw HTML omitted --></p>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<p>This is simple ELS structure and those Shard/Replica is ELS <code>node</code>. <br /></p>
+<p><br />
+<br /></p>
 <h3 id="architecture">Architecture</h3>
 <ul>
 <li>
-<p>Index <!-- raw HTML omitted -->
-index is some kind of <code>Table</code> on RDBMS <!-- raw HTML omitted --></p>
+<p>Index <br />
+index is some kind of <code>Table</code> on RDBMS <br /></p>
 </li>
 <li>
-<p>Shard <!-- raw HTML omitted -->
-All indeics on ELS will be split to a lot of shards <!-- raw HTML omitted -->
-A shard can be a piece of all data, or a <code>REPLICA</code> (backup) of data <!-- raw HTML omitted --></p>
+<p>Shard <br />
+All indeics on ELS will be split to a lot of shards <br />
+A shard can be a piece of all data, or a <code>REPLICA</code> (backup) of data <br /></p>
 </li>
 </ul>
-<p><!-- raw HTML omitted -->
+<p><br />
 okay, lets talk about what we should notice about AWS ELS</p>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<p><br />
+<br /></p>
 <h3 id="--aws-instance-type">- AWS instance type</h3>
-<p>default type is <code>m4.large</code>, the smallest type is <code>t2.small</code> <!-- raw HTML omitted -->
-but I think using <code>m4.large</code> for store about 1G data is too waste cuz <code>m4</code> really very expensive<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-In my case, I forgot to change the default type so I spent NTD$ 7000 for it, I changed the type to <code>t2.small</code> after I checked billing T_T <!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-so please change instance type if you don&rsquo;t need to much resouces.<!-- raw HTML omitted --></p>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<p>default type is <code>m4.large</code>, the smallest type is <code>t2.small</code> <br />
+but I think using <code>m4.large</code> for store about 1G data is too waste cuz <code>m4</code> really very expensive<br />
+<br />
+In my case, I forgot to change the default type so I spent NTD$ 7000 for it, I changed the type to <code>t2.small</code> after I checked billing T_T <br />
+<br />
+so please change instance type if you don&rsquo;t need to much resouces.<br /></p>
+<p><br />
+<br /></p>
 <h3 id="---node-count">-  Node count</h3>
-<p>ELS is composed of a lot of nodes<!-- raw HTML omitted -->
-And the <code>volume size</code> is decide of your node is <code>REPLICA</code> or <code>SHARD</code> <!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-What is <code>REPLICA</code> and <code>SHARD</code> ? <!-- raw HTML omitted -->
-REPLICA is some kind of backup, it&rsquo;s totally a copy of your master. <!-- raw HTML omitted -->
-so the volume size cannot be superimpose. <!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-In the other hand, every single shard is one of your master. <!-- raw HTML omitted -->
-So the volume size is superimposed. <!-- raw HTML omitted --></p>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<p>ELS is composed of a lot of nodes<br />
+And the <code>volume size</code> is decide of your node is <code>REPLICA</code> or <code>SHARD</code> <br />
+<br />
+What is <code>REPLICA</code> and <code>SHARD</code> ? <br />
+REPLICA is some kind of backup, it&rsquo;s totally a copy of your master. <br />
+so the volume size cannot be superimpose. <br />
+<br />
+In the other hand, every single shard is one of your master. <br />
+So the volume size is superimposed. <br /></p>
+<p><br />
+<br /></p>
 <h3 id="--notes">- Notes</h3>
-<p><!-- raw HTML omitted -->
-AWS will install not only ELS but also <code>Kibana</code> into. <!-- raw HTML omitted -->
-So we can query data from kibana without any additional setting. <!-- raw HTML omitted --></p>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<p><br />
+AWS will install not only ELS but also <code>Kibana</code> into. <br />
+So we can query data from kibana without any additional setting. <br /></p>
+<p><br />
+<br /></p>
 <h2 id="step-2-import-access-log-in-python">Step 2. Import Access log in Python</h2>
-<p><!-- raw HTML omitted --></p>
+<p><br /></p>
 <pre><code>data_es = { 
     &quot;message&quot;: line,
     &quot;@timestamp&quot;: log_formated_time,
@@ -319,25 +334,25 @@ So we can query data from kibana without any additional setting. <!-- raw HTML o
 } 
 
 es.index( index=&quot;imported&quot;, doc_type=&quot;imported-python&quot;, body=data_es )
-</code></pre><p><!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<p>The only one thing we need to take care is this request body and <code>es.index</code> to create a new index. <!-- raw HTML omitted -->
-And the format of time stamp is <code>%Y-%m-%dT%H:%M:%S.000+0800</code>, this rule must to be allow or it will cannot be imported. <!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-In my case, I create a new index to store all data I wanna import to. <!-- raw HTML omitted -->
-This index like a <code>table</code> on MySQL/MSSQL. <!-- raw HTML omitted -->
-So if you delete a index, the data insode will be delete in the same time.<!-- raw HTML omitted --></p>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<p>okay, lets take a look of complete code below. <!-- raw HTML omitted -->
-If you think it&rsquo;s too hard to read, can read it on my Github. <!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<a href="https://github.com/davidh83110/import-accesslog-to-elasticsearch">https://github.com/davidh83110/import-accesslog-to-elasticsearch</a> <!-- raw HTML omitted --></p>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+</code></pre><p><br />
+<br /></p>
+<p>The only one thing we need to take care is this request body and <code>es.index</code> to create a new index. <br />
+And the format of time stamp is <code>%Y-%m-%dT%H:%M:%S.000+0800</code>, this rule must to be allow or it will cannot be imported. <br />
+<br />
+In my case, I create a new index to store all data I wanna import to. <br />
+This index like a <code>table</code> on MySQL/MSSQL. <br />
+So if you delete a index, the data insode will be delete in the same time.<br /></p>
+<p><br />
+<br /></p>
+<p>okay, lets take a look of complete code below. <br />
+If you think it&rsquo;s too hard to read, can read it on my Github. <br />
+<br />
+<a href="https://github.com/davidh83110/import-accesslog-to-elasticsearch">https://github.com/davidh83110/import-accesslog-to-elasticsearch</a> <br /></p>
+<p><br />
+<br /></p>
 <pre><code>ELS_ENDPOINT = 'localhost:9200'
-</code></pre><p><!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+</code></pre><p><br />
+<br /></p>
 <pre><code>import endpoint
 from elasticsearch import Elasticsearch
 from datetime import datetime
@@ -391,19 +406,20 @@ def handler(log_path):
 if __name__ == '__main__':
     handler('/var/log/nginx/access.log')
     
-</code></pre><p><!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<p>Not Sure if this a good way to import data, but if you need still can use it. <!-- raw HTML omitted -->
-Welcome to e-mail me or leave some comments if anything wrong or need more details. <!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-Thanks for watching. <!-- raw HTML omitted --></p>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+</code></pre><p><br />
+<br /></p>
+<p>Not Sure if this a good way to import data, but if you need still can use it. <br />
+Welcome to e-mail me or leave some comments if anything wrong or need more details. <br />
+<br />
+Thanks for watching. <br /></p>
+<p><br />
+<br />
+<br /></p>
+<div style="text-align: right;">
+2018-07-21 22:17 , David in Taipei</div>
+<p><br />
+<br />
+<br /></p>
 
   </div>
   <footer>
@@ -521,7 +537,7 @@ Thanks for watching. <!-- raw HTML omitted --></p>
           
           <li>
             
-              <a href="/categories/%E7%B3%BB%E7%B5%B1%E5%BB%BA%E7%BD%AE/">系統建置<span class="count">9</span></a>
+              <a href="/categories/%E7%B3%BB%E7%B5%B1%E5%BB%BA%E7%BD%AE/">系統建置<span class="count">8</span></a>
             
           
           <li>
@@ -541,12 +557,12 @@ Thanks for watching. <!-- raw HTML omitted --></p>
           
           <li>
             
-              <a href="/categories/terraform/">terraform<span class="count">3</span></a>
+              <a href="/categories/kubernetes/">kubernetes<span class="count">2</span></a>
             
           
           <li>
             
-              <a href="/categories/kubernetes/">kubernetes<span class="count">2</span></a>
+              <a href="/categories/terraform/">terraform<span class="count">2</span></a>
             
           
           <li>

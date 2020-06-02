@@ -7,22 +7,22 @@
 
 
 <meta name="generator" content="Hugo 0.71.1" /><meta itemprop="name" content="Docker Note (Nginx&#43;uwsgi&#43;Letsencrypt)">
-<meta itemprop="description" content="">
+<meta itemprop="description" content="docker筆記    nginx&#43;uwsgi&#43;flask&#43;letsencrypt    Env: Python3    Line串接API使用，需執行crontab更新憑證(簽署期限為30天)       note:    certbot-auto可單一clone此檔案就好    產生憑證： (docker裡執行)  certbot-auto certonly --webroot --webroot-path=WEB_ROOT -d DOMAIN_NAME    更新憑證：&nbsp;  docker exec -it CONTAINER_ID /opt/letsencrypt/certbot-auto renew --quiet --renew-hook &#34;/etc/init.d/nginx restart&#34;    啟動程序：&nbsp;  docker run -p 80:80 -p 443:443 CONTAINER_ID /opt/start. &amp;     /opt/start.">
 <meta itemprop="datePublished" content="2017-08-31T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2017-08-31T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="0">
+<meta itemprop="wordCount" content="155">
 
 
 
 <meta itemprop="keywords" content="python,nginx,uwsgi,flash,letsencrypt,docker,container," /><meta property="og:title" content="Docker Note (Nginx&#43;uwsgi&#43;Letsencrypt)" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="docker筆記    nginx&#43;uwsgi&#43;flask&#43;letsencrypt    Env: Python3    Line串接API使用，需執行crontab更新憑證(簽署期限為30天)       note:    certbot-auto可單一clone此檔案就好    產生憑證： (docker裡執行)  certbot-auto certonly --webroot --webroot-path=WEB_ROOT -d DOMAIN_NAME    更新憑證：&nbsp;  docker exec -it CONTAINER_ID /opt/letsencrypt/certbot-auto renew --quiet --renew-hook &#34;/etc/init.d/nginx restart&#34;    啟動程序：&nbsp;  docker run -p 80:80 -p 443:443 CONTAINER_ID /opt/start. &amp;     /opt/start." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/blog/2017-08-31-docker-note/" />
 <meta property="article:published_time" content="2017-08-31T00:00:00+00:00" />
 <meta property="article:modified_time" content="2017-08-31T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Docker Note (Nginx&#43;uwsgi&#43;Letsencrypt)"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:description" content="docker筆記    nginx&#43;uwsgi&#43;flask&#43;letsencrypt    Env: Python3    Line串接API使用，需執行crontab更新憑證(簽署期限為30天)       note:    certbot-auto可單一clone此檔案就好    產生憑證： (docker裡執行)  certbot-auto certonly --webroot --webroot-path=WEB_ROOT -d DOMAIN_NAME    更新憑證：&nbsp;  docker exec -it CONTAINER_ID /opt/letsencrypt/certbot-auto renew --quiet --renew-hook &#34;/etc/init.d/nginx restart&#34;    啟動程序：&nbsp;  docker run -p 80:80 -p 443:443 CONTAINER_ID /opt/start. &amp;     /opt/start."/>
 <link rel="stylesheet" href="/css/bundle.min.6ab239962d2e4937efcc3cde86a5695ca40f284288bacfaa8cef98e3c2a87cf7.css" integrity="sha256-arI5li0uSTfvzDzehqVpXKQPKEKIus&#43;qjO&#43;Y48KofPc="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
@@ -236,7 +236,142 @@
   
 
   <div class="content">
-    <!-- raw HTML omitted -->
+    <h3>
+<b>docker筆記</b></h3>
+<div>
+<br /></div>
+<div>
+nginx+uwsgi+flask+letsencrypt</div>
+<div>
+<br /></div>
+<div>
+Env: Python3</div>
+<div>
+<br /></div>
+<div>
+Line串接API使用，需執行crontab更新憑證(簽署期限為30天)</div>
+<div>
+<br /></div>
+<div>
+<br /></div>
+<div>
+<div>
+note:</div>
+<div>
+<br /></div>
+<div>
+certbot-auto可單一clone此檔案就好</div>
+<div>
+<br /></div>
+<div>
+產生憑證： (docker裡執行)</div>
+<div>
+<span style="background-color: #fff2cc;">certbot-auto certonly --webroot --webroot-path=WEB_ROOT -d DOMAIN_NAME</span></div>
+<div>
+<br /></div>
+<div>
+更新憑證：&nbsp;</div>
+<div>
+<span style="background-color: #fff2cc;">docker exec -it CONTAINER_ID /opt/letsencrypt/certbot-auto renew --quiet --renew-hook "/etc/init.d/nginx restart"</span></div>
+<div>
+<br /></div>
+<div>
+啟動程序：&nbsp;</div>
+<div>
+<span style="background-color: #fff2cc;">docker run -p 80:80 -p 443:443 CONTAINER_ID /opt/start. &amp;</span></div>
+</div>
+<div>
+<br /></div>
+<div>
+/opt/start.sh：</div>
+<div>
+<br /></div>
+<div>
+<span style="background-color: #f4cccc;">#!/bin/bash</span></div>
+<div>
+<span style="background-color: #f4cccc;">/bin/bash/uwsgi --socket 0.0.0.0:8080 --protocol=http -w PROGRAM_NAME</span></div>
+<div>
+<span style="background-color: #f4cccc;">/etc/init.d/nginx start</span><br />
+<span style="background-color: #f4cccc;"><br /></span>
+<span style="background-color: #f4cccc;"><br /></span>
+<span style="background-color: #f4cccc;">Nginx Config:</span><br />
+<span style="background-color: #f4cccc;"><br /></span>
+原理是使用proxy_pass來串接uwsgi<br />
+而我強制轉換為HTTPS，配置方式如下，只列出重點配置<br />
+<br />
+<br />
+server {<br />
+&nbsp; listen 80;<br />
+&nbsp; server_name DOMAIN.COM.TW;<br />
+&nbsp;<br />
+&nbsp; return 301 https://$server_name$request_uri;<br />
+&nbsp; }<br />
+<br />
+server {<br />
+&nbsp; listen 443;<br />
+&nbsp; server_name DOMAIN.COM.TW;<br />
+&nbsp; ssl_certificate /etc/letsencrypt/live/blog.gtwang.org/fullchain.pem;<br />
+&nbsp; ssl_certificate_key /etc/letsencrypt/live/blog.gtwang.org/privkey.pem;<br />
+&nbsp; ssl_protocols TLSv1 TLSv1.1 TLSv1.2; <br />
+<br />
+&nbsp; proxy_pass http://127.0.0.1:8080;<br />
+&nbsp; }</div>
+<div>
+<br />
+<br />
+這邊只使用到TLSv1.2而不使用最新的1.3原因是因為1.3存在漏洞<br />
+我們使用proxy_pass代理uwsgi的服務<br />
+<br />
+使用letsencrypt前別忘了在nginx根目錄裡建立.well-known的資料夾以作為webroot認證<br />
+<br /></div>
+<div>
+備註：</div>
+<div>
+<br /></div>
+<div>
+create docker image:</div>
+<div>
+when quit docker use CTRL+P &amp; CTRL+Q</div>
+<div>
+<span style="background-color: #fff2cc;">docker ps</span> (searching docker container_id)</div>
+<div>
+<span style="background-color: #fff2cc;">docker commit -m "COMMENT" CONTAINER_ID your_account/container_name:tag</span></div>
+<div>
+<br /></div>
+<div>
+docker run container:</div>
+<div>
+<span style="background-color: #fff2cc;">docker run -p 80:80 -p 443:443 CONTAINER_ID PROGRAM</span> (multi port)</div>
+<div>
+<br /></div>
+<div>
+docker enter when container is running:</div>
+<div>
+<span style="background-color: #fff2cc;">docker exec -it CONTAINER_ID /bin/bash</span></div>
+<div>
+<br /></div>
+<div>
+docker remove images:</div>
+<div>
+<span style="background-color: #fff2cc;">docker rmi IMAGES_ID</span></div>
+<div>
+<br /></div>
+<div>
+docker delete container:</div>
+<div>
+<span style="background-color: #fff2cc;">docker rm CONTAINER_ID</span></div>
+<div>
+<br /></div>
+<div>
+<br /></div>
+<div>
+<br /></div>
+<div style="text-align: right;">
+20170831 , David in Taipei</div>
+<div style="text-align: right;">
+<br /></div>
+<div style="text-align: right;">
+<br /></div>
 
   </div>
   <footer>
@@ -372,7 +507,7 @@
           
           <li>
             
-              <a href="/categories/%E7%B3%BB%E7%B5%B1%E5%BB%BA%E7%BD%AE/">系統建置<span class="count">9</span></a>
+              <a href="/categories/%E7%B3%BB%E7%B5%B1%E5%BB%BA%E7%BD%AE/">系統建置<span class="count">8</span></a>
             
           
           <li>
@@ -392,12 +527,12 @@
           
           <li>
             
-              <a href="/categories/terraform/">terraform<span class="count">3</span></a>
+              <a href="/categories/kubernetes/">kubernetes<span class="count">2</span></a>
             
           
           <li>
             
-              <a href="/categories/kubernetes/">kubernetes<span class="count">2</span></a>
+              <a href="/categories/terraform/">terraform<span class="count">2</span></a>
             
           
           <li>

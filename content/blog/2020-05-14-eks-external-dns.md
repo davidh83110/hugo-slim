@@ -3,8 +3,7 @@ author: David
 categories:
 - AWS
 - Kubernetes
-- 系統建置
-- Terraform
+# description: "defwefgegewgew"
 comments: true
 date: "2020-05-14"
 modified: "2020-05-14"
@@ -16,10 +15,9 @@ url: /aws/kubernetes/系統建置/terraform/2020/05/14/eks-external-dns.html
 
 
 External-DNS 是一款可以讓我們建立 ALB Ingress 的時候，自動將 ALB DNS 在 Route53 建立一組 DNS 的實用套件。
-<br />
+
 當然他也支援在 GCP/Azure 上面建立，只是這邊就只介紹 AWS 上如何做設定，以及如果 Route53 在另一個 Account 的話要怎麼做。 在 EKS 1.14 以上使用了 OIDC ，所以如果跨帳號就會需要使用 OIDC 做授權。
-<br />
-<br />
+
 External-DNS 官方介紹：  
 
 > Inspired by Kubernetes DNS, Kubernetes' cluster-internal DNS server, ExternalDNS makes Kubernetes resources discoverable via public DNS servers. Like KubeDNS, it retrieves a list of resources (Services, Ingresses, etc.) from the Kubernetes API to determine a desired list of DNS records. Unlike KubeDNS, however, it's not a DNS server itself, but merely configures other DNS providers accordingly—e.g. AWS Route 53 or Google Cloud DNS.
@@ -28,7 +26,7 @@ External-DNS 官方介紹：
 > 
 <br />
 
-[官方 Github Repository](https://github.com/kubernetes-sigs/external-dns)
+- [官方 Github Repository](https://github.com/kubernetes-sigs/external-dns)
 
 <br />
 <br />

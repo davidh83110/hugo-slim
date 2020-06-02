@@ -15,7 +15,7 @@ MongoDB 為近年來很火紅的No SQL Databese, 在新版本中也快採用近�
 There&rsquo;s a big difference of Mongodb 3.">
 <meta itemprop="datePublished" content="2018-12-01T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-12-01T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1519">
+<meta itemprop="wordCount" content="1579">
 
 
 
@@ -252,63 +252,63 @@ There&rsquo;s a big difference of Mongodb 3."/>
 
   <div class="content">
     <p><img src="https://cdn-images-1.medium.com/max/2000/1*Ce0gUe0LbnhL7ebnDGTp5w.png" alt="Alt text">
-<!-- raw HTML omitted -->
+<br />
 由於敝司 Shopline 使用的 Mongodb 的 Shard 以及 Configsvr 版本不一致，此次升級主要會將版本一致升級到3.2, 並全部採用 Replica Set.</p>
 <p>踩過的雷很多，該碰到的問題也都碰到了，卻只花了短短的一個多禮拜，果然壓力使人迅速成長，也見證了一句話，「所謂大神，不過就是雷踩得比較多」。</p>
 <p>MongoDB 為近年來很火紅的No SQL Databese, 在新版本中也快採用近年多數資料庫使用的 Replica Set (Primary and Sceondary) 架構, 取代舊有的 Shard Cluster (Master and Slave). 進而增加許多優勢，像是自動故障恢復、讀寫控制等等。</p>
 <p>本篇文章以 mongodb-org 3.0 以及 3.2 為主, 這兩個版本最大的差異就是在 Replica Set.</p>
 <p>升級上官方也提供非常詳盡的documents, 不得不稱讚mongodb的文件，真的很完整。
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<br />
+<br /></p>
 <p>This post is mainly for describing the processes and experiences to upgrade Mongodb from 3.0 to 3.2 on Shopline which is our company.</p>
 <p>There&rsquo;s a big difference of Mongodb 3.0 and 3.2, is the Replica Set.</p>
 <p>Replica Set is a is a new structure of databases, using Primary and Secondary instead of Master and Slave and this structure has a lot of advantages such like auto recovery from an unexpected shutdown and split read and write nodes.</p>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<p><br />
+<br /></p>
 <hr>
 <h2 id="environment">Environment</h2>
-<p>Mongodb-org 3.0 -&gt; 3.2 <!-- raw HTML omitted -->
+<p>Mongodb-org 3.0 -&gt; 3.2 <br />
 Amazon Linux 1</p>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<p><br />
+<br /></p>
 <hr>
 <h2 id="mongodb-introduction">MongoDB Introduction</h2>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<p><br />
+<br /></p>
 <h3 id="main-structure">Main Structure</h3>
 <p><img src="http://blogs.bmc.com/wp-content/uploads/2017/10/shard-cluster-full.png" alt="Alt text"></p>
 <p><code>Shard</code>: The place where is to store data.</p>
 <p><code>Replica Set</code>: Normally it will have a primary, a secondary and a arbiter in a replica set, whatever shard server or config server.</p>
 <p><code>Config Server</code>: The bridge which is mongos router communicate with shard server.</p>
 <p><code>Mongos</code>: A mongo client agent and shell, usually install with application.
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<br />
+<br /></p>
 <p>MongoDB 主要的架構大概就是這樣，會有Shard/Configsvr/mongos</p>
 <p>一般來說Shard會存放資料，mongos是client端，負責去連接資料庫，而configsvr就是那座橋樑，讓mongos client知道該怎麼走到正確的shard去讀寫資料。</p>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<p><br />
+<br /></p>
 <h3 id="shard--configsvr-replica-set">Shard / Configsvr Replica Set</h3>
 <p><img src="https://www.simplilearn.com/ice9/free_resources_article_thumb/Replica-Sets-Members.JPG" alt="Alt text"></p>
 <p><code>Primary</code>: The controller of a Shard cluster, receive all requests to a database when writing and reading, it is the only one can be read and write node in a normal situation. Also has the responsibility to store data into a database.</p>
 <p><code>Secondary</code>: Normally secondary doesn&rsquo;t allow to receive any request, the only job is to replicate primary&rsquo;s data to store in another place. And can be promoted to a primary node when the original primary is down in unexpected or necessary. Aka Backup.</p>
 <p><code>Arbiter</code>: The main function is to allocate primary and secondary nodes, it will use &ldquo;vote&rdquo; to decide which secondary will be promoted to primary when needed. Arbiter won&rsquo;t store any data inside.</p>
 <p><code>Heartbeat</code>: No need to explain, health check.
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<br />
+<br /></p>
 <p>這是一般的 Shard Replica Set 架構，通常包含 Primary / Secondary / Arbiter.</p>
 <p>Primary 主要接收所有讀與寫的請求以及儲存資料，Secondary 一般來說不會接受任何讀寫請求，只做一件事，就是複製 Primary 的資料來儲存，以便在必要或意外時可以被提升為 Primary 節點。</p>
 <p>而 Arbiter 不會存儲任何資料，主要功用是調配 Primary and Secondary，當 Primary Down的時候，可以投票決定哪一個 Secondary 將被升級為 Primary。</p>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<p><br />
+<br /></p>
 <h3 id="this-is-the-configsvr-replica-set-structure">This is the Configsvr replica set structure.</h3>
 <p><img src="https://docs.mongodb.com/manual/_images/replica-set-primary-with-two-secondaries.bakedsvg.svg" alt="Alt text"></p>
 <p>In configsvr replica set, the only difference is no Arbiter.
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<br />
+<br />
+<br /></p>
 <hr>
 <h2 id="install-mongodb-org-30-on-amazon-linux">Install MongoDB-org 3.0 on Amazon Linux</h2>
-<p><!-- raw HTML omitted --></p>
+<p><br /></p>
 <p><code>yum</code> doesn&rsquo;t have mongodb-org inside the package pools, we have to add repo manually.</p>
 <pre><code>cat &gt;&gt; /etc/yum.repos.d/mongodb-org-3.0.repo &lt;&lt;EOF
 [mongodb-org-3.0]
@@ -320,25 +320,25 @@ gpgkey=https://www.mongodb.org/static/pgp/server-3.0.asc
 EOF
 </code></pre><p>Then
 <code>&gt; yum install mongodb-org -y</code>
-<!-- raw HTML omitted --></p>
+<br /></p>
 <p>If we wanna change to another version, just modify the value on repo file.
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<br />
+<br />
+<br /></p>
 <hr>
 <h2 id="setup-a-replica-set-of-a-complete-mongodb">Setup a Replica Set of a complete MongoDB</h2>
-<p><!-- raw HTML omitted --></p>
-<p><code>Shard</code> : 3 mongod servers, usually use <code>27018</code> port (version 3.2)<!-- raw HTML omitted -->
-<code>Configsvr</code> : 3 mongod servers, usually use <code>27019</code> port<!-- raw HTML omitted -->
-<code>mongos </code>: 1 mongo-shell, usually use <code>27017</code> mongodb default route port<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-Please use the same version, <code>mongodb-org 3.0</code> in all servers.<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<p><br /></p>
+<p><code>Shard</code> : 3 mongod servers, usually use <code>27018</code> port (version 3.2)<br />
+<code>Configsvr</code> : 3 mongod servers, usually use <code>27019</code> port<br />
+<code>mongos </code>: 1 mongo-shell, usually use <code>27017</code> mongodb default route port<br />
+<br />
+Please use the same version, <code>mongodb-org 3.0</code> in all servers.<br />
+<br />
+<br />
+<br /></p>
 <hr>
 <h2 id="shard-servers-config">Shard Servers config</h2>
-<p><!-- raw HTML omitted --></p>
+<p><br /></p>
 <p>In 3 shard servers, please use the same config file.</p>
 <p>mongod-32.conf</p>
 <pre><code>## mongod-32.conf
@@ -369,37 +369,37 @@ replication:
   replSetName: shard1
 sharding:
   clusterRole: shardsvr
-</code></pre><p><!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+</code></pre><p><br />
+<br /></p>
 <hr>
 <h2 id="start-your-mongod">Start your mongod</h2>
-<p><!-- raw HTML omitted --></p>
-<p>Use <code>service mongod start</code> or <code>mongod -f /etc/mongod.conf</code> to start mongod servers.<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<p>Feel free to use <code>ps aux | grep mongo</code> or <code>service mongod status</code> to check if your mongod really started.<!-- raw HTML omitted --></p>
-<p>If you get any issues when starting mongod, please go to <code>/var/log/mongod.log</code> to check error messages. <!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<p>** And please notice the permissions of those directories which are define in mongod.conf.<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<p><br /></p>
+<p>Use <code>service mongod start</code> or <code>mongod -f /etc/mongod.conf</code> to start mongod servers.<br />
+<br />
+<br /></p>
+<p>Feel free to use <code>ps aux | grep mongo</code> or <code>service mongod status</code> to check if your mongod really started.<br /></p>
+<p>If you get any issues when starting mongod, please go to <code>/var/log/mongod.log</code> to check error messages. <br />
+<br /></p>
+<p>** And please notice the permissions of those directories which are define in mongod.conf.<br />
+<br />
+<br />
 請使用上述啟動指令來啟動你的 mongodb，並檢查他是否真的被啟動了。如果再啟動過程出現 Failed，請到 log 目錄檢查錯誤。常常因為目錄權限問題而失敗，或者是目錄不存在。請小心檢查，若不存在請建立目錄並給予權限。
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<br />
+<br />
+<br /></p>
 <hr>
 <h2 id="setup-shard-replica-mode">Setup Shard Replica mode</h2>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<p>After mongodb is started, please use mongo-shell to configure our shard to a replica set.<!-- raw HTML omitted --></p>
-<p>Let&rsquo;s do it !!!  The commands are as following below.<!-- raw HTML omitted --></p>
+<p><br />
+<br /></p>
+<p>After mongodb is started, please use mongo-shell to configure our shard to a replica set.<br /></p>
+<p>Let&rsquo;s do it !!!  The commands are as following below.<br /></p>
 <p>shard - primary : <code>&gt; mongo localhost:27018</code></p>
 <pre><code>&gt; mongo&gt; rs.initiate()  // to enable replica mode
 &gt; mongo&gt; rs.status()  // check the replica mode if really enabled
 &gt; mongo&gt; rs.add({host: &quot;SECONDARY-IP:27018&quot;, priority: 0.5})  // add secondary to replica set
 &gt; mongo&gt; rs.addArb(&quot;ARBITER-IP:27018&quot;)  // add arbiter to replica set
-</code></pre><p><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+</code></pre><p><br />
+<br />
 Congratulations !! Shard Replica Set has already set up successfully if you see primary, secondary, arbiter when you execute <code>rs.status()</code>.</p>
 <pre><code>shard1:PRIMARY&gt; rs.status()
 {
@@ -433,15 +433,15 @@ Congratulations !! Shard Replica Set has already set up successfully if you see 
 	],
 	&quot;ok&quot; : 1
 }
-</code></pre><p><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+</code></pre><p><br />
+<br />
+<br /></p>
 <hr>
 <h2 id="set-up-a-mongos-client-agent">Set up a mongos client agent</h2>
-<p><!-- raw HTML omitted --></p>
+<p><br /></p>
 <p>Actually, mongos is equal to mongo-shell, one of a package of mongodb-org.
 So when we install mongodb-org, mongos was be installed as well.
-<!-- raw HTML omitted --></p>
+<br /></p>
 <p>mongos.conf</p>
 <pre><code>#config servers
 configdb=CONFIGSVR-IP-1,CONFIGSVR-IP-2,CONFIGSVR-IP-3
@@ -454,18 +454,18 @@ fork=true
 #override port
 port=27017
 </code></pre><p><code>&gt; mongos -f /etc/mongod.conf</code> to start mongos and keep it right there.
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<br />
+<br /></p>
 <p>we will use mongos to configure configsvr later.
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<br />
+<br />
+<br /></p>
 <hr>
 <h2 id="set-up-configsvr">Set up configsvr</h2>
-<p><!-- raw HTML omitted --></p>
-<p>The steps of installation configsvr are the same with shards.<!-- raw HTML omitted --></p>
-<p>But the config file is different, please set up as below.<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<p><br /></p>
+<p>The steps of installation configsvr are the same with shards.<br /></p>
+<p>But the config file is different, please set up as below.<br />
+<br /></p>
 <pre><code># mongod.conf
 #where to log
 logpath=/mnt/log/mongodb/mongod.log
@@ -478,11 +478,11 @@ dbpath=/mnt/mongo
 # location of pidfile
 pidfilepath=/var/run/mongodb/mongod.pid
 </code></pre><p>Please running 3 configsvr with the same config file and <code>mongod -f /etc/mongod.conf</code>.
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<br />
+<br /></p>
 <p>And go inside with mongo-shell into <code>mongos</code> which we just set up.
 <code>&gt; mongo</code> // default use 27019
-<!-- raw HTML omitted --></p>
+<br /></p>
 <p>The steps are as following:</p>
 <ol>
 <li>add shard with primary</li>
@@ -491,8 +491,8 @@ pidfilepath=/var/run/mongodb/mongod.pid
 <li>create index for collection</li>
 <li>enable sharding</li>
 <li>shard collection
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></li>
+<br />
+<br /></li>
 </ol>
 <p>In mongos</p>
 <pre><code>mongo&gt; sh.addShard(&quot;shard1/PRIMARY-SHARD-IP:27018&quot;)   //add one of shard servers, then others will be add automatically
@@ -503,140 +503,141 @@ mongo&gt; db.users.ensureIndex({_id: 1}, {background: true})
 mongo&gt; sh.enableSharding(&quot;test.users&quot;)   //&quot;test.users&quot; = &quot;&lt;database&gt;.&lt;collection&gt;&quot;
 mongo&gt; sh.shardCollection(&quot;test.users&quot;, {_id: &quot;hashed&quot;})   //use hashed to shard collection
 mongo&gt; sh.status()   //to check if sharding enabled
-</code></pre><p><!-- raw HTML omitted --></p>
+</code></pre><p><br /></p>
 <p>Then <code>mongo&gt; db.users.find()</code> to find data if exist
 And please insert another data to test whether succeed.
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<br />
+<br />
+<br /></p>
 <hr>
 <h2 id="upgrade-mongodb-from-30-to-32">Upgrade MongoDB from 3.0 to 3.2</h2>
-<p>If wanna upgrade configsvr to 3.2, we have some notes to be remember.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<p>3.0 and 3.2 use different <code>storage engine</code><!-- raw HTML omitted -->
-3.0 -&gt; MMAPv1<!-- raw HTML omitted -->
-3.2 -&gt; wiredTiger<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-Cluster mode and Replica set<!-- raw HTML omitted -->
-3.0 -&gt; cluster mode, sccc<!-- raw HTML omitted -->
-3.2 -&gt; replica set, csrs<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<p>So, the step is as following below.<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<p>If wanna upgrade configsvr to 3.2, we have some notes to be remember.<br /><br /></p>
+<p>3.0 and 3.2 use different <code>storage engine</code><br />
+3.0 -&gt; MMAPv1<br />
+3.2 -&gt; wiredTiger<br />
+<br />
+<br />
+Cluster mode and Replica set<br />
+3.0 -&gt; cluster mode, sccc<br />
+3.2 -&gt; replica set, csrs<br />
+<br />
+<br /></p>
+<p>So, the step is as following below.<br />
+<br /></p>
 <p>a. disable balancer with <code>sh.stopBalancer()</code> and change one of three 3.0 configsvr version to 3.2 and set <code>configsvrMode: sccc</code> and <code>storage engine: mmapv1</code>
-<!-- raw HTML omitted --></p>
-<p>=&gt; now 3 configsvr, one for 3.2 and two for 3.0<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<p>b. use mongo-shell into 3.2 that one to initiate rs mode. <code>rs.initiate()</code><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-=&gt; waiting for the data synced to 3.2 that one.<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<p>c. launch another 3 configsvr with 3.2 mongod and start with <code>wiredTiger</code> storagr engine.<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<p>d. go into the <code>mmapv1</code> that one and <code>rs.add(&quot;config1/IP&quot;)</code> to add those 3 new servers.<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-=&gt; now we have four 3.2 configsvr and two 3.0.<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<p>e. <code>rs.stepDown()</code> in <code>mmapv1</code> that 3.2 one and primary node will change to another server.<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<p>f. go to new primary and <code>rs.remove(&quot;NNAPv1-OLD-PRIMARY&quot;)</code> and enable balancer back with <code>rs.enableBalancer()</code><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<p>g. shut down old two 3.0 configsvr<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<p>h. using 3.2 mongos to connect to new replica set configsvr and check status.<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<br /></p>
+<p>=&gt; now 3 configsvr, one for 3.2 and two for 3.0<br />
+<br />
+<br /></p>
+<p>b. use mongo-shell into 3.2 that one to initiate rs mode. <code>rs.initiate()</code><br />
+<br />
+=&gt; waiting for the data synced to 3.2 that one.<br />
+<br />
+<br /></p>
+<p>c. launch another 3 configsvr with 3.2 mongod and start with <code>wiredTiger</code> storagr engine.<br />
+<br />
+<br /></p>
+<p>d. go into the <code>mmapv1</code> that one and <code>rs.add(&quot;config1/IP&quot;)</code> to add those 3 new servers.<br />
+<br />
+=&gt; now we have four 3.2 configsvr and two 3.0.<br />
+<br />
+<br /></p>
+<p>e. <code>rs.stepDown()</code> in <code>mmapv1</code> that 3.2 one and primary node will change to another server.<br />
+<br />
+<br /></p>
+<p>f. go to new primary and <code>rs.remove(&quot;NNAPv1-OLD-PRIMARY&quot;)</code> and enable balancer back with <code>rs.enableBalancer()</code><br />
+<br />
+<br /></p>
+<p>g. shut down old two 3.0 configsvr<br />
+<br />
+<br /></p>
+<p>h. using 3.2 mongos to connect to new replica set configsvr and check status.<br />
+<br />
+<br />
+<br /></p>
 <hr>
 <h2 id="the-errors-i-encountered-when-upgrading-to-32">The Errors I Encountered when Upgrading to 3.2</h2>
-<p><!-- raw HTML omitted --></p>
-<p>a. <code>Can 3.0 mongos connect to 3.2 configsvr ?</code><!-- raw HTML omitted -->
-Absolutely not, 3.0 doesn&rsquo;t support replica mode<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-mongos 3.0 是不允許連接到 3.2 或以上版本的 configsvr的。<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<p>b. <code>&quot;setShardVersion failed&quot; when mongos configDB endpoint has been changed</code><!-- raw HTML omitted --></p>
+<p><br /></p>
+<p>a. <code>Can 3.0 mongos connect to 3.2 configsvr ?</code><br />
+Absolutely not, 3.0 doesn&rsquo;t support replica mode<br />
+<br />
+mongos 3.0 是不允許連接到 3.2 或以上版本的 configsvr的。<br />
+<br />
+<br /></p>
+<p>b. <code>&quot;setShardVersion failed&quot; when mongos configDB endpoint has been changed</code><br /></p>
 <pre><code>mongos&gt; db.users.find()
 Error: error: {
     &quot;$err&quot; : &quot;setShardVersion failed shard: shard1:shard1/ip-10-0-0-122:27018,ip-10-0-0-166:27018 { configdb: { stored: \&quot;10.0.0.45:27019,10.0.0.45:27020,10.0.0.45:27021\&quot;, given: \&quot;ip-10-0-0-45:27019,ip-10-0-0-45:27020,ip-10-0-0-45:27021\&quot; }, ok: 0.0, errmsg: \&quot;mongos specified a different config database string : stored : 10.0.0.45:27019,10.0.0.45:27020,10.0.0.45:27021 vs given : ip-10-0-0-45:27019,ip-10-0-0...\&quot;, $gleStats: { lastOpTime: Timestamp 0|0, electionId: ObjectId('5bffb069a4b240083f2691cb') } }&quot;,
     &quot;code&quot; : 10429,
     &quot;shard&quot; : &quot;shard1&quot;
 }
-</code></pre><p><!-- raw HTML omitted -->
-cause the shard servers will cache mongos <code>configDB string</code>.<!-- raw HTML omitted -->
-If you wanna solve this issue, just <code>restart shard servers</code> then everything works well.<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-因為 shard server 會 cache mongos 的 configDB string，所以如果遇到這個問題，重啟 Shard servers 就可以解決了。（記得先 StepDown Primary 再重啟）<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<p>c. <code>Can 3.0 configsvr connect to 3.2 or 3.4up shard servers ?</code><!-- raw HTML omitted -->
-Absolutely the answer is NO.<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-3.0 的 configsvr 是不能連接到 3.0 以上版本的 Shard Server 的，因為不支援 Replica Mode。<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<p>d. <code>How to separate data to two shards equally ?</code><!-- raw HTML omitted -->
-when <code>shardCollection()</code>, please use &ldquo;hashed&rdquo; on index, then will be equally separated.<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-使用 hashed 雜湊就能使資料平均分配在不同的 Shard Server。<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<p>e. <code>Can 3.0 mongod upgrade to 3.4 and skip 3.2 directly ?</code><!-- raw HTML omitted -->
-Sorry, the answer is NO, you must to upgrade to 3.2 first then go to 3.4.<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-mongodb 不允許跳版本升級，3.0 只允許升級到 3.2 再到 3.4。<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<p>f. <code>How to STOP a shard server safely ?</code><!-- raw HTML omitted -->
-Please use <code>rs.stepDown(120)</code> and <code>db.shutdownServer()</code> in mongo-shell.<!-- raw HTML omitted -->
-Then exit mongo-shell and stop or kill mongod process.<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-使用正確的指令停止一台 mongodb server。<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<p>g. <code>How to change priority on Shard server ?</code><!-- raw HTML omitted -->
+</code></pre><p><br />
+cause the shard servers will cache mongos <code>configDB string</code>.<br />
+If you wanna solve this issue, just <code>restart shard servers</code> then everything works well.<br />
+<br />
+因為 shard server 會 cache mongos 的 configDB string，所以如果遇到這個問題，重啟 Shard servers 就可以解決了。（記得先 StepDown Primary 再重啟）<br />
+<br />
+<br /></p>
+<p>c. <code>Can 3.0 configsvr connect to 3.2 or 3.4up shard servers ?</code><br />
+Absolutely the answer is NO.<br />
+<br />
+3.0 的 configsvr 是不能連接到 3.0 以上版本的 Shard Server 的，因為不支援 Replica Mode。<br />
+<br />
+<br /></p>
+<p>d. <code>How to separate data to two shards equally ?</code><br />
+when <code>shardCollection()</code>, please use &ldquo;hashed&rdquo; on index, then will be equally separated.<br />
+<br />
+使用 hashed 雜湊就能使資料平均分配在不同的 Shard Server。<br />
+<br />
+<br /></p>
+<p>e. <code>Can 3.0 mongod upgrade to 3.4 and skip 3.2 directly ?</code><br />
+Sorry, the answer is NO, you must to upgrade to 3.2 first then go to 3.4.<br />
+<br />
+mongodb 不允許跳版本升級，3.0 只允許升級到 3.2 再到 3.4。<br />
+<br />
+<br /></p>
+<p>f. <code>How to STOP a shard server safely ?</code><br />
+Please use <code>rs.stepDown(120)</code> and <code>db.shutdownServer()</code> in mongo-shell.<br />
+Then exit mongo-shell and stop or kill mongod process.<br />
+<br />
+使用正確的指令停止一台 mongodb server。<br />
+<br />
+<br /></p>
+<p>g. <code>How to change priority on Shard server ?</code><br />
 <code>var cfg = rs.conf() cfg.members[ID].priority = 0.5 rs.reconfig(cfg)</code>
 // The ID can use <code>rs.status()</code> to lookup
-<!-- raw HTML omitted -->
-使用上列指令去更改 mongodb 的優先度。<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<p>h. <code>How to failover the primary temporary ?</code><!-- raw HTML omitted -->
+<br />
+使用上列指令去更改 mongodb 的優先度。<br />
+<br />
+<br /></p>
+<p>h. <code>How to failover the primary temporary ?</code><br />
 <code>rs.stepDown(120)</code> on Primary node // The 120 is the Time by second
-Then it will auto failover to another node.<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-暫時的停止一台 Shard Server 的運作，也可以運來測試主副節點切換是否正常運作。<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+Then it will auto failover to another node.<br />
+<br />
+暫時的停止一台 Shard Server 的運作，也可以運來測試主副節點切換是否正常運作。<br />
+<br />
+<br /></p>
 <hr>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<p>以上就寫到這裡了，如果遇到其他的問題歡迎在下面留言或來信發問。<!-- raw HTML omitted -->
-對於過程也歡迎提出意見，謝謝。<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<p>Feel free to mail me or leave some commemts if you have any questions.<!-- raw HTML omitted -->
-I will reply all questions if I can help. <!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<p><br />
+<br /></p>
+<p>以上就寫到這裡了，如果遇到其他的問題歡迎在下面留言或來信發問。<br />
+對於過程也歡迎提出意見，謝謝。<br />
+<br />
+<br /></p>
+<p>Feel free to mail me or leave some commemts if you have any questions.<br />
+I will reply all questions if I can help. <br />
+<br />
+<br />
+<br />
 Thanks for reading.</p>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<p><br />
+<br />
+<br /></p>
+<div style="text-align: right;">
+2018-12-01 04:05 , David in Taipei</div>
+<p><br />
+<br />
+<br /></p>
 
   </div>
   <footer>
@@ -748,7 +749,7 @@ Thanks for reading.</p>
           
           <li>
             
-              <a href="/categories/%E7%B3%BB%E7%B5%B1%E5%BB%BA%E7%BD%AE/">系統建置<span class="count">9</span></a>
+              <a href="/categories/%E7%B3%BB%E7%B5%B1%E5%BB%BA%E7%BD%AE/">系統建置<span class="count">8</span></a>
             
           
           <li>
@@ -768,12 +769,12 @@ Thanks for reading.</p>
           
           <li>
             
-              <a href="/categories/terraform/">terraform<span class="count">3</span></a>
+              <a href="/categories/kubernetes/">kubernetes<span class="count">2</span></a>
             
           
           <li>
             
-              <a href="/categories/kubernetes/">kubernetes<span class="count">2</span></a>
+              <a href="/categories/terraform/">terraform<span class="count">2</span></a>
             
           
           <li>

@@ -7,22 +7,94 @@
 
 
 <meta name="generator" content="Hugo 0.71.1" /><meta itemprop="name" content="SQL Server 無固定IP架設教學(使用DDNS)">
-<meta itemprop="description" content="">
+<meta itemprop="description" content="以SQL Server 2008 及no-ip為範例
+1.上no-ip註冊一個帳號
+&nbsp; &nbsp;&nbsp;http://www.noip.com/
+2.下載no-ip桌面管理程式,並讓他開機自動啟動
+&nbsp; &nbsp; &nbsp;如此一來,他就會自動偵測當前IP
+3.稍微講解一下網路架構
+&nbsp; &nbsp; &nbsp;家用網路線在最常見的都是使用中華的數據機&#43;無線AP
+&nbsp; &nbsp; &nbsp;而這種架構基本上就是中華給你一個實體對外IP,這是那台數據機的IP
+&nbsp; &nbsp; &nbsp;然後數據機建立一個內網,使用192.168.X.X分配IP給家裡免一個使用者
+&nbsp; &nbsp; &nbsp;這種IP是虛擬的,所以對我們要架設伺服器一點幫助也沒有
+&nbsp; &nbsp; &nbsp;你需要做的事就是進到數據機的管理模式
+&nbsp; &nbsp; &nbsp;將router mode 切換成 bridge mode
+&nbsp; &nbsp; &nbsp;如此一來,每一來電腦就會直接拿到實體IP,而不是192.168.X.X
+&nbsp; &nbsp; &nbsp;這樣的作法就是將你的IP暴露在外,方便架設伺服器
+&nbsp; &nbsp; &nbsp;當然,也方便駭客入侵,但是資安不再本篇的討論重點,所以先帶過.
+&nbsp; &nbsp; 如果說你的AP無法切換到bridge mode,或是你很懶,請直接去刷dd-wrt !
+&nbsp; &nbsp;&nbsp;http://www.dd-wrt.com/site/index
+4.然後安裝SQL server 2008
+&nbsp; &nbsp;安裝步驟就先帶過,如果有任何問題我之後會再開一板教學
+5.測試連線伺服器名稱請打 你的no-ip\SQLEXPRESS,應該就可以了
+此篇的重點就是使用DDNS來取代浮動IP的困擾
+那如果SQL無法連接請檢查:
+1.進到SQL 組態設定,查看SQL Server以及SQL Server Browser是否開啟及正常運作
+2.進到SQL組態設定,查看TCP/IP 及具名管道 以及 Share memory是否為開啟狀態
+&nbsp; &nbsp; 這邊開啟的用意就是讓外面的人可以連進來,因為SQL預設是不開放的">
 <meta itemprop="datePublished" content="2015-07-31T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2015-07-31T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="0">
+<meta itemprop="wordCount" content="76">
 
 
 
 <meta itemprop="keywords" content="SQL,DDNS,no-ip,dd-wrt," /><meta property="og:title" content="SQL Server 無固定IP架設教學(使用DDNS)" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="以SQL Server 2008 及no-ip為範例
+1.上no-ip註冊一個帳號
+&nbsp; &nbsp;&nbsp;http://www.noip.com/
+2.下載no-ip桌面管理程式,並讓他開機自動啟動
+&nbsp; &nbsp; &nbsp;如此一來,他就會自動偵測當前IP
+3.稍微講解一下網路架構
+&nbsp; &nbsp; &nbsp;家用網路線在最常見的都是使用中華的數據機&#43;無線AP
+&nbsp; &nbsp; &nbsp;而這種架構基本上就是中華給你一個實體對外IP,這是那台數據機的IP
+&nbsp; &nbsp; &nbsp;然後數據機建立一個內網,使用192.168.X.X分配IP給家裡免一個使用者
+&nbsp; &nbsp; &nbsp;這種IP是虛擬的,所以對我們要架設伺服器一點幫助也沒有
+&nbsp; &nbsp; &nbsp;你需要做的事就是進到數據機的管理模式
+&nbsp; &nbsp; &nbsp;將router mode 切換成 bridge mode
+&nbsp; &nbsp; &nbsp;如此一來,每一來電腦就會直接拿到實體IP,而不是192.168.X.X
+&nbsp; &nbsp; &nbsp;這樣的作法就是將你的IP暴露在外,方便架設伺服器
+&nbsp; &nbsp; &nbsp;當然,也方便駭客入侵,但是資安不再本篇的討論重點,所以先帶過.
+&nbsp; &nbsp; 如果說你的AP無法切換到bridge mode,或是你很懶,請直接去刷dd-wrt !
+&nbsp; &nbsp;&nbsp;http://www.dd-wrt.com/site/index
+4.然後安裝SQL server 2008
+&nbsp; &nbsp;安裝步驟就先帶過,如果有任何問題我之後會再開一板教學
+5.測試連線伺服器名稱請打 你的no-ip\SQLEXPRESS,應該就可以了
+此篇的重點就是使用DDNS來取代浮動IP的困擾
+那如果SQL無法連接請檢查:
+1.進到SQL 組態設定,查看SQL Server以及SQL Server Browser是否開啟及正常運作
+2.進到SQL組態設定,查看TCP/IP 及具名管道 以及 Share memory是否為開啟狀態
+&nbsp; &nbsp; 這邊開啟的用意就是讓外面的人可以連進來,因為SQL預設是不開放的" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/blog/2015-07-31-ddns/" />
 <meta property="article:published_time" content="2015-07-31T00:00:00+00:00" />
 <meta property="article:modified_time" content="2015-07-31T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="SQL Server 無固定IP架設教學(使用DDNS)"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:description" content="以SQL Server 2008 及no-ip為範例
+1.上no-ip註冊一個帳號
+&nbsp; &nbsp;&nbsp;http://www.noip.com/
+2.下載no-ip桌面管理程式,並讓他開機自動啟動
+&nbsp; &nbsp; &nbsp;如此一來,他就會自動偵測當前IP
+3.稍微講解一下網路架構
+&nbsp; &nbsp; &nbsp;家用網路線在最常見的都是使用中華的數據機&#43;無線AP
+&nbsp; &nbsp; &nbsp;而這種架構基本上就是中華給你一個實體對外IP,這是那台數據機的IP
+&nbsp; &nbsp; &nbsp;然後數據機建立一個內網,使用192.168.X.X分配IP給家裡免一個使用者
+&nbsp; &nbsp; &nbsp;這種IP是虛擬的,所以對我們要架設伺服器一點幫助也沒有
+&nbsp; &nbsp; &nbsp;你需要做的事就是進到數據機的管理模式
+&nbsp; &nbsp; &nbsp;將router mode 切換成 bridge mode
+&nbsp; &nbsp; &nbsp;如此一來,每一來電腦就會直接拿到實體IP,而不是192.168.X.X
+&nbsp; &nbsp; &nbsp;這樣的作法就是將你的IP暴露在外,方便架設伺服器
+&nbsp; &nbsp; &nbsp;當然,也方便駭客入侵,但是資安不再本篇的討論重點,所以先帶過.
+&nbsp; &nbsp; 如果說你的AP無法切換到bridge mode,或是你很懶,請直接去刷dd-wrt !
+&nbsp; &nbsp;&nbsp;http://www.dd-wrt.com/site/index
+4.然後安裝SQL server 2008
+&nbsp; &nbsp;安裝步驟就先帶過,如果有任何問題我之後會再開一板教學
+5.測試連線伺服器名稱請打 你的no-ip\SQLEXPRESS,應該就可以了
+此篇的重點就是使用DDNS來取代浮動IP的困擾
+那如果SQL無法連接請檢查:
+1.進到SQL 組態設定,查看SQL Server以及SQL Server Browser是否開啟及正常運作
+2.進到SQL組態設定,查看TCP/IP 及具名管道 以及 Share memory是否為開啟狀態
+&nbsp; &nbsp; 這邊開啟的用意就是讓外面的人可以連進來,因為SQL預設是不開放的"/>
 <link rel="stylesheet" href="/css/bundle.min.6ab239962d2e4937efcc3cde86a5695ca40f284288bacfaa8cef98e3c2a87cf7.css" integrity="sha256-arI5li0uSTfvzDzehqVpXKQPKEKIus&#43;qjO&#43;Y48KofPc="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
@@ -236,7 +308,48 @@
   
 
   <div class="content">
-    <!-- raw HTML omitted -->
+    <div class='post-body entry-content' id='post-body-1525287509922689066' itemprop='description articleBody'>
+以SQL Server 2008 及no-ip為範例<br />
+<br />
+1.上no-ip註冊一個帳號<br />
+&nbsp; &nbsp;&nbsp;h<a href="ttp://www.noip.com/">ttp://www.noip.com/</a><br />
+<br />
+2.下載no-ip桌面管理程式,並讓他開機自動啟動<br />
+&nbsp; &nbsp; &nbsp;如此一來,他就會自動偵測當前IP<br />
+<br />
+3.稍微講解一下網路架構<br />
+&nbsp; &nbsp; &nbsp;家用網路線在最常見的都是使用中華的數據機+無線AP<br />
+&nbsp; &nbsp; &nbsp;而這種架構基本上就是中華給你一個實體對外IP,這是那台數據機的IP<br />
+&nbsp; &nbsp; &nbsp;然後數據機建立一個內網,使用192.168.X.X分配IP給家裡免一個使用者<br />
+&nbsp; &nbsp; &nbsp;這種IP是虛擬的,所以對我們要架設伺服器一點幫助也沒有<br />
+&nbsp; &nbsp; &nbsp;你需要做的事就是進到數據機的管理模式<br />
+&nbsp; &nbsp; &nbsp;將router mode 切換成 bridge mode<br />
+&nbsp; &nbsp; &nbsp;如此一來,每一來電腦就會直接拿到實體IP,而不是192.168.X.X<br />
+&nbsp; &nbsp; &nbsp;這樣的作法就是將你的IP暴露在外,方便架設伺服器<br />
+&nbsp; &nbsp; &nbsp;當然,也方便駭客入侵,但是資安不再本篇的討論重點,所以先帶過.<br />
+<br />
+&nbsp; &nbsp; 如果說你的AP無法切換到bridge mode,或是你很懶,請直接去刷dd-wrt !<br />
+&nbsp; &nbsp;<a href="http://www.dd-wrt.com/site/index"> &nbsp;http://www.dd-wrt.com/site/index</a><br />
+<br />
+4.然後安裝SQL server 2008<br />
+&nbsp; &nbsp;安裝步驟就先帶過,如果有任何問題我之後會再開一板教學<br />
+<br />
+5.測試連線伺服器名稱請打 你的no-ip\SQLEXPRESS,應該就可以了<br />
+<br />
+此篇的重點就是使用DDNS來取代浮動IP的困擾<br />
+<br />
+那如果SQL無法連接請檢查:<br />
+<br />
+1.進到SQL 組態設定,查看SQL Server以及SQL Server Browser是否開啟及正常運作<br />
+<br />
+2.進到SQL組態設定,查看TCP/IP 及具名管道 以及 Share memory是否為開啟狀態<br />
+&nbsp; &nbsp; 這邊開啟的用意就是讓外面的人可以連進來,因為SQL預設是不開放的<br />
+<br />
+3.檢查防火牆是否有設定讓1433 port 通過,如果不會設定就先把防火牆全關試試看<br />
+<br />
+4.如果是找不到伺服器,請開cmd,ping一下你的ddns看看是否正常運作
+<div style='clear: both;'></div>
+</div>
 
   </div>
   <footer>
@@ -358,7 +471,7 @@
           
           <li>
             
-              <a href="/categories/%E7%B3%BB%E7%B5%B1%E5%BB%BA%E7%BD%AE/">系統建置<span class="count">9</span></a>
+              <a href="/categories/%E7%B3%BB%E7%B5%B1%E5%BB%BA%E7%BD%AE/">系統建置<span class="count">8</span></a>
             
           
           <li>
@@ -378,12 +491,12 @@
           
           <li>
             
-              <a href="/categories/terraform/">terraform<span class="count">3</span></a>
+              <a href="/categories/kubernetes/">kubernetes<span class="count">2</span></a>
             
           
           <li>
             
-              <a href="/categories/kubernetes/">kubernetes<span class="count">2</span></a>
+              <a href="/categories/terraform/">terraform<span class="count">2</span></a>
             
           
           <li>

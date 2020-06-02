@@ -249,8 +249,8 @@
 
   <div class="content">
     <p>This is the full map of EKS and we&rsquo;ll go through how to install EKS and plugins in this post, as well as the troubles I got. Let&rsquo;s go!
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<br />
+<br /></p>
 <h2 id="quick-start-an-eks-with-add-ons">Quick Start an EKS with ADD-ONs</h2>
 <hr>
 <pre><code>git clone https://github.com/davidh83110/eks-quickstart
@@ -259,9 +259,9 @@ cd ansible-playbooks
 ansible-playbook ./
 </code></pre><p>You will get an <code>EKS cluster</code> and <code>Node Group</code>, also has
 <code>metrics-server</code> / <code>k8s-dashboard</code> / <code>ALB-Ingress controller</code> / <code>Cluster-Autoscaler (CA)</code> / <code>Prometheus</code> / <code>Grafana</code> / <code>Weave</code>.</p>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<p><br />
+<br />
+<br /></p>
 <h2 id="pre-create-cluster">Pre-Create Cluster</h2>
 <hr>
 <p><strong>What EKS Cluster needs:</strong></p>
@@ -271,7 +271,7 @@ ansible-playbook ./
 <li>Additional Security Groups</li>
 <li>Endpoint Access</li>
 <li>Secrets Encryption
-<!-- raw HTML omitted --></li>
+<br /></li>
 </ul>
 <p>最容易有疑問的大概是上述這幾個參數了，一一詳細記錄下來，其他沒有寫的應該都能很輕易的選擇。</p>
 <ul>
@@ -319,9 +319,9 @@ For instance: 如果你希望要開VPN才可以使用，你就只需要勾選<co
 如果要修改或新增 IAM User/Roles, 可以再去編輯這個 ConfigMap 就好。</p>
 </li>
 </ul>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<p><br />
+<br />
+<br /></p>
 <h2 id="what-else-do-i-need-to-do-after-create-an-eks-cluster-">What else do I need to do after create an EKS cluster ?</h2>
 <hr>
 <p>先進到EKS Console, 來看看有什麼相關資訊。 以下列舉幾個比較可能有疑問的。</p>
@@ -351,7 +351,7 @@ Fargate with EKS是沒有Node(worker)的概念的。就像ECS沒有ECS Instance�
 所以這邊會去指定Fargate所在的Subnets和Role，提供給Pod在上面跑的資訊而已。</p>
 </li>
 </ul>
-<p><!-- raw HTML omitted --></p>
+<p><br /></p>
 <blockquote>
 <p>比較值得說的是Fargate的使用模式</p>
 <p>Fargate with EKS是有限制的，請以Serverless的角度來思考。</p>
@@ -364,9 +364,9 @@ Fargate with EKS是沒有Node(worker)的概念的。就像ECS沒有ECS Instance�
 </ul>
 </blockquote>
 <p><a href="https://aws.amazon.com/blogs/aws/amazon-eks-on-aws-fargate-now-generally-available/">More Information: AWS Blog - Fargate with EKS</a></p>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<p><br />
+<br />
+<br /></p>
 <h2 id="第一件要做的事---tagging">第一件要做的事 - TAGGING</h2>
 <hr>
 <p>由於EKS繼承了Kops的模式，大量使用Tags來控制EKS的相關資源，也很容易被忽略，一定要做好這部分的控制。</p>
@@ -375,7 +375,7 @@ Fargate with EKS是沒有Node(worker)的概念的。就像ECS沒有ECS Instance�
 <code>shared</code> 顧名思義就是共用subnet。</p>
 <p><code>elb</code> OR <code>internal-elb</code> 這個分別要Tag在Public &amp; Private Subnet上面，讓EKS知道他們是什麼類型的子網，
 這樣ALB-Ingress才能根據Tag放到正確的子網。</p>
-<p><!-- raw HTML omitted --></p>
+<p><br /></p>
 <p>需要被Tag的有以下資源：</p>
 <ul>
 <li><strong>Public Subnets</strong></li>
@@ -394,9 +394,9 @@ kubernetes.io/role/internal-elb = 1
 這些理論上EKS會自動去檢查，然後幫我們tag上去，不要手賤去刪都行。
 而我相信EKS也是往這個方向努力，之後會自己幫我們檢查TAG並自動做掉這部分，讓我們拭目以待。</li>
 </ul>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<p><br />
+<br />
+<br /></p>
 <h2 id="create-nodes">Create Nodes</h2>
 <hr>
 <p>建立Nodes有兩種方式</p>
@@ -407,7 +407,7 @@ kubernetes.io/role/internal-elb = 1
 <p>過去通常都要自行註冊與建立ASG, 是有點麻煩。 現在可以使用Node Group來幫我們<code>半代管</code>這個Nodes.</p>
 <p>為什麼是<code>半代管</code>？</p>
 <pre><code>當Node Group出現註冊問題或是有錯誤時，你還是得要進去這台機器手動排除錯誤。
-</code></pre><p><!-- raw HTML omitted --></p>
+</code></pre><p><br /></p>
 <h4 id="建立node-group的注意事項"><strong>建立Node Group的注意事項</strong></h4>
 <ul>
 <li>
@@ -439,17 +439,17 @@ Attach 3 Policies:</p>
 這邊指的是 <code>Node Group的TAG, 不是Instance的TAG</code></p>
 </li>
 </ul>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<p><br />
+<br />
+<br /></p>
 <h2 id="kubectl">Kubectl</h2>
 <hr>
 <p>做完以上那些大概要花10-20min去跑，跑完都是 <code>Active</code> 的狀態差不多就完成了。</p>
 <p>接下來我們實際 Access 這個 cluster 看看。</p>
-<p><!-- raw HTML omitted --></p>
+<p><br /></p>
 <p>首先，需要安裝 <code>kubectl</code>. (自行安裝)</p>
 <p>然後需要建立相對應的 <code>kubeconfig</code>, EKS 會使用 <code>aws-iam-authenticator</code> 來幫我們完成這部分。</p>
-<p><!-- raw HTML omitted --></p>
+<p><br /></p>
 <p>過程如下：</p>
 <pre><code>➜  ~ aws eks --region ${REGION} update-kubeconfig --name ${CLUSTER_NAME}                                                                                                                                                           &lt;aws:dev&gt;
 Updated context arn:aws:eks:ap-northeast-1:34323434:cluster/development in /Users/davidhsu/.kube/config
@@ -462,32 +462,32 @@ ip-10-10-12-203.ap-northeast-1.compute.internal   Ready    &lt;none&gt;   126m  
 </code></pre><p><a href="https://docs.aws.amazon.com/zh_tw/eks/latest/userguide/create-kubeconfig.html">Reference Official Documentation - EKS kubeconfig</a></p>
 <hr>
 <p>到這裡這個 EKS Cluster 就算是完成囉，但是還需要一些額外設定跟 Add-ons 的安裝。</p>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<p><br />
+<br />
+<br /></p>
 <h2 id="add-ons-of-eks">ADD-ONs of EKS</h2>
 <hr>
 <p>這邊詳列要裝的 Add-ons 並附上官方的資料來源（官方怎不幫我裝一裝就好？）</p>
-<p><!-- raw HTML omitted --></p>
+<p><br /></p>
 <ul>
 <li><strong>Metrics-Server</strong><br>
 收集 kubernetes cluster 內各項指標，以便提供給 Prometheus/K8s Dashboard 收集使用，或做圖表的呈現。</li>
 </ul>
 <p><a href="https://docs.aws.amazon.com/zh_tw/eks/latest/userguide/metrics-server.html">安裝 Kubernetes 指標伺服器</a></p>
-<p><!-- raw HTML omitted --></p>
+<p><br /></p>
 <ul>
 <li><strong>Kubernetes Dashboard</strong><br>
 Kubernetes Web UI, 提供視覺化的操作以及資源的監控，必須要先建立 <code>eks-admin</code> 這個 ServiceAccount。</li>
 </ul>
 <p><a href="https://docs.aws.amazon.com/zh_tw/eks/latest/userguide/dashboard-tutorial.html">部署 Kubernetes Web UI (儀表板)</a></p>
-<p><!-- raw HTML omitted --></p>
+<p><br /></p>
 <ul>
 <li><strong>Cluster Autoscaler (CA)</strong><br>
 用來自動擴展 Node 數量的套件，當有資源需要 Node 而 Node 不夠的時候會自動加開新的 Nodes。</li>
 </ul>
 <p>和 <code>ASG</code> 是連動的，會自動調整 Desired &amp; Minimum Count，但是受到 Maximum 的限制，也就是說自動成長到定義的 Maximum 之後就不會再長了。</p>
 <p><a href="https://docs.aws.amazon.com/zh_tw/eks/latest/userguide/cluster-autoscaler.html">EKS - Cluster Autoscaler</a></p>
-<p><!-- raw HTML omitted --></p>
+<p><br /></p>
 <ul>
 <li><strong>ALB Ingress Controller</strong><br>
 與ALB連接的Ingress Controller，可以直接在 ingress yaml 裡直接定義 ALB 的參數。</li>
@@ -497,19 +497,19 @@ Kubernetes Web UI, 提供視覺化的操作以及資源的監控，必須要先�
 <pre><code>alb.ingress.kubernetes.io/security-group-inbound-cidrs: 61.67.11.22/32
 </code></pre><p><a href="https://docs.aws.amazon.com/zh_tw/eks/latest/userguide/alb-ingress.html">Amazon EKS 上的 ALB 傳入控制器</a><br>
 <a href="https://github.com/kubernetes-sigs/aws-alb-ingress-controller/issues/691">ALB Ingress Security Group&rsquo;s Issue</a></p>
-<p><!-- raw HTML omitted --></p>
+<p><br /></p>
 <ul>
 <li><strong>Prometheus</strong></li>
 </ul>
 <p><a href="https://docs.aws.amazon.com/zh_tw/eks/latest/userguide/prometheus.html">控制平面指標與 Prometheus</a></p>
-<p><!-- raw HTML omitted --></p>
+<p><br /></p>
 <ul>
 <li><strong>Grafana</strong></li>
 </ul>
 <p><a href="https://eksworkshop.com/intermediate/240_monitoring/deploy-grafana/">EKS Workshop - DEPLOY GRAFANA</a></p>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<p><br />
+<br />
+<br /></p>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <hr>
 <blockquote>
@@ -530,10 +530,10 @@ so what you need to check is the resources about VPC and Subnets.</p>
 <li>VPC DNS Hostname <code>enabled</code></li>
 <li>VPC DNS Support <code>enabled</code></li>
 </ul>
-<p><!-- raw HTML omitted -->
+<p><br />
 Also, you can use <code>journalctl -u kubelet</code> on nodes to check the logs.</p>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<p><br />
+<br /></p>
 <blockquote>
 <p><strong>Q: error: You must be logged in to the server (Unauthorized)</strong></p>
 </blockquote>
@@ -547,8 +547,8 @@ Also, you can use <code>journalctl -u kubelet</code> on nodes to check the logs.
 </code></pre><p>Then rerun the kubeconfig setup.</p>
 <pre><code>- $ aws eks --region ap-northeast-1 update-kubeconfig --name test-cluster                                                                                                                                                           &lt;aws:dev&gt;
 Updated context arn:aws:eks:ap-northeast-1:000012345:cluster/test-cluster in /Users/davidhsu/.kube/config
-</code></pre><p><!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+</code></pre><p><br />
+<br /></p>
 <blockquote>
 <p><strong>Q: Security Group on EKS Control Plane?</strong></p>
 </blockquote>
@@ -560,15 +560,15 @@ Updated context arn:aws:eks:ap-northeast-1:000012345:cluster/test-cluster in /Us
 <p>When we are creating some AWS resources such as ALB-Ingress&rsquo;s SG,
 it will be automatically added to Master managed SG, so we don&rsquo;t have to worry about it.</p>
 <p>Additional SG is for other source you trust, you can add them to the SG so that they can access the EKS Master as well.</p>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<p><br />
+<br /></p>
 <blockquote>
 <p><strong>Q: API server endpoint access?</strong></p>
 </blockquote>
 <p>A: If you are using <code>private access</code> for the connectivity between nodes and master,<br>
 then you must <code>enable VPC DNS hostname and support</code>. Otherwise, it will still go with public route.</p>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<p><br />
+<br /></p>
 <blockquote>
 <p><strong>Q: Fargate with EKS</strong></p>
 </blockquote>
@@ -576,8 +576,8 @@ then you must <code>enable VPC DNS hostname and support</code>. Otherwise, it wi
 <p>It doesn&rsquo;t support <code>daemonset</code> / <code>statefulset</code> / <code>EFS</code>.<br>
 Only <code>10G</code> volume can be used per Fargate; and the maximum of vCPU and Memory are 4vCPU and 30G RAM.</p>
 <p>To use Fargate on EKS, you need to create <code>Fargate Profile</code> first.</p>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<p><br />
+<br /></p>
 <blockquote>
 <p><strong>Q: Can I specify Security Group for ALB-Ingress?</strong></p>
 </blockquote>
@@ -595,8 +595,8 @@ metadata:
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/security-group-inbound-cidrs: 61.220.65.15/32
 ...(skip)
-</code></pre><p><!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+</code></pre><p><br />
+<br /></p>
 <blockquote>
 <p><strong>Q: Cluster Autoscler didn&rsquo;t trigger scale down</strong></p>
 </blockquote>
@@ -718,7 +718,7 @@ metadata:
           
           <li>
             
-              <a href="/categories/%E7%B3%BB%E7%B5%B1%E5%BB%BA%E7%BD%AE/">系統建置<span class="count">9</span></a>
+              <a href="/categories/%E7%B3%BB%E7%B5%B1%E5%BB%BA%E7%BD%AE/">系統建置<span class="count">8</span></a>
             
           
           <li>
@@ -738,12 +738,12 @@ metadata:
           
           <li>
             
-              <a href="/categories/terraform/">terraform<span class="count">3</span></a>
+              <a href="/categories/kubernetes/">kubernetes<span class="count">2</span></a>
             
           
           <li>
             
-              <a href="/categories/kubernetes/">kubernetes<span class="count">2</span></a>
+              <a href="/categories/terraform/">terraform<span class="count">2</span></a>
             
           
           <li>

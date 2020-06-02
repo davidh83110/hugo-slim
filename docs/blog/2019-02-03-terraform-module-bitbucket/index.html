@@ -12,7 +12,7 @@ Due to less information on the internet when I am searching how terraform module
 First, we need to know how Terraform module work, that is git clone, Terraform will clone the module repo which you use. 而我們都知道，git分為 HTTP(S) 以及 SSH 兩種clone方式，所以在這邊兩種方式都會介紹 (居然連stackoverflow都找不到到資料 T_T)">
 <meta itemprop="datePublished" content="2019-02-03T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-02-19T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="141">
+<meta itemprop="wordCount" content="147">
 
 
 
@@ -245,26 +245,26 @@ First, we need to know how Terraform module work, that is git clone, Terraform w
     <h2 id="terraform-module-private-registries---bitbucket">Terraform Module Private Registries - Bitbucket</h2>
 <hr>
 <p><img src="https://farm8.staticflickr.com/7824/46420454484_fa00ae8615_h.jpg" alt="Alt text">
-<!-- raw HTML omitted --></p>
+<br /></p>
 <p>在網路上搜尋很久都很少看到 Terraform module 正確使用 remote private registry 的方式，所以來分享一下。</p>
 <p>Due to less information on the internet when I am searching <code>how terraform module access remote private registry</code>, so I decide to share this.
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<br />
+<br /></p>
 <p>先講講 Terraform module 是如何運作。其實就是直接 clone 一份下來，所以等於你去 git clone。</p>
 <p>First, we need to know how Terraform module work, that is <code>git clone</code>, Terraform will clone the module repo which you use.
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<br />
+<br /></p>
 <p>而我們都知道，git分為 HTTP(S) 以及 SSH 兩種clone方式，所以在這邊兩種方式都會介紹 (居然連stackoverflow都找不到到資料 T_T)</p>
 <p>And we know that you can clone a git repo by <code>HTTP(S)</code> and <code>SSH</code>, so I will also introduce both of these two ways.
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<br />
+<br /></p>
 <p>For HTTP(S) Protocol:</p>
 <pre><code>module &quot;base&quot; {
     source = &quot;git::https://bitbucket.org/davidh83110/terraform_modules.git/ec2&quot;
 }
 
-</code></pre><p><!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+</code></pre><p><br />
+<br /></p>
 <p>For SSH Protocol:</p>
 <pre><code>module &quot;base&quot; {
     source = &quot;git::ssh://git@bitbucket.org/davidh83110/terraform_modules.git//ec2&quot;
@@ -275,12 +275,13 @@ First, we need to know how Terraform module work, that is git clone, Terraform w
 <p>Please use a double slash (<code>//</code>) to clone a directory (i.e. //ec2).</p>
 </blockquote>
 <p>That&rsquo;s all.</p>
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<p><br />
+<br /></p>
+<div style="text-align: right;">
+2019-02-19 16:11 , David in Taipei</div>
+<p><br />
+<br />
+<br /></p>
 
   </div>
   <footer>
@@ -392,7 +393,7 @@ First, we need to know how Terraform module work, that is git clone, Terraform w
           
           <li>
             
-              <a href="/categories/%E7%B3%BB%E7%B5%B1%E5%BB%BA%E7%BD%AE/">系統建置<span class="count">9</span></a>
+              <a href="/categories/%E7%B3%BB%E7%B5%B1%E5%BB%BA%E7%BD%AE/">系統建置<span class="count">8</span></a>
             
           
           <li>
@@ -412,12 +413,12 @@ First, we need to know how Terraform module work, that is git clone, Terraform w
           
           <li>
             
-              <a href="/categories/terraform/">terraform<span class="count">3</span></a>
+              <a href="/categories/kubernetes/">kubernetes<span class="count">2</span></a>
             
           
           <li>
             
-              <a href="/categories/kubernetes/">kubernetes<span class="count">2</span></a>
+              <a href="/categories/terraform/">terraform<span class="count">2</span></a>
             
           
           <li>

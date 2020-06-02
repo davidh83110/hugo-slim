@@ -11,6 +11,8 @@ pluralizeListTitles     = false
 disableLanguages        = ["fr", "pt", "zh-CN", "es", "de", "ja", "pl"]
 publishDir              = "docs"
 
+[markup.goldmark.renderer]
+  unsafe= true
 
 [taxonomies]
   category = "categories"

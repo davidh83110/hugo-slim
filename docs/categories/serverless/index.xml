@@ -18,6 +18,7 @@
       
       <guid>/blog/2018-04-21-srverless/</guid>
       <description>Serverless for Monitoring how to debug on serverless ? how&amp;rsquo;s the security for using serverless ? hoe&amp;rsquo;s the latency ? how&amp;rsquo;s the cost ? &amp;ldquo;Less is More&amp;rdquo; we have to focus on other things not just only code when using serverless
+
 Structure is Changing During the application structure is changing to CaaS, we have to reduce the instances which are not for application layer as possible as we can, to avoid launching more and more instances which unnecessary to save cost.</description>
     </item>
     

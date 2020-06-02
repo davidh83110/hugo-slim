@@ -7,22 +7,100 @@
 
 
 <meta name="generator" content="Hugo 0.71.1" /><meta itemprop="name" content="Python套件urllib2簡介">
-<meta itemprop="description" content="這裡就像哈利波特裡的儲思盆趁著我在當兵前還沒完全放空的時候把這些東西倒出來還以為我會很緊張要當兵了沒想到居然心如止水 來講講一個小套件今天講Python的一個小小小小套件 , urllib2基本上不需要額外安裝任何新的module就可以使用，所以用來救急很方便當有時候需要使用程式對某一網頁做POST或GET並獲得response時使用urllib2就非常方便簡單的幾行程式碼就可以搞定範例程式如下：我們對google首頁做GET/usr/bin/env python encoding: utf-8 import urllib2request = urllib2.Request(&ldquo;http://www.google.com.tw/&quot;)response = urllib2.urlopen(request)html = response.read()print html去執行python 程式名稱就可以看到GET網頁的內容了非常簡單且快速用來撈取資料或做POST、GET都很方便當然，你也可以使用linux環境下的wget、curl等套件來達成。因為腦袋放太空不適合一次寫太多東西就先這樣好了">
+<meta itemprop="description" content="這裡就像哈利波特裡的儲思盆
+趁著我在當兵前還沒完全放空的時候
+把這些東西倒出來
+還以為我會很緊張要當兵了
+沒想到居然心如止水 來講講一個小套件
+今天講Python的一個小小小小套件 , urllib2
+基本上不需要額外安裝任何新的module就可以使用，所以用來救急很方便
+當有時候需要使用程式對某一網頁做POST或GET並獲得response時
+使用urllib2就非常方便
+簡單的幾行程式碼就可以搞定
+範例程式如下：
+我們對google首頁做GET
+/usr/bin/env python
+ encoding: utf-8
+ 
+import urllib2
+request = urllib2.Request(&ldquo;http://www.google.com.tw/&quot;)
+response = urllib2.urlopen(request)
+html = response.read()
+print html
+去執行python 程式名稱就可以看到GET網頁的內容了
+非常簡單且快速
+用來撈取資料或做POST、GET都很方便
+當然，你也可以使用linux環境下的wget、curl等套件來達成。
+因為腦袋放太空不適合一次寫太多東西
+就先這樣好了
+2017-02-05 12:46 , Davin in Taipei  ">
 <meta itemprop="datePublished" content="2017-02-05T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2017-02-05T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="17">
+<meta itemprop="wordCount" content="45">
 
 
 
 <meta itemprop="keywords" content="python2,python,urllib,urllib2,wget,curl," /><meta property="og:title" content="Python套件urllib2簡介" />
-<meta property="og:description" content="這裡就像哈利波特裡的儲思盆趁著我在當兵前還沒完全放空的時候把這些東西倒出來還以為我會很緊張要當兵了沒想到居然心如止水 來講講一個小套件今天講Python的一個小小小小套件 , urllib2基本上不需要額外安裝任何新的module就可以使用，所以用來救急很方便當有時候需要使用程式對某一網頁做POST或GET並獲得response時使用urllib2就非常方便簡單的幾行程式碼就可以搞定範例程式如下：我們對google首頁做GET/usr/bin/env python encoding: utf-8 import urllib2request = urllib2.Request(&ldquo;http://www.google.com.tw/&quot;)response = urllib2.urlopen(request)html = response.read()print html去執行python 程式名稱就可以看到GET網頁的內容了非常簡單且快速用來撈取資料或做POST、GET都很方便當然，你也可以使用linux環境下的wget、curl等套件來達成。因為腦袋放太空不適合一次寫太多東西就先這樣好了" />
+<meta property="og:description" content="這裡就像哈利波特裡的儲思盆
+趁著我在當兵前還沒完全放空的時候
+把這些東西倒出來
+還以為我會很緊張要當兵了
+沒想到居然心如止水 來講講一個小套件
+今天講Python的一個小小小小套件 , urllib2
+基本上不需要額外安裝任何新的module就可以使用，所以用來救急很方便
+當有時候需要使用程式對某一網頁做POST或GET並獲得response時
+使用urllib2就非常方便
+簡單的幾行程式碼就可以搞定
+範例程式如下：
+我們對google首頁做GET
+/usr/bin/env python
+ encoding: utf-8
+ 
+import urllib2
+request = urllib2.Request(&ldquo;http://www.google.com.tw/&quot;)
+response = urllib2.urlopen(request)
+html = response.read()
+print html
+去執行python 程式名稱就可以看到GET網頁的內容了
+非常簡單且快速
+用來撈取資料或做POST、GET都很方便
+當然，你也可以使用linux環境下的wget、curl等套件來達成。
+因為腦袋放太空不適合一次寫太多東西
+就先這樣好了
+2017-02-05 12:46 , Davin in Taipei  " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/blog/2017-02-05-urllib2-intro/" />
 <meta property="article:published_time" content="2017-02-05T00:00:00+00:00" />
 <meta property="article:modified_time" content="2017-02-05T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Python套件urllib2簡介"/>
-<meta name="twitter:description" content="這裡就像哈利波特裡的儲思盆趁著我在當兵前還沒完全放空的時候把這些東西倒出來還以為我會很緊張要當兵了沒想到居然心如止水 來講講一個小套件今天講Python的一個小小小小套件 , urllib2基本上不需要額外安裝任何新的module就可以使用，所以用來救急很方便當有時候需要使用程式對某一網頁做POST或GET並獲得response時使用urllib2就非常方便簡單的幾行程式碼就可以搞定範例程式如下：我們對google首頁做GET/usr/bin/env python encoding: utf-8 import urllib2request = urllib2.Request(&ldquo;http://www.google.com.tw/&quot;)response = urllib2.urlopen(request)html = response.read()print html去執行python 程式名稱就可以看到GET網頁的內容了非常簡單且快速用來撈取資料或做POST、GET都很方便當然，你也可以使用linux環境下的wget、curl等套件來達成。因為腦袋放太空不適合一次寫太多東西就先這樣好了"/>
+<meta name="twitter:description" content="這裡就像哈利波特裡的儲思盆
+趁著我在當兵前還沒完全放空的時候
+把這些東西倒出來
+還以為我會很緊張要當兵了
+沒想到居然心如止水 來講講一個小套件
+今天講Python的一個小小小小套件 , urllib2
+基本上不需要額外安裝任何新的module就可以使用，所以用來救急很方便
+當有時候需要使用程式對某一網頁做POST或GET並獲得response時
+使用urllib2就非常方便
+簡單的幾行程式碼就可以搞定
+範例程式如下：
+我們對google首頁做GET
+/usr/bin/env python
+ encoding: utf-8
+ 
+import urllib2
+request = urllib2.Request(&ldquo;http://www.google.com.tw/&quot;)
+response = urllib2.urlopen(request)
+html = response.read()
+print html
+去執行python 程式名稱就可以看到GET網頁的內容了
+非常簡單且快速
+用來撈取資料或做POST、GET都很方便
+當然，你也可以使用linux環境下的wget、curl等套件來達成。
+因為腦袋放太空不適合一次寫太多東西
+就先這樣好了
+2017-02-05 12:46 , Davin in Taipei  "/>
 <link rel="stylesheet" href="/css/bundle.min.6ab239962d2e4937efcc3cde86a5695ca40f284288bacfaa8cef98e3c2a87cf7.css" integrity="sha256-arI5li0uSTfvzDzehqVpXKQPKEKIus&#43;qjO&#43;Y48KofPc="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
@@ -236,52 +314,55 @@
   
 
   <div class="content">
-    <p>這裡就像哈利波特裡的儲思盆<!-- raw HTML omitted -->
-趁著我在當兵前還沒完全放空的時候<!-- raw HTML omitted -->
-把這些東西倒出來<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-還以為我會很緊張要當兵了<!-- raw HTML omitted -->
-沒想到居然心如止水 來講講一個小套件<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-今天講Python的一個小小小小套件 , urllib2<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-基本上不需要額外安裝任何新的module就可以使用，所以用來救急很方便<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-當有時候需要使用程式對某一網頁做POST或GET並獲得response時<!-- raw HTML omitted -->
-使用urllib2就非常方便<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-簡單的幾行程式碼就可以搞定<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-範例程式如下：<!-- raw HTML omitted -->
-我們對google首頁做GET<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<h1 id="usrbinenv-pythonbr-">/usr/bin/env python<!-- raw HTML omitted --></h1>
-<h1 id="encoding-utf-8br-">encoding: utf-8<!-- raw HTML omitted --></h1>
-<p><!-- raw HTML omitted -->
-import urllib2<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-request = urllib2.Request(&ldquo;<a href="http://www.google.com.tw/%22">http://www.google.com.tw/&quot;</a>)<!-- raw HTML omitted -->
-response = urllib2.urlopen(request)<!-- raw HTML omitted -->
-html = response.read()<!-- raw HTML omitted -->
-print html<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-去執行python 程式名稱就可以看到GET網頁的內容了<!-- raw HTML omitted -->
-非常簡單且快速<!-- raw HTML omitted -->
-用來撈取資料或做POST、GET都很方便<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-當然，你也可以使用linux環境下的wget、curl等套件來達成。<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-因為腦袋放太空不適合一次寫太多東西<!-- raw HTML omitted -->
-就先這樣好了<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
+    <p>這裡就像哈利波特裡的儲思盆<br />
+趁著我在當兵前還沒完全放空的時候<br />
+把這些東西倒出來<br />
+<br />
+還以為我會很緊張要當兵了<br />
+沒想到居然心如止水 來講講一個小套件<br />
+<br />
+今天講Python的一個小小小小套件 , urllib2<br />
+<br />
+基本上不需要額外安裝任何新的module就可以使用，所以用來救急很方便<br />
+<br />
+當有時候需要使用程式對某一網頁做POST或GET並獲得response時<br />
+使用urllib2就非常方便<br />
+<br />
+簡單的幾行程式碼就可以搞定<br />
+<br />
+範例程式如下：<br />
+我們對google首頁做GET<br />
+<br /></p>
+<h1 id="usrbinenv-pythonbr-">/usr/bin/env python<br /></h1>
+<h1 id="encoding-utf-8br-">encoding: utf-8<br /></h1>
+<p><br />
+import urllib2<br />
+<br />
+request = urllib2.Request(&ldquo;<a href="http://www.google.com.tw/%22">http://www.google.com.tw/&quot;</a>)<br />
+response = urllib2.urlopen(request)<br />
+html = response.read()<br />
+print html<br />
+<br />
+<br />
+去執行python 程式名稱就可以看到GET網頁的內容了<br />
+非常簡單且快速<br />
+用來撈取資料或做POST、GET都很方便<br />
+<br />
+<br />
+當然，你也可以使用linux環境下的wget、curl等套件來達成。<br />
+<br />
+因為腦袋放太空不適合一次寫太多東西<br />
+就先這樣好了<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br /></p>
+<div style="text-align: right;">
+2017-02-05 12:46 , Davin in Taipei</div>
+<div style="text-align: right;">
+<br /></div>
 
   </div>
   <footer>
@@ -417,7 +498,7 @@ print html<!-- raw HTML omitted -->
           
           <li>
             
-              <a href="/categories/%E7%B3%BB%E7%B5%B1%E5%BB%BA%E7%BD%AE/">系統建置<span class="count">9</span></a>
+              <a href="/categories/%E7%B3%BB%E7%B5%B1%E5%BB%BA%E7%BD%AE/">系統建置<span class="count">8</span></a>
             
           
           <li>
@@ -437,12 +518,12 @@ print html<!-- raw HTML omitted -->
           
           <li>
             
-              <a href="/categories/terraform/">terraform<span class="count">3</span></a>
+              <a href="/categories/kubernetes/">kubernetes<span class="count">2</span></a>
             
           
           <li>
             
-              <a href="/categories/kubernetes/">kubernetes<span class="count">2</span></a>
+              <a href="/categories/terraform/">terraform<span class="count">2</span></a>
             
           
           <li>
