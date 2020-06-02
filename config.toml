@@ -58,7 +58,7 @@ publishDir              = "docs"
 
   [params.sidebar]
     about               = "DevOps Engineering / AWS / Cloud Native"
-    postAmount          = 8
+    postAmount          = 6
     categories          = true
     categoriesByCount   = true
 
