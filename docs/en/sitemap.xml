@@ -58,7 +58,7 @@
   </url>
   
   <url>
-    <loc>/blog/2020-03-30-eks-install/</loc>
+    <loc>/aws/kubernetes/%E7%B3%BB%E7%B5%B1%E5%BB%BA%E7%BD%AE/terraform/2020/03/30/eks-install.html</loc>
     <lastmod>2020-03-31T00:00:00+00:00</lastmod>
   </url>
   
@@ -68,27 +68,27 @@
   </url>
   
   <url>
-    <loc>/categories/%E7%B3%BB%E7%B5%B1%E5%BB%BA%E7%BD%AE/</loc>
-    <lastmod>2020-03-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/2020-03-05-saas-self-hosted/</loc>
+    <loc>/categories/jibber-jabber/</loc>
     <lastmod>2020-03-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/%E6%8A%80%E8%A1%93%E7%B0%A1%E4%BB%8B/</loc>
+    <loc>/%E6%8A%80%E8%A1%93%E7%B0%A1%E4%BB%8B/2020/03/05/saas-self-hosted.html</loc>
     <lastmod>2020-03-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/2020-02-15-cloud-native-log-solution/</loc>
+    <loc>/categories/architecture/</loc>
     <lastmod>2020-02-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/2019-12-05-aws-saa-pass/</loc>
+    <loc>/aws/%E7%B3%BB%E7%B5%B1%E5%BB%BA%E7%BD%AE/2020/02/15/cloud-native-log-solution.html</loc>
+    <lastmod>2020-02-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/aws/2019/12/05/aws-saa-pass.html</loc>
     <lastmod>2019-12-05T00:00:00+00:00</lastmod>
   </url>
   
@@ -98,7 +98,17 @@
   </url>
   
   <url>
+    <loc>/categories/%E7%B3%BB%E7%B5%B1%E5%BB%BA%E7%BD%AE/</loc>
+    <lastmod>2019-02-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/2018-12-01-mongodb-introduction-upgrade/</loc>
+    <lastmod>2018-12-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/%E6%8A%80%E8%A1%93%E7%B0%A1%E4%BB%8B/</loc>
     <lastmod>2018-12-01T00:00:00+00:00</lastmod>
   </url>
   

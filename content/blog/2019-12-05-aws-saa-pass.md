@@ -8,22 +8,19 @@ modified: "2019-12-05"
 published: true
 title: AWS Solutions Architect Associate (SAA) - [PASSED] 心得以及攻略
 images: ["https://live.staticflickr.com/65535/49038426206_83d9c537d2_h.jpg"]
+url: /aws/2019/12/05/aws-saa-pass.html
 ---
 
 ## AWS Solutions Architect Associate (SAA) - [PASSED]
 ---
-
-
 經過了幾週的準備，終於通過了SAA的考試 (82% PASS)。以此紀錄以及分享一下準備的過程。
 
 With a few weeks of preparation, I passed the AWS SAA certificate exam with an 82% score. And I will step by step to introduce how I prepare it.
-  
-<br />
+
 <br />
 
 ## 事前準備 Preparation
-___
-
+---
 先自我介紹，我從2016年開始接觸AWS，有使用過的服務有：
 
 The first time I use AWS was in 2016, those services below are I've been studying:
@@ -71,11 +68,9 @@ First of all, you need to read the AWS official whitpapers. But I do not really 
 OK -- Let's see how I prepare this exam.
 
 <br />
-<br />
 
 ## Stage1. 線上課程 Online Course
 ---
-
 我第一個使用的是 A Cloud Guru.
 
 The first course I bought was `A Cloud Guru` and it was very helpful, but the mega tests might be a little bit difficult to a new guy on AWS. I will suggest you to purchase this course but don't feel frustrating if you get a bad score. That's pretty noraml. But I will recommend you to do the section tests, that will let you know what's the point of the service.
@@ -97,11 +92,9 @@ A Cloud Guru 好用嗎？
 And I got a 46% when I first did the Mega Test, second time got 68%, that's really bad but I passed the real exam with 82%. I think the Mega Test really might be difficult.
 
 <br />
-<br />
 
 ## Stage2. AWS FAQ
 ---
-
 之後我發現 A Cloud Guru 還是漏講了很多東西，也或許是 AWS 更新的太快。 我又跑去看所有會考的服務的FAQ。 `獲益良多`
 
 這邊不多說，大家都知道哪些特別需要看。 請見上面前情提要。
@@ -111,11 +104,9 @@ And I got a 46% when I first did the Mega Test, second time got 68%, that's real
 As I said, A Cloud Guru doesn't mention too much details on each services and the official whitpapers are really too much to read. So I read `AWS FAQ` to dig deeply on each services and I felt it was very helpful.
 
 <br />
-<br />
 
 ## Stage3. WhizLabs
 ---
-
 這是一個線上模擬題庫，我不得不說命中率有75%以上。 非常神準。
 
 裡面包含 8-10 組題庫，還能針對錯誤的題目做客製化題庫，特別拉出來練習，是個考前幾週補強觀念的好地方。 
@@ -134,13 +125,10 @@ Not only this, it also provide very clear explaination with every single questio
 
 The score I got was between 73 to 90, and I got 82 in real exam, so it's very close to real one. And `Some questions were very similar to real exam's questions`.
 
-
-<br />
 <br />
 
 ## 正式考試 Real Exam
 ---
-
 正式考試不外乎難度比任何練習題都還要低一點，其實不難答題。
 
 要掌握的觀念就跟題目做久了一樣，就會發現就是那些東西在重複而已。
@@ -202,11 +190,9 @@ And I also have a list can help you to recall what you've learned and tell you w
   - Cloudwatch & CloudwatchLogs
 
 <br />
-<br />
 
 ## Conclusion 總結
 ---
-
 洋洋灑灑列出了記憶中的考試重點以及必考的觀念跟資訊，如果有遺漏再麻煩留言或來信告知，謝謝。
 
 雖說是考試，但在工作上不難發現用到的也都是這些。 有時候一個Bug解不出來也很可能是因為在某個服務的某個關鍵觀念不熟，所以說考試反映出的題目，跟工作上遇到的難題其實是很雷同的。
@@ -224,32 +210,22 @@ Also feel free to send me messages or reply this article if you got any problems
 Cheers.
 
 <br />
-<br />
 
 ## References & Links
 ---
-
 列出幾個有參考過以及覺得很棒的網站
 
-首推Rick。
+- 首推Rick。
 
-[Complete Think - AWS SAA-001 Update (Feb, 2018)](https://rickhw.github.io/2018/02/15/AWS/AWS-Certified-SAA001-Update/)
+  [Complete Think - AWS SAA-001 Update (Feb, 2018)](https://rickhw.github.io/2018/02/15/AWS/AWS-Certified-SAA001-Update/)
 
+- 最神整理，根本Cheat Sheet. 考前閱讀大推！
+  [Jayendra's Blog - AWS Certified Solutions Architect – Associate SAA-C01 Exam Learning Path](http://jayendrapatil.com/aws-solutions-architect-associate-feb-2018-exam-learning-path/)
 
-最神整理，根本Cheat Sheet. 考前閱讀大推！
-
-[Jayendra's Blog - AWS Certified Solutions Architect – Associate SAA-C01 Exam Learning Path](http://jayendrapatil.com/aws-solutions-architect-associate-feb-2018-exam-learning-path/)
-
-
-網友分享(gjnzsu)
-
-[台部落 - AWS雲服務認證攻略系列（一）AWS Certified Solution Architect Associate 考試經驗分享](https://www.twblogs.net/a/5c2b3aadbd9eee016114880c)
+- 網友分享(gjnzsu)
+  [台部落 - AWS雲服務認證攻略系列（一）AWS Certified Solution Architect Associate 考試經驗分享](https://www.twblogs.net/a/5c2b3aadbd9eee016114880c)
 
 
-
-
-
-<br />
 <br />
 <div style="text-align: right;">
 2019-12-05 00:23 , David in Taipei</div>
