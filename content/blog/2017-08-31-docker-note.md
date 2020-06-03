@@ -1,21 +1,13 @@
 ---
 author: David
 categories:
-- 雜七雜八
-- Python
+- jibber-jabber
 comments: true
 date: "2017-08-31T00:00:00Z"
 modified: "2017-08-31"
 published: true
-tags:
-- python
-- nginx
-- uwsgi
-- flash
-- letsencrypt
-- docker
-- container
 title: Docker Note (Nginx+uwsgi+Letsencrypt)
+url: /雜七雜八/python/2017/08/31/docker-note.html
 ---
 <h3>
 <b>docker筆記</b></h3>

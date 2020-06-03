@@ -1,22 +1,11 @@
 ---
 author: David
 categories:
-- 技術簡介
-- 雜七雜八
 - Python
 comments: true
 date: "2017-07-08T00:00:00Z"
 modified: "2017-07-08"
 published: true
-tags:
-- python3
-- python
-- python re
-- python json
-- python requests
-- nagios
-- dingtalk
-- oapi
 title: Python發送警告訊息(Nagios & Dingtalk)
 ---
 退伍已經過了一個多月，生活漸漸步入軌道<br />

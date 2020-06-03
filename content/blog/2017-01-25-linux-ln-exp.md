@@ -1,47 +1,37 @@
 ---
 author: David
 categories:
-- 技術簡介
-- 雜七雜八
+- Linux
 comments: true
 date: "2017-01-25T00:00:00Z"
 modified: "2017-01-25"
 published: true
-tags:
-- linuxsst
-- centos
-- redhat
-- ln
-- rm
-- unlink
 title: Linux指令 - ln 慘痛的教訓
+url: /技術簡介/雜七雜八/2017/01/25/linux-ln-exp.html
 ---
 用慘痛教訓換來經驗<br />
 常常使用Linux做為系統的工程師應該都不陌生ln這個指令<br />
 <span style="color: red;">ln是對資料夾建立超連結的指令</span><br />
 <br />
-以下範例<br />
+以下範例
 <br />
-root@David-MacBook: ~ -&gt; cd /tmp<br />
-root@David-MacBook: tmp -&gt; &nbsp;ln -s /opt/web/home/<br />
-<div class="p2">
-<span class="s3"><br /></span>
-<span class="s3"><br /></span>
+```
+root@David-MacBook: $ cd /tmp
+root@David-MacBook: tmp $ ln -s /opt/web/home/
+```
+
 第一行cd切換目錄到/tmp<br />
 第二行是建立超連結到當前目錄（/tmp）並指向/opt/web/home<br />
 <br />
 會得到結果<br />
-<br />
-<br />
-root@David-MacBook: tmp -&gt; ll<br />
-total 0<br />
-lrwxr-xr-x 1 root wheel 14 Jan 25 22:59 home -&gt;/opt/web/home</div>
-<div class="p2">
-<br />
-<br />
-可以看到我們將home這個資料夾成功建立超連結到/tmp<br />
-<br />
-<br />
+```
+root@David-MacBook: tmp $ ll
+total 0
+lrwxr-xr-x 1 root wheel 14 Jan 25 22:59 home $ /opt/web/home
+```
+
+可以看到我們將home這個資料夾成功建立超連結到/tmp
+
 <br />
 <b><span style="color: red;">那什麼是超連結？</span></b><br />
 所謂超連結就是<span style="color: red;">類似windows作業系統的"捷徑"</span>，可以藉由超連結的資料夾讀取與原資料夾資料同步的資料<br />
@@ -59,17 +49,22 @@ lrwxr-xr-x 1 root wheel 14 Jan 25 22:59 home -&gt;/opt/web/home</div>
 <br />
 錯！ 大錯特錯！！<br />
 <br />
-root@David-MacBook: tmp -&gt; ll home/<br />
-total 0<br />
--rw-r--r-- 1 root whell 0 Jan 25 23:13 test<br />
-root@David-MacBook: tmp -&gt; rm -rf home/<br />
-root@David-MacBook: tmp -&gt; ll<br />
-total 0<br />
-lrwxr-xr-x 1 root wheel 14 Jan 25 22:59 home -&gt; /opt/web/home<br />
-root@David-MacBook: tmp -&gt; ll home/<br />
-<br />
-ls: home/: No such file or directory<br />
-<br />
+
+```bash
+root@David-MacBook: tmp $ ll home/
+total 0
+-rw-r--r-- 1 root whell 0 Jan 25 23:13 test
+
+root@David-MacBook: tmp $ rm -rf home/
+root@David-MacBook: tmp $ ll
+total 0
+lrwxr-xr-x 1 root wheel 14 Jan 25 22:59 home $ /opt/web/home
+
+root@David-MacBook: tmp $ ll home/
+
+ls: home/: No such file or directory
+```
+
 發現了嗎？<br />
 <br />
 <br />
@@ -80,19 +75,20 @@ ls: home/: No such file or directory<br />
 <br />
 這很嚴重，而且難以發現。<br />
 <br />
-<br />
-<br />
-<br />
+
 <br />
 那正確的指令下法呢？<br />
 <br />
-root@David-MacBook: tmp -&gt; ll home/<br />
-total 0<br />
--rw-r--r-- 1 root wheel 0 Jan 25 23:18 test<br />
-root@David-MacBook: tmp -&gt; rm -rf home<br />
-root@David-MacBook: tmp -&gt; ll<br />
-total<br />
-<br />
+
+```bash
+root@David-MacBook: tmp $ ll home/
+total 0
+-rw-r--r-- 1 root wheel 0 Jan 25 23:18 test
+
+root@David-MacBook: tmp $ rm -rf home
+root@David-MacBook: tmp $ ll
+```
+
 <br />
 看出差別了嗎？<br />
 <br />
@@ -107,8 +103,7 @@ total<br />
 <br />
 今天上班就不小心犯了這個很低級的失誤，幸好資料有備份，不然這個年大概不太好過了。<br />
 <br />
-<br />
-<br />
+
 <br />
 重點整理：<br />
 <br />
@@ -122,7 +117,7 @@ CentOS 5的版本如果你加上/會提示你無法刪除<br />
 <br />
 使用上請務必小心，<span style="color: red;">或是改用unlink也較為安全</span><br />
 <br />
-慘痛的教訓，希望自己不要再犯了，真的很該死。<br />
+慘痛的教訓。<br />
 <br />
 <br />
 <br />
@@ -152,4 +147,4 @@ span.s1 {font-variant-ligatures: no-common-liga1e}
 span.s2 {font-variant-ligatures: no-common-ligaf4}
 span.s3 {font-variant-ligatures: no-common-ligatures}
 span.s4 {font-variant-ligatures: no-common-liga21}
-</style></div>
+</style>

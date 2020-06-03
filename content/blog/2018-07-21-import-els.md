@@ -1,19 +1,15 @@
 ---
 author: David
 categories:
-- 技術簡介
-- 系統建置
-- AWS
 - Python
 comments: true
 date: "2018-07-21T00:00:00Z"
 modified: "2018-07-21"
 published: true
 title: How to Import data to Elasticsearch (Nginx Access logs)
+url: /技術簡介/系統建置/aws/python/2018/07/21/import-els.html
+images: ["https://static001.infoq.cn/resource/image/48/06/48fb5f5d37a9efd331763e97c5368306.png"]
 ---
-
-
-![Alt text](https://static001.infoq.cn/resource/image/48/06/48fb5f5d37a9efd331763e97c5368306.png)
 
 因為統計流量的需求，需要將nginx access log放進elasticsearch方便做統計。 <br />
 對ELS不是很熟的我，也花了一點時間釐清觀念，就寫進來當作notes吧。 <br />
@@ -31,26 +27,21 @@ title: How to Import data to Elasticsearch (Nginx Access logs)
 <br />
 
 ## Step 1. Install Elasticsearch
-
+---
 Because we use ELS which is host by AWS, <br />
 so basically we just need to take care of instance type and count.<br />
 
 And why I use AWS ELS ?<br />
 Because I just wanna get the rid of instance management lol<br />
-
 <br />
-<br />
-
 
 ### Intruction Elasticsearch Architecture
-
-
-ELS is totally using JAVA to develop and of course it's open source<br />
-In other word, you can install it on your own machine if you want<br />
-btw, install by docker is also a good way on development environment<br />
+ELS is totally using JAVA to develop and of course it's open source.<br />
+In other word, you can install it on your own machine if you want.<br />
+btw, install by docker is also a good way on development environment.<br />
 
 `docker pull elasticsearch` <br />
-very simple and easy way to isntall for testing, but not refer to do this on production environment. (Don't pull it on Macbook it will bw slow, I've tried it lol) <br />
+very simple and easy way to isntall for testing, but not refer to do this on production environment. (Don't pull it on Macbook it will be slow, I've tried it lol) <br />
 <br />
 ![Alt text](http://www.uml.org.cn/bigdata/images/2018012633.jpg)
 
@@ -59,7 +50,8 @@ This is simple ELS structure and those Shard/Replica is ELS `node`. <br />
 <br />
 <br />
 
-### Architecture
+## Architecture
+---
 - Index <br />
   index is some kind of `Table` on RDBMS <br />
 
@@ -73,7 +65,8 @@ okay, lets talk about what we should notice about AWS ELS
 <br />
 <br />
 
-### - AWS instance type 
+## AWS instance type 
+---
   default type is `m4.large`, the smallest type is `t2.small` <br />
   but I think using `m4.large` for store about 1G data is too waste cuz `m4` really very expensive<br />
 <br />
@@ -84,7 +77,8 @@ okay, lets talk about what we should notice about AWS ELS
   <br />
   <br />
 
-### -  Node count
+## Node count
+---
   ELS is composed of a lot of nodes<br />
   And the `volume size` is decide of your node is `REPLICA` or `SHARD` <br />
   <br />
@@ -98,8 +92,8 @@ okay, lets talk about what we should notice about AWS ELS
   <br />
   <br />
 
-### - Notes
-<br />
+## Notes
+---
   AWS will install not only ELS but also `Kibana` into. <br />
   So we can query data from kibana without any additional setting. <br />
 
@@ -107,8 +101,8 @@ okay, lets talk about what we should notice about AWS ELS
 <br />
 
 ## Step 2. Import Access log in Python
-<br />
-```
+---
+```py
 data_es = { 
     "message": line,
     "@timestamp": log_formated_time,
@@ -138,12 +132,11 @@ https://github.com/davidh83110/import-accesslog-to-elasticsearch <br />
 <br />
 <br />
 
-```
+```py
 ELS_ENDPOINT = 'localhost:9200'
 ```
-<br />
-<br />
-```
+
+```py
 import endpoint
 from elasticsearch import Elasticsearch
 from datetime import datetime

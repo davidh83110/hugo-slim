@@ -1,24 +1,13 @@
 ---
 author: David
 categories:
-- 技術簡介
-- 後端工程
+- jibber-jabber
 comments: true
 date: "2017-01-28T00:00:00Z"
 modified: "2017-01-28"
 published: true
-tags:
-- Back-End
-- java
-- php
-- python
-- ruby
-- C#
-- weblogic
-- jboss
-- wildfly
-- tomcat
 title: 後端工程(Back-End)簡介
+url: 技術簡介/後端工程/2017/01/28/back-end-intro-2.html
 ---
 <div>
 新年快樂，雞年行大運。</div>

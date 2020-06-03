@@ -1,21 +1,13 @@
 ---
 author: David
 categories:
-- 技術簡介
-- 雜七雜八
 - Python
 comments: true
 date: "2017-02-05T00:00:00Z"
 modified: "2017-02-05"
 published: true
-tags:
-- python2
-- python
-- urllib
-- urllib2
-- wget
-- curl
 title: Python套件urllib2簡介
+url: /技術簡介/雜七雜八/python/2017/02/05/urllib2-intro.html
 ---
 這裡就像哈利波特裡的儲思盆<br />
 趁著我在當兵前還沒完全放空的時候<br />
@@ -35,16 +27,18 @@ title: Python套件urllib2簡介
 <br />
 範例程式如下：<br />
 我們對google首頁做GET<br />
-<br />
-# /usr/bin/env python<br />
-# encoding: utf-8<br />
-<br />
-import urllib2<br />
-<br />
-request = urllib2.Request("http://www.google.com.tw/")<br />
-response = urllib2.urlopen(request)<br />
-html = response.read()<br />
-print html<br />
+
+```py
+# /usr/bin/env python
+# encoding: utf-8
+
+import urllib2
+
+request = urllib2.Request("http://www.google.com.tw/")
+response = urllib2.urlopen(request)
+html = response.read()
+print html
+```
 <br />
 <br />
 去執行python 程式名稱就可以看到GET網頁的內容了<br />

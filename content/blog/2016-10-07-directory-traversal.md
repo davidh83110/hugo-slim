@@ -1,15 +1,14 @@
 ---
 author: David
+categories:
+- Security
+- OWASP
 comments: true
 date: "2016-10-07T00:00:00Z"
 modified: "2016-10-02"
 published: true
-tags:
-- directory traversal
-- files traversal
-- netsecurity
-- owasp top10
 title: Directory Traversal - 跨目錄/檔案穿越攻擊 in OWASP
+url: /資訊安全/駭客技術/owasp top10/2016/10/07/directory-traversal.html
 ---
 
 <div class='post-body entry-content' id='post-body-2638476067227899869' itemprop='description articleBody'>

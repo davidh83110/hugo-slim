@@ -13,25 +13,16 @@
     
     <item>
       <title>How to Import data to Elasticsearch (Nginx Access logs)</title>
-      <link>/blog/2018-07-21-import-els/</link>
+      <link>/%E6%8A%80%E8%A1%93%E7%B0%A1%E4%BB%8B/%E7%B3%BB%E7%B5%B1%E5%BB%BA%E7%BD%AE/aws/python/2018/07/21/import-els.html</link>
       <pubDate>Sat, 21 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2018-07-21-import-els/</guid>
+      <guid>/%E6%8A%80%E8%A1%93%E7%B0%A1%E4%BB%8B/%E7%B3%BB%E7%B5%B1%E5%BB%BA%E7%BD%AE/aws/python/2018/07/21/import-els.html</guid>
       <description>因為統計流量的需求，需要將nginx access log放進elasticsearch方便做統計。 對ELS不是很熟的我，也花了一點時間釐清觀念，就寫進來當作notes吧。 也希望對剛接觸ELS的朋友有一些幫助。
 
 Preparation  Elasticsearch Server == 6.3.0 (host by AWS) Python == 3.6 elasticsearch python module == 6.3.0  
-Step 1. Install Elasticsearch Because we use ELS which is host by AWS, so basically we just need to take care of instance type and count.
+Step 1. Install Elasticsearch  Because we use ELS which is host by AWS, so basically we just need to take care of instance type and count.
 And why I use AWS ELS ?
 Because I just wanna get the rid of instance management lol</description>
-    </item>
-    
-    <item>
-      <title>Docker Note (Nginx&#43;uwsgi&#43;Letsencrypt)</title>
-      <link>/blog/2017-08-31-docker-note/</link>
-      <pubDate>Thu, 31 Aug 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/2017-08-31-docker-note/</guid>
-      <description>docker筆記    nginx+uwsgi+flask+letsencrypt    Env: Python3    Line串接API使用，需執行crontab更新憑證(簽署期限為30天)       note:    certbot-auto可單一clone此檔案就好    產生憑證： (docker裡執行)  certbot-auto certonly --webroot --webroot-path=WEB_ROOT -d DOMAIN_NAME    更新憑證：&amp;nbsp;  docker exec -it CONTAINER_ID /opt/letsencrypt/certbot-auto renew --quiet --renew-hook &#34;/etc/init.d/nginx restart&#34;    啟動程序：&amp;nbsp;  docker run -p 80:80 -p 443:443 CONTAINER_ID /opt/start. &amp;amp;     /opt/start.</description>
     </item>
     
     <item>
@@ -59,10 +50,10 @@ Because I just wanna get the rid of instance management lol</description>
     
     <item>
       <title>Python套件urllib2簡介</title>
-      <link>/blog/2017-02-05-urllib2-intro/</link>
+      <link>/%E6%8A%80%E8%A1%93%E7%B0%A1%E4%BB%8B/%E9%9B%9C%E4%B8%83%E9%9B%9C%E5%85%AB/python/2017/02/05/urllib2-intro.html</link>
       <pubDate>Sun, 05 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2017-02-05-urllib2-intro/</guid>
+      <guid>/%E6%8A%80%E8%A1%93%E7%B0%A1%E4%BB%8B/%E9%9B%9C%E4%B8%83%E9%9B%9C%E5%85%AB/python/2017/02/05/urllib2-intro.html</guid>
       <description>這裡就像哈利波特裡的儲思盆
 趁著我在當兵前還沒完全放空的時候
 把這些東西倒出來
@@ -75,14 +66,7 @@ Because I just wanna get the rid of instance management lol</description>
 簡單的幾行程式碼就可以搞定
 範例程式如下：
 我們對google首頁做GET
-/usr/bin/env python
- encoding: utf-8
- 
-import urllib2
-request = urllib2.Request(&amp;ldquo;http://www.google.com.tw/&amp;quot;)
-response = urllib2.urlopen(request)
-html = response.read()
-print html
+# /usr/bin/env python # encoding: utf-8 import urllib2 request = urllib2.Request(&amp;#34;http://www.google.com.tw/&amp;#34;) response = urllib2.urlopen(request) html = response.read() print html 
 去執行python 程式名稱就可以看到GET網頁的內容了
 非常簡單且快速
 用來撈取資料或做POST、GET都很方便

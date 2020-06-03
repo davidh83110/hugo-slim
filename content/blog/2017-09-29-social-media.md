@@ -1,7 +1,7 @@
 ---
 author: David
 categories:
-- 雜七雜八
+- jibber-jabber
 comments: true
 date: "2017-09-29T00:00:00Z"
 modified: "2017-09-29"

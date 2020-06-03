@@ -1,20 +1,13 @@
 ---
 author: David
 categories:
-- 技術簡介
 - Python
-- 雜七雜八
 comments: true
 date: "2017-09-03T00:00:00Z"
 modified: "2017-09-03"
 published: false
-tags:
-- python
-- python3
-- crawler
-- requests
-- beautifulsoup
 title: Python3 實作爬蟲
+url: /雜七雜八/python/2017/08/31/docker-note.html
 ---
 嗚 感冒好痛苦
 <br />

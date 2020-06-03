@@ -1,20 +1,11 @@
 ---
 author: David
 categories:
-- 技術簡介
-- 系統建置
+- Linux
 comments: true
 date: "2016-12-11T00:00:00Z"
 modified: "2016-12-11"
-published: true
-tags:
-- Pure-ftpd
-- TLS
-- SSL
-- openssl
-- filezilla
-- FTPS
-- FTP
+published: false
 title: Pureftpd + TLS/SSL 詳解
 ---
 <span style="background-color: white; font-family: inherit;">Pure-ftpd&nbsp;+ TLS</span><br />

@@ -1,7 +1,6 @@
 ---
 author: David
 categories:
-- 技術簡介
 - AWS
 - Serverless
 comments: true
@@ -9,11 +8,9 @@ date: "2018-04-21T00:00:00Z"
 modified: "2018-04-21"
 published: true
 title: 20180329 Serverless event NOTE
+url: /技術簡介/aws/serverless/2018/04/21/srverless.html
+images: ["https://day.ithome.com.tw/serverless/img/fb.png"]
 ---
-
-<div class="separator" style="clear: both; text-align: center;">
-<a href="https://day.ithome.com.tw/serverless/img/fb.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="315" data-original-width="560" height="180" src="https://day.ithome.com.tw/serverless/img/fb.png" width="320" /></a></div>
-<br />
 
 **Serverless for Monitoring**
 -
