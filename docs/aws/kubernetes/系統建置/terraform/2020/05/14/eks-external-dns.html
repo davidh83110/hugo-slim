@@ -13,7 +13,7 @@ External-DNS 官方介紹：
  Inspired by Kubernetes DNS, Kubernetes&rsquo; cluster-internal DNS server, ExternalDNS makes Kubernetes resources discoverable via public DNS servers. Like KubeDNS, it retrieves a list of resources (Services, Ingresses, etc.) from the Kubernetes API to determine a desired list of DNS records.">
 <meta itemprop="datePublished" content="2020-05-14T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-05-14T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="663">
+<meta itemprop="wordCount" content="658">
 <meta itemprop="image" content="https://live.staticflickr.com/65535/49908288961_c380509717_b.jpg width=10">
 
 
@@ -36,7 +36,7 @@ External-DNS 官方介紹：
 當然他也支援在 GCP/Azure 上面建立，只是這邊就只介紹 AWS 上如何做設定，以及如果 Route53 在另一個 Account 的話要怎麼做。 在 EKS 1.14 以上使用了 OIDC ，所以如果跨帳號就會需要使用 OIDC 做授權。
 External-DNS 官方介紹：
  Inspired by Kubernetes DNS, Kubernetes&rsquo; cluster-internal DNS server, ExternalDNS makes Kubernetes resources discoverable via public DNS servers. Like KubeDNS, it retrieves a list of resources (Services, Ingresses, etc.) from the Kubernetes API to determine a desired list of DNS records."/>
-<link rel="stylesheet" href="/css/bundle.min.6ab239962d2e4937efcc3cde86a5695ca40f284288bacfaa8cef98e3c2a87cf7.css" integrity="sha256-arI5li0uSTfvzDzehqVpXKQPKEKIus&#43;qjO&#43;Y48KofPc="><link rel="stylesheet" href="/css/add-on.css">
+<link rel="stylesheet" href="/css/bundle.min.85f1a74f9f3646a780babcef978582b706a5a4e7a5258b8a63552b922115f111.css" integrity="sha256-hfGnT582RqeAurzvl4WCtwalpOelJYuKY1UrkiEV8RE="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -264,19 +264,19 @@ External-DNS 官方介紹：
 <p>Inspired by Kubernetes DNS, Kubernetes&rsquo; cluster-internal DNS server, ExternalDNS makes Kubernetes resources discoverable via public DNS servers. Like KubeDNS, it retrieves a list of resources (Services, Ingresses, etc.) from the Kubernetes API to determine a desired list of DNS records. Unlike KubeDNS, however, it&rsquo;s not a DNS server itself, but merely configures other DNS providers accordingly—e.g. AWS Route 53 or Google Cloud DNS.</p>
 <p>In a broader sense, ExternalDNS allows you to control DNS records dynamically via Kubernetes resources in a DNS provider-agnostic way.</p>
 </blockquote>
-<p><br /></p>
 <ul>
 <li><a href="https://github.com/kubernetes-sigs/external-dns">官方 Github Repository</a></li>
 </ul>
-<p><br />
-<br /></p>
+<p><br /></p>
 <h2 id="prepare">Prepare</h2>
 <hr>
 <ul>
-<li>ALB Ingress Controller needs to be installed on EKS cluster.
-<br /></li>
-</ul>
+<li>
+<p>ALB Ingress Controller needs to be installed on EKS cluster.
+<br /></p>
 <p>如果沒有安裝的話可以參考我的文章進行安裝, <a href="https://blog.davidh83110.com/aws/kubernetes/%E7%B3%BB%E7%B5%B1%E5%BB%BA%E7%BD%AE/terraform/2020/03/30/eks-install.html">文章連結</a></p>
+</li>
+</ul>
 <p><br />
 <br /></p>
 <h2 id="setup-with-single-aws-account">Setup with Single AWS Account</h2>
@@ -284,8 +284,8 @@ External-DNS 官方介紹：
 <p>其實只有一個帳號的話，設定上很容易，按照官方的說明就可以了。
 <br /></p>
 <ul>
-<li>建立授權給 Route53 的 IAM Policy, 並指配給 EKS Service Role</li>
-</ul>
+<li>
+<p>建立授權給 Route53 的 IAM Policy, 並指配給 EKS Service Role</p>
 <pre><code>{
   &quot;Version&quot;: &quot;2012-10-17&quot;,
   &quot;Statement&quot;: [
@@ -310,29 +310,30 @@ External-DNS 官方介紹：
     }
   ]
 }
-</code></pre><p><br /></p>
-<ul>
-<li>安裝 External-DNS 在 EKS / 驗證安裝</li>
+</code></pre></li>
 </ul>
-<p><a href="https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md">參考官方安裝教學</a>
-<br />
-或參考附錄我的 YAML, 修改帳號及 Role Name, 再 Apply to cluster 就可以。 <a href="#%E9%99%84%E9%8C%84">附錄</a>
-<br />
-也可以 <code>--domain-filter</code> 指定要控制的 Domain, 避免影響到其他 Domain.</p>
+<p><br /></p>
+<ul>
+<li>
+<p>安裝 External-DNS 在 EKS / 驗證安裝</p>
+<p><a href="https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md">參考官方安裝教學</a></p>
+<p>或參考附錄我的 YAML, 修改帳號及 Role Name, 再 Apply to cluster 就可以。 <a href="#%E9%99%84%E9%8C%84">附錄</a></p>
+<p>也可以 <code>--domain-filter</code> 指定要控制的 Domain, 避免影響到其他 Domain.</p>
+</li>
+</ul>
 <p><br />
 <br /></p>
 <h2 id="setup-with-cross-account-route53-zone-and-eks-in-different-account">Setup with Cross-Account (Route53 Zone and EKS in different account)</h2>
 <hr>
-<p>這邊就會比較複雜, 也是這篇要講的重點。 在 EKS 1.14 以上使用 OIDC 的部分，設定上會比較不一樣。
-<br /></p>
-<h3 id="環境假設"><strong>環境假設</strong></h3>
-<p><br />
-有兩個 AWS Accounts, 分別是 Root Account &amp; EKS Account.</p>
-<p><code>Root Account</code>: 管理 Route53 Hosted Zone<br>
+<p>這邊就會比較複雜, 也是這篇要講的重點。 在 EKS 1.14 以上使用 OIDC 的部分，設定上會比較不一樣。</p>
+<p><br /></p>
+<p><strong>環境假設:</strong><br>
+有兩個 AWS Accounts, 分別是 Root Account &amp; EKS Account.<br>
+<code>Root Account</code>: 管理 Route53 Hosted Zone<br>
 <code>EKS Account</code>: 管理 EKS Cluster</p>
 <p><br /></p>
-<h3 id="建立-route53-permission"><strong>建立 Route53 Permission</strong></h3>
-<p>我們需要建立這個授權建立 Record 的 IAM Policy 在 <code>Root Account</code></p>
+<p><strong>建立 Route53 Permission:</strong><br>
+我們需要建立這個授權建立 Record 的 IAM Policy 在 <code>Root Account</code></p>
 <pre><code>{
   &quot;Version&quot;: &quot;2012-10-17&quot;,
   &quot;Statement&quot;: [
@@ -358,28 +359,22 @@ External-DNS 官方介紹：
   ]
 }
 </code></pre><p><br /></p>
-<h3 id="建立-oidc-identity-provider"><strong>建立 OIDC Identity Provider</strong></h3>
-<p><br />
-建立 OIDC Identity Provider 要在 <code>Root Account</code> 做, 因為我們是要把 EKS Account 連結到 Root Account.
-<br /></p>
-<ul>
-<li>請在 <code>Root Account</code> 建立 IAM Identity Provider,
-<br /></li>
-</ul>
+<p><strong>建立 OIDC Identity Provider:</strong><br>
+要在 <code>Root Account</code> 做, 因為我們是要把 EKS Account 連結到 Root Account。</p>
+<p>請在 <code>Root Account</code> 建立 IAM Identity Provider</p>
+<blockquote>
 <p><strong>Provuder Type</strong> - 請選擇 OpenID Connect<br>
 <strong>Provider URL</strong> -  請填入 EKS Account EKS Cluster 的 OIDC URL。<br>
 <strong>Audience</strong> - 請填入 <code>sts.awsamazon.com</code></p>
+</blockquote>
 <p><img src="https://live.staticflickr.com/65535/49907767258_345e5bf7cb_k.jpg" alt="text"></p>
 <p><br /></p>
-<h3 id="建立-iam-role"><strong>建立 IAM Role</strong></h3>
-<p><br />
-接下來需要在 <code>Root Account</code> 建立一個 IAM Role 給剛剛建立的 Identity Provider 套用。
-<br />
-請選擇 <code>Web Identity</code> 類型建立 IAM Role, 並選擇剛剛的 Identity Provider &amp; Audience。</p>
+<p><strong>建立 IAM Role:</strong><br>
+接下來需要在 <code>Root Account</code> 建立一個 IAM Role 給剛剛建立的 Identity Provider 套用。</p>
+<p>請選擇 <code>Web Identity</code> 類型建立 IAM Role, 並選擇剛剛的 Identity Provider &amp; Audience。</p>
 <p><img src="https://live.staticflickr.com/65535/49908580392_88e700df71_k.jpg" alt="text"></p>
 <p><br /></p>
-<h3 id="修改-trusted-relationship-optional"><strong>修改 Trusted Relationship (optional)</strong></h3>
-<p><br />
+<p><strong>修改 Trusted Relationship (optional):</strong><br>
 我們要對 trusted relationship 做一些修改。 (直接編輯 trusted relationship YAML)
 <br /></p>
 <ul>
@@ -387,8 +382,7 @@ External-DNS 官方介紹：
 <li>將 <code>namespace</code> 改成 <code>serviceaccount</code></li>
 </ul>
 <p><br />
-改完之後應該會像這樣<br>
-<br /></p>
+改完之後應該會像這樣</p>
 <pre><code>{
   &quot;Version&quot;: &quot;2012-10-17&quot;,
   &quot;Statement&quot;: [
@@ -406,101 +400,99 @@ External-DNS 官方介紹：
     }
   ]
 }
-</code></pre><p><br />
-<br /></p>
-<h3 id="安裝-external-dns">安裝 External-DNS</h3>
-<p><br /></p>
-<p><a href="https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md">參考官方安裝教學</a>
-<br />
-或參考附錄，直接修改我的參考 YAML 裡的帳號跟 Role Name, 然後 Apply to Cluster.  <a href="#%E9%99%84%E9%8C%84">附錄</a>
-<br />
-也可以 <code>--domain-filter</code> 指定要控制的 Domain, 避免影響到其他 Domain.
-<br /></p>
+</code></pre><p><br /></p>
+<p><strong>安裝 External-DNS:</strong><br>
+<a href="https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md">參考官方安裝教學</a></p>
+<p>或參考<a href="#%E9%99%84%E9%8C%84">附錄</a>，直接修改我的參考 YAML 裡的帳號跟 Role Name, 然後 Apply to Cluster.</p>
 <blockquote>
-<p><strong>跟 Single Account的不同</strong>: 在附錄裡的 YAML , Account ID &amp; Role Name 請填入 <code>Root Account</code> 的 ID 跟 Role Name. (我們前幾步驟建立的那個 Role)</p>
+<p>可以 <code>--domain-filter</code> 指定要控制的 Domain, 避免影響到其他 Domain.</p>
 </blockquote>
+<p><br /></p>
+<p><strong>跟 Single Account的不同:</strong><br>
+在附錄裡的 YAML , Account ID &amp; Role Name 請填入 <code>Root Account</code> 的 ID 跟 Role Name. (我們前幾步驟建立的那個 Role)</p>
 <p><br />
 <br /></p>
 <h2 id="附錄">附錄</h2>
 <hr>
-<p><br /></p>
 <ul>
-<li>External-DNS YAML</li>
-</ul>
-<pre><code>apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: external-dns
-  # If you're using Amazon EKS with IAM Roles for Service Accounts, specify the following annotation.
-  # Otherwise, you may safely omit it.
-  annotations:
-    # Substitute your account ID and IAM service role name below.
-    eks.amazonaws.com/role-arn: arn:aws:iam::{{ account_id }}:role/{{ iam_service_role_name }}
+<li>
+<p>External-DNS YAML</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">apiVersion</span>: v1
+<span style="color:#66d9ef">kind</span>: ServiceAccount
+<span style="color:#66d9ef">metadata</span>:
+  <span style="color:#66d9ef">name</span>: external-dns
+  <span style="color:#75715e"># If you&#39;re using Amazon EKS with IAM Roles for Service Accounts, specify the following annotation.</span>
+  <span style="color:#75715e"># Otherwise, you may safely omit it.</span>
+  <span style="color:#66d9ef">annotations</span>:
+    <span style="color:#75715e"># Substitute your account ID and IAM service role name below.</span>
+    <span style="color:#66d9ef">eks.amazonaws.com/role-arn</span>: arn:aws:iam::{{ account_id }}:role/{{ iam_service_role_name }}
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
-kind: ClusterRole
-metadata:
-  name: external-dns
-rules:
-- apiGroups: [&quot;&quot;]
-  resources: [&quot;services&quot;,&quot;endpoints&quot;,&quot;pods&quot;]
-  verbs: [&quot;get&quot;,&quot;watch&quot;,&quot;list&quot;]
-- apiGroups: [&quot;extensions&quot;]
-  resources: [&quot;ingresses&quot;]
-  verbs: [&quot;get&quot;,&quot;watch&quot;,&quot;list&quot;]
-- apiGroups: [&quot;&quot;]
-  resources: [&quot;nodes&quot;]
-  verbs: [&quot;list&quot;,&quot;watch&quot;]
+<span style="color:#66d9ef">apiVersion</span>: rbac.authorization.k8s.io/v1beta1
+<span style="color:#66d9ef">kind</span>: ClusterRole
+<span style="color:#66d9ef">metadata</span>:
+  <span style="color:#66d9ef">name</span>: external-dns
+<span style="color:#66d9ef">rules</span>:
+- <span style="color:#66d9ef">apiGroups</span>: [<span style="color:#e6db74">&#34;&#34;</span>]
+  <span style="color:#66d9ef">resources</span>: [<span style="color:#e6db74">&#34;services&#34;</span>,<span style="color:#e6db74">&#34;endpoints&#34;</span>,<span style="color:#e6db74">&#34;pods&#34;</span>]
+  <span style="color:#66d9ef">verbs</span>: [<span style="color:#e6db74">&#34;get&#34;</span>,<span style="color:#e6db74">&#34;watch&#34;</span>,<span style="color:#e6db74">&#34;list&#34;</span>]
+- <span style="color:#66d9ef">apiGroups</span>: [<span style="color:#e6db74">&#34;extensions&#34;</span>]
+  <span style="color:#66d9ef">resources</span>: [<span style="color:#e6db74">&#34;ingresses&#34;</span>]
+  <span style="color:#66d9ef">verbs</span>: [<span style="color:#e6db74">&#34;get&#34;</span>,<span style="color:#e6db74">&#34;watch&#34;</span>,<span style="color:#e6db74">&#34;list&#34;</span>]
+- <span style="color:#66d9ef">apiGroups</span>: [<span style="color:#e6db74">&#34;&#34;</span>]
+  <span style="color:#66d9ef">resources</span>: [<span style="color:#e6db74">&#34;nodes&#34;</span>]
+  <span style="color:#66d9ef">verbs</span>: [<span style="color:#e6db74">&#34;list&#34;</span>,<span style="color:#e6db74">&#34;watch&#34;</span>]
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
-kind: ClusterRoleBinding
-metadata:
-  name: external-dns-viewer
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: external-dns
-subjects:
-- kind: ServiceAccount
-  name: external-dns
-  namespace: default
+<span style="color:#66d9ef">apiVersion</span>: rbac.authorization.k8s.io/v1beta1
+<span style="color:#66d9ef">kind</span>: ClusterRoleBinding
+<span style="color:#66d9ef">metadata</span>:
+  <span style="color:#66d9ef">name</span>: external-dns-viewer
+<span style="color:#66d9ef">roleRef</span>:
+  <span style="color:#66d9ef">apiGroup</span>: rbac.authorization.k8s.io
+  <span style="color:#66d9ef">kind</span>: ClusterRole
+  <span style="color:#66d9ef">name</span>: external-dns
+<span style="color:#66d9ef">subjects</span>:
+- <span style="color:#66d9ef">kind</span>: ServiceAccount
+  <span style="color:#66d9ef">name</span>: external-dns
+  <span style="color:#66d9ef">namespace</span>: default
 ---
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: external-dns
-spec:
-  strategy:
-    type: Recreate
-  selector:
-    matchLabels:
-      app: external-dns
-  template:
-    metadata:
-      labels:
-        app: external-dns
-      # If you're using kiam or kube2iam, specify the following annotation.
-      # Otherwise, you may safely omit it.
-      annotations:
-        iam.amazonaws.com/role: arn:aws:iam::{{ account_id }}:role/{{ iam_service_role_name }}
-    spec:
-      serviceAccountName: external-dns
-      nodeSelector:
-        app: system
-      containers:
-      - name: external-dns
-        image: registry.opensource.zalan.do/teapot/external-dns:latest
-        args:
+<span style="color:#66d9ef">apiVersion</span>: apps/v1
+<span style="color:#66d9ef">kind</span>: Deployment
+<span style="color:#66d9ef">metadata</span>:
+  <span style="color:#66d9ef">name</span>: external-dns
+<span style="color:#66d9ef">spec</span>:
+  <span style="color:#66d9ef">strategy</span>:
+    <span style="color:#66d9ef">type</span>: Recreate
+  <span style="color:#66d9ef">selector</span>:
+    <span style="color:#66d9ef">matchLabels</span>:
+      <span style="color:#66d9ef">app</span>: external-dns
+  <span style="color:#66d9ef">template</span>:
+    <span style="color:#66d9ef">metadata</span>:
+      <span style="color:#66d9ef">labels</span>:
+        <span style="color:#66d9ef">app</span>: external-dns
+      <span style="color:#75715e"># If you&#39;re using kiam or kube2iam, specify the following annotation.</span>
+      <span style="color:#75715e"># Otherwise, you may safely omit it.</span>
+      <span style="color:#66d9ef">annotations</span>:
+        <span style="color:#66d9ef">iam.amazonaws.com/role</span>: arn:aws:iam::{{ account_id }}:role/{{ iam_service_role_name }}
+    <span style="color:#66d9ef">spec</span>:
+      <span style="color:#66d9ef">serviceAccountName</span>: external-dns
+      <span style="color:#66d9ef">nodeSelector</span>:
+        <span style="color:#66d9ef">app</span>: system
+      <span style="color:#66d9ef">containers</span>:
+      - <span style="color:#66d9ef">name</span>: external-dns
+        <span style="color:#66d9ef">image</span>: registry.opensource.zalan.do/teapot/external-dns:latest
+        <span style="color:#66d9ef">args</span>:
         - --source=service
         - --source=ingress
         - --provider=aws
-        - --policy=upsert-only # would prevent ExternalDNS from deleting any records, omit to enable full synchronization
-        - --aws-zone-type=public # only look at public hosted zones (valid values are public, private or no value for both)
+        - --policy=upsert-only <span style="color:#75715e"># would prevent ExternalDNS from deleting any records, omit to enable full synchronization</span>
+        - --aws-zone-type=public <span style="color:#75715e"># only look at public hosted zones (valid values are public, private or no value for both)</span>
         - --registry=txt
         - --txt-owner-id=my-hostedzone-identifier
-      securityContext:
-        fsGroup: 65534 # For ExternalDNS to be able to read Kubernetes and AWS token files
-</code></pre>
+      <span style="color:#66d9ef">securityContext</span>:
+        <span style="color:#66d9ef">fsGroup</span>: <span style="color:#ae81ff">65534</span> <span style="color:#75715e"># For ExternalDNS to be able to read Kubernetes and AWS token files</span>
+</code></pre></div></li>
+</ul>
+
   </div>
   <footer>
     <ul class="stats">
@@ -855,7 +847,8 @@ spec:
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.ba01f4c6fd09c8681f5bb9960755a2d29a543735c990ef92c5c97365cbb37a4e.js" integrity="sha256-ugH0xv0JyGgfW7mWB1Wi0ppUNzXJkO&#43;SxclzZcuzek4="></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>hljs.initLineNumbersOnLoad();</script><script src="/js/bundle.min.ba01f4c6fd09c8681f5bb9960755a2d29a543735c990ef92c5c97365cbb37a4e.js" integrity="sha256-ugH0xv0JyGgfW7mWB1Wi0ppUNzXJkO&#43;SxclzZcuzek4="></script>
     <script src="/js/add-on.js"></script>
     </div>
   </body>

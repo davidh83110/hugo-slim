@@ -1,8 +1,12 @@
 {{- if .Site.Params.enableCDN -}}
   {{- if .Site.Params.highlightjs -}}
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
-    {{ range .Site.Params.highlightjsLang }}<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/{{ . }}.min.js"></script>{{ end }}
+    {{ range .Site.Params.highlightjsLang }}
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/{{ . }}.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+    {{ end }}
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>hljs.initLineNumbersOnLoad();</script>
   {{- end -}}
   {{- range .Site.Params.jsFiles -}}
     {{- if eq . "default" -}}
@@ -25,6 +29,7 @@
     {{- $hljs := resources.Get "js/highlight.js" -}}
     <script src="{{ $hljs.RelPermalink }}"></script>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>hljs.initLineNumbersOnLoad();</script>
   {{- end -}}
   {{- range .Site.Params.jsFiles -}}
     {{- $jsSlice := slice -}}
