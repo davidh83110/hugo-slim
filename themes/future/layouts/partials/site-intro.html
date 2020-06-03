@@ -11,6 +11,8 @@
       <ul class="socnet-icons">
         {{ if .Site.Params.intro.rssIntro }}{{ partial "rss-icon" . }}{{ end }}
         {{ if .Site.Params.intro.socialIntro }}{{ partial "socnet-icon" . }}{{ end }}
+      </ul>
+      <ul style="padding: 0;">
         <p style="text-align: center;">
           {{ .Site.Params.sidebar.about | safeHTML }}
         </p>

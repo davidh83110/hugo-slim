@@ -1092,7 +1092,7 @@ textarea {
      }
    }
    > div > p, > p {
-     text-align: justify;
+    //  text-align: justify;
    }
    a {
      color: steelblue;
@@ -1195,6 +1195,7 @@ textarea {
              }
              a {
               //  overflow: hidden;
+               color: #3c3b3b;
                text-overflow: ellipsis;
                white-space: nowrap;
              }

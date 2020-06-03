@@ -839,8 +839,6 @@ table {
   @media (min-width: 1440px) {
     .post > div, .post > p {
       margin: 0 4em; } }
-  .post > div > p, .post > p {
-    text-align: justify; }
   .post a {
     color: steelblue; }
     .post a.image {
@@ -922,6 +920,7 @@ table {
               line-height: 1;
               margin: 1em; }
             .post > footer .stats li ul li a {
+              color: #3c3b3b;
               text-overflow: ellipsis;
               white-space: nowrap; }
 
