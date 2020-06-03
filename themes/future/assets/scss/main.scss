@@ -219,6 +219,7 @@ textarea {
    margin: 0 auto;
    a {
      border-bottom: 0;
+     color: #3c3b3b !important;
    }
  }
 
@@ -1123,6 +1124,7 @@ textarea {
      display: flex;
      flex-direction: column;
      .button {
+       color: #3c3b3b;
        margin: 1em auto;
        width: 100%
      }
@@ -1736,6 +1738,7 @@ textarea {
      justify-content: flex-start;
    }
    a {
+     color: white;
      margin-bottom: .5em;
      padding: .5em;
      width: 4em;

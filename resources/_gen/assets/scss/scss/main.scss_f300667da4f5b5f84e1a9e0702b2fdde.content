@@ -140,7 +140,8 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: capitalize;
   margin: 0 auto; }
   h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-    border-bottom: 0; }
+    border-bottom: 0;
+    color: #3c3b3b !important; }
 
 blockquote {
   border-left: solid 4px rgba(160, 160, 160, 0.3);
@@ -864,6 +865,7 @@ table {
     display: flex;
     flex-direction: column; }
     .post > footer .button {
+      color: #3c3b3b;
       margin: 1em auto;
       width: 100%; }
     .post > footer .stats {
@@ -1340,6 +1342,7 @@ table {
     #socnet-share {
       justify-content: flex-start; } }
   #socnet-share a {
+    color: white;
     margin-bottom: .5em;
     padding: .5em;
     width: 4em; }
